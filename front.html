@@ -65,36 +65,65 @@
                                 <tr>
                                     <td style="width: 20%;">Video</td>
                                     <td style="width: 80%;">
+
                                         <canvas id="myCanvas" width="500" height="100" style="border:1px solid #d3d3d3;">
                                            <!-- <script type="text/javascript" src="video-timeline.js"></script> -->
+                                           <div id="thumbnails">
+
+                                           </div>
                                         </canvas>
                                         <script>
                                             var video = document.getElementById("ux-video");
-                                            video.addEventListener('loadeddata', function (){
-                                                var vidDur = video.duration;
+                                            // video.addEventListener('loadeddata', function (){
+                                            //     var vidDur = video.duration;
 
-                                                var thumbCount = 10;
+                                            //     var thumbCount = 10;
 
-                                                var thumbTimes = [];
+                                            //     var thumbTimes = [];
 
-                                                for (i = 0; i < thumbCount; i++) {
-                                                    thumbTimes.push(Math.round(vidDur / (thumbCount - i)));
+                                            //     for (i = 0; i < thumbCount; i++) {
+                                            //         thumbTimes.push(Math.round(vidDur / (thumbCount - i)));
+                                            //     }
+                                            //     thumbTimes=thumbTimes.reverse();
+
+                                            //     var canvas = document.getElementById('myCanvas');
+                                            //     var context = canvas.getContext('2d');
+                                            //     var dataURL = canvas.toDataURL();
+                                            //     for (i = 0; i < thumbCount; i++) {
+                                            //         //set the video time
+                                            //         video.currentTime = Math.round(thumbTimes[i]);
+
+                                            //         //get the frame and render to canvas; offset dx for each thumbnail
+                                            //         context.drawImage(video, i * 10, 0, 20, 20);
+                                            //         // alert(video.currentTime);
+                                            //     }
+                                            // });
+                                            video.addEventListener('loadeddata', function () {
+                                                    var duration = video.duration;
+                                                    // var i = 0;
+                                                    // var interval = setInterval(function () {
+                                                    //     // i = i + 5;
+                                                    //     // if (i > duration) clearInterval(interval);
+                                                    for (i=0;i<duration;i+=5){
+                                                        video.currentTime = i;
+                                                        generateThumbnail(i);
+                                                    }
+                                                });
+                                                //     });
+                                                // });
+                                                function generateThumbnail(i) {
+                                                    var canvas = document.getElementById('myCanvas');
+                                                    var context = canvas.getContext('2d');
+                                                    context.drawImage(video, 0, 0, 220, 150);
+                                                    var dataURL = canvas.toDataURL();
+
+                                                    var img = document.createElement('img');
+                                                    img.setAttribute('src', dataURL);
+
+                                                    document.getElementById('thumbnails').appendChild(img);  
                                                 }
-                                                thumbTimes=thumbTimes.reverse();
-
-                                                var canvas = document.getElementById('myCanvas');
-                                                var context = canvas.getContext('2d');
-                                                var dataURL = canvas.toDataURL();
-                                                for (i = 0; i < thumbCount; i++) {
-                                                    //set the video time
-                                                    video.currentTime = Math.round(thumbTimes[i]);
-
-                                                    //get the frame and render to canvas; offset dx for each thumbnail
-                                                    context.drawImage(video, i * 10, 0, 20, 20);
-                                                    // alert(video.currentTime);
-                                                }
-                                            });
                                         </script>
+
                                         <!-- <script type="text/javascript" src="video-timeline.js"></script> -->
                                     </td>
                                 </tr>
