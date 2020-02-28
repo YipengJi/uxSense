@@ -74,6 +74,18 @@
                                         </canvas>
                                         <script>
                                             var video = document.getElementById("ux-video");
+
+                                            var vidTimelineInterval = 30;
+
+                                            function vidTimelineRecur(i, duration){
+
+                                                if(i < duration){
+                                                    video.currentTime = i;
+                                                    generateThumbnail(i);
+                                                    setTimeout(vidTimelineRecur(i+vidTimelineInterval, duration), 500)
+                                                }
+                                            }
+
                                             // video.addEventListener('loadeddata', function (){
                                             //     var vidDur = video.duration;
 
@@ -100,21 +112,23 @@
                                             // });
                                             video.addEventListener('loadeddata', function () {
                                                     var duration = video.duration;
+                                                    vidTimelineRecur(0, duration)
                                                     // var i = 0;
                                                     // var interval = setInterval(function () {
                                                     //     // i = i + 5;
                                                     //     // if (i > duration) clearInterval(interval);
+                                                    /*
                                                     for (i=0;i<duration;i+=5){
                                                         video.currentTime = i;
                                                         generateThumbnail(i);
-                                                    }
+                                                    }*/
                                                 });
                                                 //     });
                                                 // });
                                                 function generateThumbnail(i) {
                                                     var canvas = document.getElementById('myCanvas');
                                                     var context = canvas.getContext('2d');
-                                                    context.drawImage(video, 0, 0, 220, 150);
+                                                    context.drawImage(video, (i/vidTimelineInterval)* 10, 0, 100, 50);
                                                     var dataURL = canvas.toDataURL();
 
                                                     var img = document.createElement('img');
