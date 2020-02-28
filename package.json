@@ -1,0 +1,32 @@
+{
+  "name": "uxsense",
+  "version": "1.0.0",
+  "description": "A user experience evaluation assistant toolkit and interface.",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YipengJi/uxSense.git"
+  },
+  "keywords": [
+    "ux",
+    "hci",
+    "ml",
+    "rnn"
+  ],
+  "author": "Andrea Batch + Yipeng Ji",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.15.3",
+    "body-parser": "^1.19.0",
+    "multer": "^1.4.2",
+    "nodemon": "^1.11.0"
+  },
+  "bugs": {
+    "url": "https://github.com/YipengJi/uxSense/issues"
+  },
+  "homepage": "https://github.com/YipengJi/uxSense#readme"
+}
