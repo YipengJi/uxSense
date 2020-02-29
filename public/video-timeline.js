@@ -25,6 +25,7 @@ function vidTimelineRecur(i){
         video.addEventListener('loadeddata', videoCanvasGenerator(i), once=true);
     } else {
         video.currentTime = 0;
+        video.style.display = "initial";
         video.play();
     }
 }
@@ -33,7 +34,8 @@ video.addEventListener('loadeddata', function () {
         video.pause();
         vidDuration = video.duration;
         vidTimelineInterval = Math.round(vidDuration/vidTimelineFrameCount);
-        vidTimelineRecur(0)
+        video.style.display = "none";
+        vidTimelineRecur(0);
     }, once=true);
 
     function generateThumbnail(i) {
