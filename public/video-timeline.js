@@ -1,20 +1,28 @@
-var video = document.getElementByID('ux-video');
-var vidDur = video.duration;
+var video = document.getElementById("ux-video");
 
-var thumbCount = 8;
+var vidTimelineInterval = 30;
 
-var thumbTimes = [];
-for (i = 0; i < thumbCount; i++) {
-    thumbTimes.append[Math.round(vidDur / (thumbCount - i))];
+function vidTimelineRecur(i, duration){
+
+    if(i < duration){
+        video.currentTime = i;
+        generateThumbnail(i);
+        setTimeout(vidTimelineRecur(i+vidTimelineInterval, duration), 500)
+    } else {
+        video.currentTime = 0;
+    }
 }
-thumbTimes.reverse();
+video.addEventListener('loadeddata', function () {
+        var duration = video.duration;
+        vidTimelineRecur(0, duration)
+    });
 
-var canvas = document.getElementById('myCanvas');
-var context = canvas.getContext('2d');
-for (i = 0; i < thumbCount; i++) {
-    //set the video time
-    video.currentTime = thumbTimes[i];
-
-    //get the frame and render to canvas; offset dx for each thumbnail
-    context.drawImage(video, i * 50, 0, 50, 50);
-}
+    function generateThumbnail(i) {
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        context.drawImage(video, (i/vidTimelineInterval) * 10, 0, 100, 50);
+        var dataURL = canvas.toDataURL();
+        var img = document.createElement('img');
+        img.setAttribute('src', dataURL);                                                    
+        document.getElementById('thumbnails').appendChild(img);
+    }

@@ -45,7 +45,7 @@
             </div>
             <div class="video">
                 <div class="video-box">
-                    <video id="ux-video" width="600" height="350" style="text-align: center;" controls>
+                    <video id="ux-video" width="600" height="350" style="text-align: center;" controls muted=true autoplay>
                         <source src="1-p6-coffeemachine.mp4" type="video/mp4">
                         <source src="1-p6-coffeemachine.ogg" type="video/ogg"> Your browser does not support HTML5 video.
                     </video>
@@ -72,42 +72,7 @@
 
                                            </div>
                                         </canvas>
-                                        <script>
-                                            var video = document.getElementById("ux-video");
-
-                                            var vidTimelineInterval = 30;
-
-                                            function vidTimelineRecur(i, duration){
-
-                                                if(i < duration){
-                                                    video.currentTime = i;
-                                                    generateThumbnail(i);
-                                                    setTimeout(vidTimelineRecur(i+vidTimelineInterval, duration), 500)
-                                                } else {
-                                                    video.currentTime = 1;
-                                                }
-                                            }
-                                            video.addEventListener('loadeddata', function () {
-                                                    var duration = video.duration;
-                                                    vidTimelineRecur(0, duration)
-                                                });
-
-                                                function generateThumbnail(i) {
-                                                    var canvas = document.getElementById('myCanvas');
-                                                    var context = canvas.getContext('2d');
-                                                    context.drawImage(video, (i/vidTimelineInterval)* 10, 0, 100, 50);
-                                                    var dataURL = canvas.toDataURL();
-
-                                                    var img = document.createElement('img');
-                                                    img.setAttribute('src', dataURL);
-
-                                                    document.getElementById('thumbnails').appendChild(img);  
-                                                }
-                                                
-                                        </script>
-
-                                        <!-- <script type="text/javascript" src="video-timeline.js"></script> -->
-                                    </td>
+                                        <script type="text/javascript" src="video-timeline.js"></script>                                    </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 20%;">Speech Rate</td>
