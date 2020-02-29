@@ -83,6 +83,8 @@
                                                     video.currentTime = i;
                                                     generateThumbnail(i);
                                                     setTimeout(vidTimelineRecur(i+vidTimelineInterval, duration), 500)
+                                                } else {
+                                                    video.currentTime = 1;
                                                 }
                                             }
                                             video.addEventListener('loadeddata', function () {
