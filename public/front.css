@@ -174,3 +174,19 @@ tr:hover {
     fill: none;
     stroke: steelblue;
 }
+
+#acttooltip {
+    position: absolute;
+    text-align: center;
+    width: 120px;
+    height: 100px;
+    padding: 2px;
+    border-width:2px;
+    border-style:solid;
+    border-color:black;
+    font: 12px sans-serif;
+    background: white;
+    border: 0px;
+    pointer-events: none;
+  }
+  

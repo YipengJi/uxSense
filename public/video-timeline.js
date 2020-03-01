@@ -1,7 +1,7 @@
 var video = document.getElementById("ux-video");
 var vidDuration = 0;
 var vidTimelineInterval = 30;
-var vidTimelineFrameCount = 4;
+var vidTimelineFrameCount = 5;
 
 
 function videoCanvasGenerator(i){
