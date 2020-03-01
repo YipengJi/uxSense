@@ -178,8 +178,8 @@ tr:hover {
 #acttooltip {
     position: absolute;
     text-align: center;
-    width: 120px;
-    height: 100px;
+    width: auto;
+    height: auto;
     padding: 2px;
     border-width:2px;
     border-style:solid;
