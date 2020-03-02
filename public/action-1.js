@@ -71,11 +71,43 @@ d3.csv('modeloutput/actions_all.csv', function(data){
 
             d3.select('#acttooltip')
             .html("action: " + d.action + "<br/>probability: " + (100*parseFloat(d.prob)) + "%")
+
+            //TODO: MODULARIZE OUR TRACKING so that we don' thave to add a full $.ajax call spec for each event 
+            //Track event
+            $.ajax({ 
+                url: '/log',
+                type: 'POST',
+                cache: false, 
+                data: { data: d, event: {object: 'rect_action1_'+d.start, trigger: 'mouseover', timestamp:(new Date().getTime())}}, 
+                success: function(){
+                   //alert('Success!')
+                }
+                , error: function(jqXHR, textStatus, err){
+                    console.log('text status '+textStatus+', err '+err)
+                }
+            })
+     
         })
         .on('mouseout', function(){
             d3.select('#acttooltip')
             .transition().duration(100)
             .style('opacity', 0)
+
+            //Track event
+            $.ajax({ 
+                url: '/log',
+                type: 'POST',
+                cache: false, 
+                data: { data: d, event: {object: 'rect_action1_'+d.start, trigger: 'mouseout', timestamp:(new Date().getTime())}}, 
+                success: function(){
+                   //alert('Success!')
+                }
+                , error: function(jqXHR, textStatus, err){
+                    console.log('text status '+textStatus+', err '+err)
+                }
+            })
+
+
         })
     })
 

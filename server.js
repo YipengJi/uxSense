@@ -4,7 +4,7 @@ const fs = require('fs'); // file system
 const multer = require('multer'); // file storing middleware
 const bodyParser = require('body-parser'); //cleans our req.body
 
-const app = express();
+var app = express();
 
 /**
  * handle body requests, account for JSON parsing
@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 /**
  * MULTER CONFIG: we will want to set this up for our server video storage
  */
+
 /*
 const multerConfig = {
     
@@ -63,3 +64,14 @@ app.listen(3000, function () {
     console.log('Listening on port 3000!')
   });
   
+//  app.set('view engine', 'ejs');
+
+app.post('/log', function (req, res){
+
+  //todo: instead of console logging, we need to write to fs somewhere.
+    console.log(req.body);
+    console.log('req received');
+    res.redirect('/');
+ 
+ });
+
