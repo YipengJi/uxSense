@@ -75,3 +75,13 @@ app.post('/log', function (req, res){
  
  });
 
+//add annotation handler
+ app.post('/annotate', function (req, res){
+
+  //todo: instead of console logging, we need to write to fs somewhere.
+    console.log(req.body);
+    console.log('req received');
+    res.redirect('/');
+ 
+ });
+
