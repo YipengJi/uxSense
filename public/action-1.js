@@ -23,7 +23,7 @@ d3.csv('modeloutput/actions_all.csv', function(data){
         .domain([1, maxEnd])
         .range([0, width]);
 
-    var maxProb = _.max(_.map(_.map(data, 'prob')), parseFloat)
+    var maxProb = _.max(_.map(_.map(data, function(dp){return 1*dp['prob']})), parseFloat)
     var y = d3.scaleLinear()
         .domain([0, maxProb])
         .range([height, 0]);
@@ -52,14 +52,15 @@ d3.csv('modeloutput/actions_all.csv', function(data){
 
     startFrames.forEach(function(startframe){
         var thisData = _.filter(data, {'start':startframe})
-        var bestprob = _.max(_.map(thisData, 'prob'));
-        var d = _.filter(thisData, {'prob':bestprob})[0]
+        var bestprob = _.max(_.map(thisData,  function(dp){return(1*dp['prob'])}));
+
+        var d = _.filter(thisData, function(dp){return(1*dp['prob']==bestprob)})[0]
 
         actg.append('rect')
         .attr('width', rectWidth(parseFloat(d.start), parseFloat(d.end)))
         .attr('id', 'rect_action1_'+d.start)
         .attr('x', x(d.start))
-        .attr('height', rectHeight(parseFloat(d.prob)))
+        .attr('height', rectHeight(1*d.prob))
         .attr('y', y(parseFloat(d.prob)))
         .attr('fill', colorScale(d.action))
         .on('mouseover', function(){
@@ -70,7 +71,7 @@ d3.csv('modeloutput/actions_all.csv', function(data){
             .style('opacity', 1)
 
             d3.select('#acttooltip')
-            .html("action: " + d.action + "<br/>probability: " + (100*parseFloat(d.prob)) + "%")
+            .html("action: " + d.action + "<br/>probability: " + (Math.round(10000*(d.prob))/100) + "%")
 
             //TODO: MODULARIZE OUR TRACKING so that we don' thave to add a full $.ajax call spec for each event 
             //Track event
@@ -107,8 +108,14 @@ d3.csv('modeloutput/actions_all.csv', function(data){
                 }
             })
 
+        })
+        .on('click', function(){
+            var video = document.getElementById("ux-video");
+            var fps = maxEnd/video.duration;
+            video.currentTime = d.start/fps;
 
         })
+
     })
 
 })
