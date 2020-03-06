@@ -16,10 +16,20 @@
     <link rel="stylesheet" type="text/css" href="front.css" media="screen">
     <!-- D3 -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- lodash -->
-	<script src="lodash/lodash.min.js"></script>
+    <script src="lodash/lodash.min.js"></script>
+    <!-- slider -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.0.4/wNumb.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="nouislider.css" />
+    <link rel="stylesheet" href="multirange.css">
+
+    <!-- <link rel="stylesheet" href="https://demos.jquerymobile.com/1.4.2/css/themes/default/jquery.mobile-1.4.2.min.css"> -->
+    <!-- <script src="https://demos.jquerymobile.com/1.4.2/js/jquery.js"></script> -->
+    
+    <!-- <script src="https://demos.jquerymobile.com/1.4.2/js/jquery.mobile-1.4.2.min.js"></script> -->
 
 </head>
 
@@ -37,18 +47,6 @@
                             <a href="#" class="brand-logo center" style="color:white">
                                 <bold>uxSense</bold>
                             </a>
-                            
-                            <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                <li>
-                                    <a href="sass.html">Sass</a>
-                                </li>
-                                <li>
-                                    <a href="badges.html">Components</a>
-                                </li>
-                                <li>
-                                    <a href="collapsible.html">JavaScript</a>
-                                </li>
-                            </ul> -->
                         </div>
                     </nav>
                 </div>
@@ -60,6 +58,19 @@
                         <source src="TableauUser.ogg" type="video/ogg"> Your browser does not support HTML5 video.
                     </video>
                 </div>
+
+                <!-- <div id="timeline_hq_box" class="responsive-table table-status-sheet">
+                    <table class="highlight bordered" style="height:200px;">
+                        <tbody style="height:200px;">
+                            <tr>
+                                <td style="width: 100%; height: 200px;">
+                                    <div id="timeline_hq"></div>
+                                    <script type="text/javascript" src="focus_context.js"></script>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
             </div>
             <div class="timelines">
                 <div class="timelines-box">
@@ -73,16 +84,22 @@
                             </thead>
                             <tbody style="height:250px;">
                                 <tr>
+                                    <td style="width: 100%; height: 200px;">
+                                        <div id="timeline_hq"></div>
+                                        <script type="text/javascript" src="focus_context.js"></script>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td style="width: 20%;">Video</td>
                                     <td style="width: 80%;">
 
                                         <canvas id="myCanvas" width="600" height="50" style="border:1px solid #d3d3d3;">
-                                           <!-- <script type="text/javascript" src="video-timeline.js"></script> -->
                                            <div id="thumbnails">
 
                                            </div>
                                         </canvas>
-                                        <script type="text/javascript" src="video-timeline.js"></script>                                    </td>
+                                        <script type="text/javascript" src="video-timeline.js"></script> 
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 20%;">Speech Rate</td>
@@ -108,6 +125,8 @@
                                 </tr>
                                 <tr>
                                     <td>Action2</td>
+                                    <td>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Posture</td>
@@ -139,18 +158,56 @@
             </div>
             <div class="filter">
                 <div class="filter-box">
-                    <svg width="600" height="100">
-                        <path transform="translate(200, 0)" />
-                    </svg>
-                    <script>
-                        var data = [[0, 50], [100, 80], [200, 40], [300, 60], [400, 30]];
+                    <form action="#">
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>Speech Rate</span>
+                            </label>
+                            <div class="container">
+                                <div id="speechrate_slider"></div>
+                            </div>
+                            <!-- <script src="nouislider.js">
+                            </script>
+                            <script src="noui-slider.js">
+                            </script> -->
+                        </p>
+                        <p>
+                            <ul id="parent">
+                                <li>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Pitch</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <div id="pitch_slider"></div>
+                                </li>
+                            </ul>
 
-                        var lineGenerator = d3.line();
-                        var pathString = lineGenerator(data);
-
-                        d3.select('path')
-                            .attr('d', pathString);
-
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>Action1</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>Action2</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>Posture</span>
+                            </label>
+                        </p>
+                    </form>
+                    <script src="nouislider.js">
+                    </script>
+                    <script src="noui-slider.js">
                     </script>
                 </div>
             </div>
@@ -164,6 +221,7 @@
                             <br/>
                         </fieldset>
                     </form>
+                    <br>
                     <input id="annotate-submit" class="btn" type="button" value="Submit" onclick="addAnnotation()"></button>
                 </div>
                 <script src="annotate.js"></script>

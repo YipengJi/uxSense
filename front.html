@@ -66,11 +66,9 @@
                                     <td style="width: 20%;">Video</td>
                                     <td style="width: 80%;">
 
-                                        <canvas id="myCanvas" width="500" height="100" style="border:1px solid #d3d3d3;">
+                                        <canvas id="myCanvas" width="600" height="100" style="border:1px solid #d3d3d3;">
                                            <!-- <script type="text/javascript" src="video-timeline.js"></script> -->
-                                           <div id="thumbnails">
-
-                                           </div>
+                                           <div id="thumbnails"></div>
                                         </canvas>
                                         <script>
                                             var video = document.getElementById("ux-video");
@@ -84,9 +82,37 @@
                                                     generateThumbnail(i);
                                                     setTimeout(vidTimelineRecur(i+vidTimelineInterval, duration), 500)
                                                 }
+                                                else return;
                                             }
+                                            function generateThumbnail(i) {
+                                                    var canvas = document.getElementById('myCanvas');
+                                                    var context = canvas.getContext('2d');
+                                                    // context.drawImage(video, (i / vidTimelineInterval) * 10, 0, 100, 50);
+                                                    context.drawImage(video, i, 0, 100, 50);
+                                                    var dataURL = canvas.toDataURL();
 
-                                            // video.addEventListener('loadeddata', function (){
+                                                    var img = document.createElement('img');
+                                                    img.setAttribute('src', dataURL);
+
+                                                    document.getElementById('thumbnails').appendChild(img);
+                                            }
+                                            video.addEventListener('loadeddata', function () {
+                                                    var duration = video.duration;
+                                                    vidTimelineRecur(0, duration)
+                                                    // var i = 0;
+                                                    // var interval = setInterval(function () {
+                                                    //     // i = i + 5;
+                                                    //     // if (i > duration) clearInterval(interval);
+                                                    /*
+                                                    for (i=0;i<duration;i+=5){
+                                                        video.currentTime = i;
+                                                        generateThumbnail(i);
+                                                    }*/
+                                                    video.currentTime = 1;
+                                            });
+                                                //     });
+                                                // });
+                                                                                        // video.addEventListener('loadeddata', function (){
                                             //     var vidDur = video.duration;
 
                                             //     var thumbCount = 10;
@@ -110,32 +136,6 @@
                                             //         // alert(video.currentTime);
                                             //     }
                                             // });
-                                            video.addEventListener('loadeddata', function () {
-                                                    var duration = video.duration;
-                                                    vidTimelineRecur(0, duration)
-                                                    // var i = 0;
-                                                    // var interval = setInterval(function () {
-                                                    //     // i = i + 5;
-                                                    //     // if (i > duration) clearInterval(interval);
-                                                    /*
-                                                    for (i=0;i<duration;i+=5){
-                                                        video.currentTime = i;
-                                                        generateThumbnail(i);
-                                                    }*/
-                                                });
-                                                //     });
-                                                // });
-                                                function generateThumbnail(i) {
-                                                    var canvas = document.getElementById('myCanvas');
-                                                    var context = canvas.getContext('2d');
-                                                    context.drawImage(video, (i/vidTimelineInterval)* 10, 0, 100, 50);
-                                                    var dataURL = canvas.toDataURL();
-
-                                                    var img = document.createElement('img');
-                                                    img.setAttribute('src', dataURL);
-
-                                                    document.getElementById('thumbnails').appendChild(img);  
-                                                }
                                         </script>
 
                                         <!-- <script type="text/javascript" src="video-timeline.js"></script> -->
@@ -267,3 +267,66 @@
 </body> 
 
 </html>
+
+<!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                <li>
+                                    <a href="sass.html">Sass</a>
+                                </li>
+                                <li>
+                                    <a href="badges.html">Components</a>
+                                </li>
+                                <li>
+                                    <a href="collapsible.html">JavaScript</a>
+                                </li>
+                            </ul> -->
+
+                        <!-- <div id="test-slider">
+                                                </div> -->
+                        <!-- <script src="./public/range-slider.js"></script> -->
+                        <!-- <div id="slider"></div>
+                                                <script src="./public/nouislider.js"></script>
+                                                <script>
+                                                    var slider = document.getElementById('slider');
+                        
+                                                    noUiSlider.create(slider, {
+                                                        start: [20, 80],
+                                                        connect: true,
+                                                        range: {
+                                                            'min': 0,
+                                                            'max': 100
+                                                        }
+                                                    });
+                        
+                                                </script> -->
+                        <!-- <script src="noui-slider.js">
+                                                </script>  -->
+
+                                <!-- <script src="slider.js"></script> -->
+                                <!-- <script type="text/javascript">  
+                                                                    $('input').popup(); 
+                                                                </script> -->
+                                <!-- <div data-role="rangeslider"> -->
+                                <!-- <label for="range-1a">Rangeslider:</label> -->
+                                <!-- <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="40" data-popup-enabled="true" data-show-value="true"> -->
+                                <!-- <label for="range-1b">Rangeslider:</label>
+                                                                        <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="80" data-popup-enabled="true" data-show-value="true"> -->
+                                <!-- </div> -->
+                                <!-- <input type="range" multiple value="0,100" data-drag-middle />
+                                                                <script src="multirange.js"></script> -->
+                                <!-- <div id="test-slider"></div>
+                                                            <script src="nouislider.js">
+                                                                var slider = document.getElementById('test-slider');
+                                                                noUiSlider.create(slider, {
+                                                                    start: [20, 80],
+                                                                    connect: true,
+                                                                    step: 1,
+                                                                    orientation: 'horizontal', // 'horizontal' or 'vertical'
+                                                                    range: {
+                                                                        'min': 0,
+                                                                        'max': 100
+                                                                    },
+                                                                    format: wNumb({
+                                                                        decimals: 0
+                                                                    })
+                                                                });
+                                                            </script> -->

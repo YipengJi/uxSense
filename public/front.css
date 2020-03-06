@@ -40,7 +40,7 @@
     grid-area: video-box;
     margin:0;
     padding: 0;
-    border: 1px dotted black;
+    /* border: 1px dotted black; */
     text-align: center;
 }
 
@@ -117,7 +117,7 @@ form {
     margin: 0;
     /* padding: 10px 10px; */
     padding: 0;
-    border: 1px dotted black;
+    /* border: 1px dotted black; */
     background-color: white
 
 }
@@ -126,12 +126,12 @@ form {
 table {
     width: 100%;
     height: 250px;
-    border: 1px dotted black;
+    /* border: 1px dotted black; */
 }
 
 tbody {
     display: block;
-    height: 200px;
+    height: 250px;
     padding-left:10px; 
     padding-right:10px;
     overflow: auto;
@@ -148,6 +148,9 @@ thead {
     height: 10px;
 }
 
+tr{
+    height: 20px;
+}
 tr:hover {
     background-color: #f5f5f5;
 }
@@ -190,3 +193,75 @@ tr:hover {
     pointer-events: none;
   }
   
+
+/* slider */
+
+/* .ui-slider .ui-btn-inner {
+    padding: 4px 0 0 0 !important;
+}
+
+.ui-slider-popup {
+    position: absolute !important;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    font-size: 36px;
+    padding-top: 14px;
+    z-index: 100;
+    opacity: 0.8;
+}
+
+.ui-slider-handle {
+    width: 35px !important;
+    font-size: small !important;
+    color: #FF0000 !important;
+    text-align: center !important;
+} */
+
+#parent {
+    list-style: none;
+    width: 100%;
+    /* height: 90px; */
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#parent>li {
+    display: inline-block;
+    width: 200px;
+    height: 100%;
+}
+
+/* #parent>li:nth-child(even) {
+    background-color: blue;
+} */
+
+
+/* d3 stuff */
+
+svg {
+    font: 10px sans-serif;
+}
+
+.area {
+    fill: #B4B4B4;
+    opacity: .8;
+    clip-path: url(#clip);
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.brush .extent {
+    stroke: black;
+    fill: white;
+    fill-opacity: .6;
+    shape-rendering: crispEdges;
+}
