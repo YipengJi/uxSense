@@ -1,8 +1,34 @@
 const express = require('express'); // main library for server-client routing
+const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs'); // file system
-
 const multer = require('multer'); // file storing middleware
 const bodyParser = require('body-parser'); //cleans our req.body
+const assert = require('assert');
+
+//Add function to get annotation data
+function getAnnotations (db) {
+  return new Promise(function(resolve, reject) {
+     db.collection("annotations").find().toArray( function(err, docs) {
+      if (err) {
+        // Reject the Promise with an error
+        return reject(err)
+      }
+
+      // Resolve (or fulfill) the promise with data
+      return resolve(docs)
+    })
+  })
+}
+
+/**Use MongoDB :( 
+ * god i hate it so much
+*/
+const url = 'mongodb://localhost:27017';
+// Database Name
+const dbName = 'uxSenseDB';
+
+// Create a new MongoClient
+const client = new MongoClient(url);
 
 var app = express();
 
@@ -52,9 +78,9 @@ const multerConfig = {
 */
 
 /**
- * ...But for now, let's just run the app. 
+ * ...But for now, let's just set up db router, location of public files, and run the app. 
  */
-app.use(express.static(__dirname + '/public'))
+ app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.htm')
@@ -63,25 +89,52 @@ app.get('/', function(req, res) {
 app.listen(3000, function () {
     console.log('Listening on port 3000!')
   });
-  
-//  app.set('view engine', 'ejs');
 
 app.post('/log', function (req, res){
 
-  //todo: instead of console logging, we need to write to fs somewhere.
-    console.log(req.body);
-    console.log('req received');
+    // Use connect method to connect to the Server
+    client.connect(function(err, client) {
+      assert.equal(null, err);
+      console.log("Connected correctly to server");
+
+      const db = client.db(dbName);
+
+      // Insert an entry
+      db.collection('interactionlog').insertOne(req.body, function(err, r) {
+        assert.equal(null, err);
+        assert.equal(1, r.insertedCount);
+      });
+    });
+
     res.redirect('/');
  
  });
 
 //add annotation handler
- app.post('/annotate', function (req, res){
+ app.post('/annotate', function (req, res, callback){
 
   //todo: instead of console logging, we need to write to fs somewhere.
     console.log(req.body);
     console.log('req received');
+    
+    //redirect to index
     res.redirect('/');
- 
+
+    // Use connect method to connect to the Server
+    client.connect(function(err, client) {
+      assert.equal(null, err);
+      console.log("Connected correctly to server");
+
+      const db = client.db(dbName);
+
+      // Insert a single document
+      db.collection('annotations').insertOne(req.body, function(err, r) {
+        assert.equal(null, err);
+        assert.equal(1, r.insertedCount);
+      // Overwrite public file
+      getAnnotations(db).then(query => fs.writeFile('public/userAnnotations/data.json', JSON.stringify(query), (err, data)=>{console.log(err);}))
+      });
+    });
  });
+
 
