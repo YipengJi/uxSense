@@ -1,4 +1,4 @@
-var emotChunkWid = 60;
+var emotChunkWid = 240;
 
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 30, bottom: 30, left: 60 },
@@ -71,7 +71,7 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
     console.log(detaildata)
     console.log(unqemot)
 
-    var colorScale = d3.scaleOrdinal(['#ececec', '#ff0101', '#68c500', '#e3f43a', '#e33af4', '#3a86f4', '#ffc900', '#b2b2b2'])
+    var colorScale = d3.scaleOrdinal(['#ececec', '#ff0101', '#68c500', '#e33af4', '#e3f43a', '#3a86f4', '#ffc900', '#b2b2b2'])
     .domain(['N/A', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']);
 
     var maxEnd = _.max(_.map(data, function(dp){return(1*dp['end'])}));
