@@ -1,3 +1,4 @@
+var emotChunkWid = 60;
 
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 30, bottom: 30, left: 60 },
@@ -5,7 +6,7 @@ var margin = { top: 10, right: 30, bottom: 30, left: 60 },
     height = 100 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var actsvg = d3.select("#Action1")
+var emosvg = d3.select("#Emotion")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -13,10 +14,65 @@ var actsvg = d3.select("#Action1")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv('modeloutput/actions_all.csv', function(data){
+d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
+    var detaildata = [];
+    var data = [];
+    var framecnt = 0;
 
-    var colorScale = d3.scaleOrdinal(d3.schemeCategory20c)
-    .domain(_.uniq(_.map(data, 'action')));
+    for(i = 0; i < rawdata.length; i++){
+        var d = rawdata[i];
+        d.forEach(function(df){
+            detaildata.push({"frame": framecnt, "emotion": df[2]})
+            if(typeof detaildata[framecnt].emotion == "undefined"){
+                detaildata[framecnt].emotion = "N/A"
+            }
+            framecnt++;
+        })
+    }
+ 
+    for(i = emotChunkWid; (i+emotChunkWid-1) < detaildata.length; i+=emotChunkWid){
+        var thisChunk = _.filter(detaildata, function(d){return ((d.frame < i) & (d.frame >= i-emotChunkWid))})
+        
+        var groupCnt = _.countBy(thisChunk, function(d){return(d.emotion)})
+        var groupCntNoNA = _.omit(groupCnt, 'N/A');
+        
+        var winner = 'N/A';
+
+        if(groupCnt.length == 1){
+            winner = Object.keys(groupCnt)[0];
+            try{
+            } catch(err){
+                    console.log(err)
+                }
+        } else {
+            if(Object.keys(groupCnt)[0].length > 0){
+                winner = _.reduce(groupCntNoNA, function(max, current, key) {
+                    return max && max.value > current ? max : {
+                        value: current,
+                        key: key
+                    };
+                }).key    
+            }
+        }
+
+        var obs = {'start':(i-emotChunkWid),'end':i, 'emotion':winner, 'prob':groupCnt[winner]/emotChunkWid}
+        if(typeof obs.emotion == 'undefined'){
+            obs = {'start':(i-emotChunkWid),'end':i, 'emotion':'N/A', 'prob':0}
+        }
+
+        data.push(obs) 
+    }
+
+    console.log(data)
+
+    var unqemot = _.uniq(_.map(detaildata, function(d){return(d.emotion)}))
+    
+    console.log(rawdata)
+    console.log(detaildata)
+    console.log(unqemot)
+
+    var colorScale = d3.scaleOrdinal(['#ececec', '#ff0101', '#68c500', '#e3f43a', '#e33af4', '#3a86f4', '#ffc900', '#b2b2b2'])
+    .domain(['N/A', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']);
 
     var maxEnd = _.max(_.map(data, function(dp){return(1*dp['end'])}));
     var x = d3.scaleLinear()
@@ -39,11 +95,11 @@ d3.csv('modeloutput/actions_all.csv', function(data){
         return (prob * rangeMult)
     }
 
-    var actg = actsvg.append('g')
+    var emog = emosvg.append('g')
         .data(data)
 
     d3.select('body').append('div')
-    .attr('id', 'acttooltip')
+    .attr('id', 'emotooltip')
     .style('opacity', 0)
 
 
@@ -56,22 +112,22 @@ d3.csv('modeloutput/actions_all.csv', function(data){
 
         var d = _.filter(thisData, function(dp){return(1*dp['prob']==bestprob)})[0]
 
-        actg.append('rect')
+        emog.append('rect')
         .attr('width', rectWidth(parseFloat(d.start), parseFloat(d.end)))
-        .attr('id', 'rect_action1_'+d.start)
+        .attr('id', 'rect_emotion_'+d.start)
         .attr('x', x(d.start))
         .attr('height', rectHeight(1*d.prob))
         .attr('y', y(parseFloat(d.prob)))
-        .attr('fill', colorScale(d.action))
+        .attr('fill', colorScale(d.emotion))
         .on('mouseover', function(){
-            d3.select('#acttooltip')
+            d3.select('#emotooltip')
             .transition().duration(100)
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 28) + "px")   
             .style('opacity', 1)
 
-            d3.select('#acttooltip')
-            .html("action: " + d.action + "<br/>probability: " + (Math.round(10000*(d.prob))/100) + "%")
+            d3.select('#emotooltip')
+            .html("emotion: " + d.emotion + "<br/>rel. likelihood: " + (Math.round(10000*(d.prob))/100) + "%")
 
             //TODO: MODULARIZE OUR TRACKING so that we don' thave to add a full $.ajax call spec for each event 
             //Track event
@@ -79,7 +135,7 @@ d3.csv('modeloutput/actions_all.csv', function(data){
                 url: '/log',
                 type: 'POST',
                 cache: false, 
-                data: { data: d, event: {object: 'rect_action1_'+d.start, trigger: 'mouseover', timestamp:(new Date().getTime())}}, 
+                data: { data: d, event: {object: 'rect_emotion_'+d.start, trigger: 'mouseover', timestamp:(new Date().getTime())}}, 
                 success: function(){
                    //alert('Success!')
                 }
@@ -90,7 +146,7 @@ d3.csv('modeloutput/actions_all.csv', function(data){
      
         })
         .on('mouseout', function(){
-            d3.select('#acttooltip')
+            d3.select('#emotooltip')
             .transition().duration(100)
             .style('opacity', 0)
 
@@ -99,7 +155,7 @@ d3.csv('modeloutput/actions_all.csv', function(data){
                 url: '/log',
                 type: 'POST',
                 cache: false, 
-                data: { data: d, event: {object: 'rect_action1_'+d.start, trigger: 'mouseout', timestamp:(new Date().getTime())}}, 
+                data: { data: d, event: {object: 'rect_emotion_'+d.start, trigger: 'mouseout', timestamp:(new Date().getTime())}}, 
                 success: function(){
                    //alert('Success!')
                 }
