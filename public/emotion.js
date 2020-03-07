@@ -63,14 +63,8 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
         data.push(obs) 
     }
 
-    console.log(data)
-
-    var unqemot = _.uniq(_.map(detaildata, function(d){return(d.emotion)}))
+    //var unqemot = _.uniq(_.map(detaildata, function(d){return(d.emotion)}))
     
-    console.log(rawdata)
-    console.log(detaildata)
-    console.log(unqemot)
-
     var colorScale = d3.scaleOrdinal(['#ececec', '#ff0101', '#68c500', '#e33af4', '#e3f43a', '#3a86f4', '#ffc900', '#b2b2b2'])
     .domain(['N/A', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']);
 
