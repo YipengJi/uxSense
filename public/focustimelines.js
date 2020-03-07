@@ -25,7 +25,8 @@ var brush = d3.brushX()
     .on("brush end", function () {
         var s = d3.event.selection || xScaleBottom.range();
         xScaleTop.domain(s.map(xScaleBottom.invert, xScaleBottom));
-        focus.select('.x.axis').call(xAxisTop);
+        d3.selectAll('.x.axis').call(xAxisTop);
+        video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
         //focus.select(".line").attr("d", lineTop);
     });
 
