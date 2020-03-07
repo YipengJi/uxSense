@@ -1,7 +1,7 @@
 var emotChunkWid = 240;
 
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 30, bottom: 30, left: 60 },
+var margin = { top: 10, right: 0, bottom: 30, left: 0 },
     width = 600 - margin.left - margin.right,
     height = 100 - margin.top - margin.bottom;
 
@@ -63,14 +63,8 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
         data.push(obs) 
     }
 
-    console.log(data)
-
-    var unqemot = _.uniq(_.map(detaildata, function(d){return(d.emotion)}))
+    //var unqemot = _.uniq(_.map(detaildata, function(d){return(d.emotion)}))
     
-    console.log(rawdata)
-    console.log(detaildata)
-    console.log(unqemot)
-
     var colorScale = d3.scaleOrdinal(['#ececec', '#ff0101', '#68c500', '#e33af4', '#e3f43a', '#3a86f4', '#ffc900', '#b2b2b2'])
     .domain(['N/A', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']);
 
@@ -97,6 +91,8 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
 
     var emog = emosvg.append('g')
         .data(data)
+        .attr('id', 'emotionrects')
+        .attr('maxEnd', maxEnd)
 
     d3.select('body').append('div')
     .attr('id', 'emotooltip')
@@ -113,8 +109,10 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
         var d = _.filter(thisData, function(dp){return(1*dp['prob']==bestprob)})[0]
 
         emog.append('rect')
+        .datum(d)
         .attr('width', rectWidth(parseFloat(d.start), parseFloat(d.end)))
         .attr('id', 'rect_emotion_'+d.start)
+        .attr('class', 'emotionrect')
         .attr('x', x(d.start))
         .attr('height', rectHeight(1*d.prob))
         .attr('y', y(parseFloat(d.prob)))
