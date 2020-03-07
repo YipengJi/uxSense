@@ -2,14 +2,11 @@
  * I should really start commenting my code better. Create timeline "cursor" (current time indicator)--should be draggable
  */
 var video = document.getElementById('ux-video');
-//var width = video.width;
 var height = 100;
+//var width = video.width;
 
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 0, bottom: 30, left: 0 }
-
-var minTime = 0;
-var maxTime = video.duration;
 
 var focussvg = d3.select('#focussvg').select('g')
 var markersize = 100;
@@ -20,25 +17,42 @@ var symbolGenerator = d3.symbol()
 
 var pathData = symbolGenerator();
 
+//create draggable marker
 focussvg.append('path')
   .attr('d', pathData)
   .attr('id', 'markertriangle')
-  //.attr('transform', 'rotate(180) translate(-5,0)')
   .attr('transform', 'rotate(180)')
-  .style('fill', 'red')
-//  .attr('transform', 'rotate(180) translate(-5,-'+ hmargin + ')')
+  .attr('style', 'fill:red; pointer-events:all;')
+  .call(d3.drag()
+    .on("start", dragstarted)
+    .on("drag", dragged)
+    .on("end", dragended));
 
+function dragstarted() {
+  d3.select(this).raise().classed("active", true);
+}
+
+function dragged() {
+  video.currentTime = video.duration * d3.event.x/video.width
+  d3.select(this)
+  .attr('transform', 'rotate(180) translate('+(-d3.event.x)+',0)')
+}
+
+function dragended() {
+  video.currentTime = video.duration * d3.event.x/video.width
+  d3.select(this).classed("active", false);
+}
 
 function moveMarker() {
+  var minTime = 0;
+  var maxTime = video.duration;
   var focusselectbox = focussvg.select('rect.selection');
-  if(focusselectbox.style == ""){
+  if(focusselectbox.attr('style') == ""){
     minTime = video.duration * focusselectbox.attr('x')/video.width
-    maxTime = video.duration * (focusselectbox.attr('x') + focusselectbox.attr('width'))/video.width  
-  } else {
-    maxTime = video.duration;
-    minTime = 0;
-  }
-  var cursorlineX = video.width * ((((maxTime-minTime)/video.duration)*video.currentTime)/maxTime)
+    maxTime = video.duration * (parseFloat(focusselectbox.attr('x')) + parseFloat(focusselectbox.attr('width')))/video.width  
+  } 
+
+  var cursorlineX = video.width * (video.currentTime - minTime)/(maxTime-minTime)
 
   try{
     //try to remove marker g.rects for all timelines
@@ -46,9 +60,8 @@ function moveMarker() {
   }catch(err){
     console.log(err)
   }
-  
+
   var markerX = video.width * (video.currentTime/video.duration)
-  console.log(markerX)
 
   //add marker g.rects for all timelines
   d3.select('.timelines-box').selectAll('svg')
@@ -61,8 +74,13 @@ function moveMarker() {
   .attr('height', height)
   .attr('x', cursorlineX)
 
-  d3.select("#markertriangle").transition().duration(500).attr('transform', 'rotate(180) translate('+(-markerX)+',0)')
+  var marker = d3.select("#markertriangle");
+  if(marker.attr('class') == 'active'){
+    setTimeout("moveMarker()", 50)
+  } else {
+    marker.transition().duration(50).attr('transform', 'rotate(180) translate('+(-markerX)+',0)')
     .on("end",function(){moveMarker()})
+  }
 }
 
-moveMarker()
+moveMarker();
