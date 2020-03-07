@@ -41,6 +41,8 @@ d3.csv('modeloutput/actions_all.csv', function(data){
 
     var actg = actsvg.append('g')
         .data(data)
+        .attr('id', 'action1rects')
+        .attr('maxEnd', maxEnd)
 
     d3.select('body').append('div')
     .attr('id', 'acttooltip')
@@ -57,8 +59,10 @@ d3.csv('modeloutput/actions_all.csv', function(data){
         var d = _.filter(thisData, function(dp){return(1*dp['prob']==bestprob)})[0]
 
         actg.append('rect')
+        .datum(d)
         .attr('width', rectWidth(parseFloat(d.start), parseFloat(d.end)))
         .attr('id', 'rect_action1_'+d.start)
+        .attr('class', 'action1rect')
         .attr('x', x(d.start))
         .attr('height', rectHeight(1*d.prob))
         .attr('y', y(parseFloat(d.prob)))
