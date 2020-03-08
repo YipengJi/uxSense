@@ -118,11 +118,9 @@ function rescaleActions(){
     actions.selectAll('.action1rect')
     .transition().duration(50)
     .attr('width', function(d){
-        console.log(rectWidth(d.start, d.end)) 
         return(rectWidth(d.start, d.end))
     })
     .attr('x', function(d){
-        console.log(x(d.start))
         return(x(d.start))
     })
 

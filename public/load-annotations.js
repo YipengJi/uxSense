@@ -13,14 +13,10 @@ function annotationTabPop(){
     var tbody = d3.select('#annotation-table')
     .select('tbody')
     .data(tdata)
-  
-    console.log(tdata)
-  
+    
     tdata.forEach(function(d){
-        var row = tbody.append('tr')
-  
-        console.log(row)
-        
+        var row = tbody.append('tr').datum(d)
+      
         var timeNum = parseFloat(d.timestamp)
   
         var minute = Math.floor(timeNum/60)
@@ -41,4 +37,3 @@ function annotationTabPop(){
     })  
 }
 
-//setTimeout('annotationTabPop()', 1000)
