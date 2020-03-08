@@ -240,7 +240,7 @@
             <div class="tags">
                 <div class="tags-table">
                     <div class="responsive-table table-status-sheet">
-                        <table class="highlight bordered">
+                        <table id="annotation-table" class="highlight bordered">
                             <!-- <colgroup>
                                 <col span="1" style="width: 20%;">
                                 <col span="1" style="width: 30%;">
@@ -249,12 +249,13 @@
                             <thead>
                                 <tr>
                                     <th class="center" style="width: 20%;">Timestamp</th>
-                                    <th class="center" style="width: 30%;">Tags</th>
-                                    <th class="center" style="width: 50%;">Annotations</th>
+                                    <!-- <th class="center" style="width: 30%;">Tags</th>
+                                    <th class="center" style="width: 50%;">Annotations</th> -->
+                                    <th class="center" style="width: 80%;">Annotation</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <!-- <tr>
                                     <td style="width: 20%;">1</td>
                                     <td style="width: 30%;">1</td>
                                     <td style="width: 50%;">Note1</td>
@@ -273,11 +274,12 @@
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
                 </div>
+                <script src="load-annotations.js"></script>
             </div>
         </div>
     </div>
