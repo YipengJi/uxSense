@@ -10,11 +10,12 @@ function addAnnotation(){
             console.log(response)
         } 
         , success: function(data){
-            //var json = $.parseJSON(data); // create an object with the key of the array
-            //console.log(data); // where html is the key of array that you want, $response['html'] = "<a>something..</a>";
-         }
+            document.getElementById("annotation-text").value = null
+            annotationTabPop();
+        }
         , error: function(jqXHR, textStatus, err){
             console.log('text status '+textStatus+', err '+err)
         }
     })
 }
+
