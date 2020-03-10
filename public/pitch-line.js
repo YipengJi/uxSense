@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = { top: 0, right: 50, bottom: 0, left: 50 },
+var margin = { top: 10, right: 50, bottom: 10, left: 50 },
     // width = 460 - margin.left - margin.right,
     // height = 400 - margin.top - margin.bottom;
     width = 800 - margin.left - margin.right,
@@ -15,11 +15,11 @@ var svg2 = d3.select("#pitch")
         "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv('modeloutput/TableauUser_Pitch_x*100.csv', function (data) {
+d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
 
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
-        .domain([0, 7553])
+        .domain([1, 698])
         .range([0, width]);
     svg2.append("g")
         .attr("transform", "translate(0," + height + ")");
@@ -27,7 +27,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x*100.csv', function (data) {
 
     // Add Y axis
     var y = d3.scaleLinear()
-        .domain([70, 200])
+        .domain([0, 200])
         .range([height, 0]);
     // svg.append("g")
     //     .call(d3.axisLeft(y));
