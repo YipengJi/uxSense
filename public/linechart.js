@@ -20,7 +20,7 @@ var svg2 = d3.select("#pitch")
 
 
 // The number of datapoints
-var n = 21;
+var n = 7553;
 
 // 5. X scale will use the index of our data
 var xScale2 = d3.scaleLinear()
@@ -39,7 +39,8 @@ var line = d3.line()
     .curve(d3.curveMonotoneX) // apply smoothing to the line
 
 // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
-var dataset = d3.range(n).map(function (d) { return { "y": d3.randomUniform(1)() } })
+// var dataset = d3.range(n).map(function (d) { return { "y": d3.randomUniform(1)() } })
+var dataset = d3.csv('modeloutput/TableauUser_Pitch.csv')
 
 // // 1. Add the SVG to the page and employ #2
 // var svg = d3.select("body").append("svg")

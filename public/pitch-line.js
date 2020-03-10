@@ -6,7 +6,7 @@ var margin = { top: 10, right: 30, bottom: 10, left: 60 },
     height = 100 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#speech-rate")
+var svg2 = d3.select("#pitch")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -21,9 +21,9 @@ d3.csv('modeloutput/TableauUser_Pitch_x*100.csv', function (data) {
     var x = d3.scaleLinear()
         .domain([0, 7553])
         .range([0, width]);
-    svg.append("g")
+    svg2.append("g")
         .attr("transform", "translate(0," + height + ")");
-        // .call(d3.axisBottom(x));
+    // .call(d3.axisBottom(x));
 
     // Add Y axis
     var y = d3.scaleLinear()
@@ -36,7 +36,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x*100.csv', function (data) {
     var bisect = d3.bisector(function (d) { return d.x; }).left;
 
     // Create the circle that travels along the curve of chart
-    var focus = svg
+    var focus = svg2
         .append('g')
         .append('circle')
         .style("fill", "none")
@@ -45,7 +45,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x*100.csv', function (data) {
         .style("opacity", 0)
 
     // Create the text that travels along the curve of chart
-    var focusText = svg
+    var focusText = svg2
         .append('g')
         .append('text')
         .style("opacity", 0)
@@ -53,7 +53,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x*100.csv', function (data) {
         .attr("alignment-baseline", "middle")
 
     // Create a rect on top of the svg area: this rectangle recovers mouse position
-    svg
+    svg2
         .append('rect')
         .style("fill", "none")
         .style("pointer-events", "all")
@@ -64,7 +64,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x*100.csv', function (data) {
         .on('mouseout', mouseout);
 
     // Add the line
-    svg
+    svg2
         .append("path")
         .datum(data)
         .attr("fill", "none")
