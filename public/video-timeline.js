@@ -1,7 +1,7 @@
 var video = document.getElementById("ux-video");
 var vidDuration = 0;
 var vidTimelineInterval = 30;
-var vidTimelineFrameCount = 5;
+var vidTimelineFrameCount = 8;
 
 
 function videoCanvasGenerator(i){
@@ -42,7 +42,7 @@ video.addEventListener('loadeddata', function () {
         video.pause();
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
-        context.drawImage(video, (i/vidTimelineInterval) * 100, 0, 100, 50);
+        context.drawImage(video, (i/vidTimelineInterval) * 100, 0, 100, 80);
         var dataURL = canvas.toDataURL();
         var img = document.createElement('img');
         img.setAttribute('src', dataURL);                                                    

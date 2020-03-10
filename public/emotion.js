@@ -1,8 +1,8 @@
 var emotChunkWid = 240;
 
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 0, bottom: 30, left: 0 },
-    width = 600 - margin.left - margin.right,
+var margin = { top: 10, right: 50, bottom: 10, left: 50 },
+    width = 800 - margin.left - margin.right,
     height = 100 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
