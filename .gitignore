@@ -2,3 +2,4 @@
 *.mp4
 node_modules/*
 mongo/*
+public/userAnnotations/data.json
