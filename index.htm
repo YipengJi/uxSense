@@ -273,20 +273,75 @@
         <div class="right">
             <div class="search">
                 <div class="search-bar">
-                    <!-- <h6>Search and Filter</h6> -->
                     <nav>
                         <div class="nav-wrapper">
-                            <form>
-                                <div class="input-field">
-                                    <input id="search" type="search" required placeholder="Search and Filter">
-                                    <label class="label-icon" for="search">
-                                        <i class="material-icons" style="color:gray">search</i>
-                                    </label>
-                                    <i class="material-icons" style="color:gray">close</i>
-                                </div>
-                            </form>
+                        <form>
+                        <div class="input-field">
+                            <input id="search" type="search" required placeholder="Search and Filter Tags">
+                            <label class="label-icon" for="search">
+                                <i class="material-icons" style="color:gray">search</i>
+                            </label>
+                            <i class="material-icons" style="color:gray">close</i>
                         </div>
-                    </nav>
+                    </form>
+                </div>
+                </nav>                    
+                </div>
+            </div>
+            <div class="annotations">
+                <div class="annotations-box">
+                    <form accept-charset="UTF-8" autocomplete="off">
+                        <fieldset>
+                            <legend> Annotation </legend>
+                            <label for="name">Notes</label>
+                            <textarea id="annotation-text" style="height:100px;"></textarea>
+                            <br/>
+                        </fieldset>
+                    </form>
+                    <input id="annotate-submit" class="btn" type="button" value="Submit" onclick="addAnnotation()"></button>
+                </div>
+                <script src="annotate.js"></script>
+            </div>
+            <div class="tags">
+                <div class="tags-table">
+                    <div class="responsive-table table-status-sheet">
+                        <table class="highlight bordered">
+                            <!-- <colgroup>
+                                <col span="1" style="width: 20%;">
+                                <col span="1" style="width: 30%;">
+                                <col span="1" style="width: 50%;">
+                            </colgroup> -->
+                            <thead>
+                                <tr>
+                                    <th class="center" style="width: 20%;">Timestamp</th>
+                                    <th class="center" style="width: 30%;">Tags</th>
+                                    <th class="center" style="width: 50%;">Annotations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 20%;">1</td>
+                                    <td style="width: 30%;">1</td>
+                                    <td style="width: 50%;">Note1</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="filter">
@@ -342,63 +397,6 @@
                     </script>
                     <script src="noui-slider.js">
                     </script>
-                </div>
-            </div>
-            <div class="annotations">
-                <div class="annotations-box">
-                    <form accept-charset="UTF-8" autocomplete="off">
-                        <fieldset>
-                            <legend> Annotation </legend>
-                            <label for="name">Notes</label>
-                            <textarea id="annotation-text" style="height:100px;"></textarea>
-                            <br/>
-                        </fieldset>
-                    </form>
-                    <br>
-                    <input id="annotate-submit" class="btn" type="button" value="Submit" onclick="addAnnotation()"></button>
-                </div>
-                <script src="annotate.js"></script>
-            </div>
-            <div class="tags">
-                <div class="tags-table">
-                    <div class="responsive-table table-status-sheet">
-                        <table class="highlight bordered">
-                            <!-- <colgroup>
-                                <col span="1" style="width: 20%;">
-                                <col span="1" style="width: 30%;">
-                                <col span="1" style="width: 50%;">
-                            </colgroup> -->
-                            <thead>
-                                <tr>
-                                    <th class="center" style="width: 20%;">Timestamp</th>
-                                    <th class="center" style="width: 30%;">Tags</th>
-                                    <th class="center" style="width: 50%;">Annotations</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="width: 20%;">1</td>
-                                    <td style="width: 30%;">1</td>
-                                    <td style="width: 50%;">Note1</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>
