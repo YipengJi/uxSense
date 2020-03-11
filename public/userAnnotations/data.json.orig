@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+[{"_id":"5e643dc778b779125cf343dc","annotation":"Hello there.","timestamp":"3.35227","posttime":"1583627719125"},{"_id":"5e643e076c37493f04393176","annotation":"General Kenobi, you are a bold one!","timestamp":"11.068561","posttime":"1583627783104"},{"_id":"5e6441e4f51f5a29e4212032","annotation":"It's over Anakin,","timestamp":"614.485942","posttime":"1583628772616"},{"_id":"5e691de4754c2a2b08c29fb0","annotation":"","timestamp":"0.093375","posttime":"1583947236303"}]
+=======
+[{"_id":"5e643dc778b779125cf343dc","annotation":"Hello there.","timestamp":"3.35227","posttime":"1583627719125"},{"_id":"5e643e076c37493f04393176","annotation":"General Kenobi, you are a bold one!","timestamp":"11.068561","posttime":"1583627783104"},{"_id":"5e6441e4f51f5a29e4212032","annotation":"It's over Anakin,","timestamp":"614.485942","posttime":"1583628772616"}]
+>>>>>>> feature/annotation-populate
