@@ -56,6 +56,12 @@
     grid-area: timelines-box;
 }
 
+.timelineholder{
+    text-align:center;
+    margin:auto; 
+    display:block;
+}
+
 .right {
     display: grid;
     grid-template-columns: 1fr;

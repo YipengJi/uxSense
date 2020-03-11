@@ -1,8 +1,10 @@
+var video = document.getElementById('ux-video');
+
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 50, bottom: 10, left: 50 },
     // width = 460 - margin.left - margin.right,
     // height = 400 - margin.top - margin.bottom;
-    width = 800 - margin.left - margin.right,
+    width = video.width,
     height = 100 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page

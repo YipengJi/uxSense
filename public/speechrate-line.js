@@ -1,7 +1,9 @@
+var video = document.getElementById('ux-video');
+
 var margin = { top: 0, right: 50, bottom: 0, left: 50 },
     // width = 460 - margin.left - margin.right,
     // height = 400 - margin.top - margin.bottom;
-    width = 800 - margin.left - margin.right,
+    width = video.width,
     height = 100 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page

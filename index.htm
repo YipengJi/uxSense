@@ -72,9 +72,10 @@
                             <div class="collapsible-header">
                                 <i class="material-icons">video_library</i>Thumbnails</div>
                             <div class="collapsible-body">
-                                <canvas id="myCanvas" width="800" height="80" style="border:1px solid #d3d3d3;">
+                                <div id="vidtimelineholder" class="timelineholder">
+                                <canvas id="myCanvas" width="600" height="80" style="border:1px solid #d3d3d3;">
                                     <div id="thumbnails">
-                    
+                                    </div>
                                     </div>
                                 </canvas>
                                 <script type="text/javascript" src="video-timeline.js"></script>
@@ -83,16 +84,16 @@
                         <li class=active>
                             <div class="collapsible-header" >
                                 <i class="material-icons">insert_chart</i>Speech Rate</div>
-                            <div class="collapsible-body">
-                                <!-- <div id="speech-rate"></div>
-                                <script type="text/javascript" src="speechrate-line.js"></script> -->
+                            <div class="collapsible-body" >
+                                <div id="speech-rate" class="timelineholder"></div>
+                                <script type="text/javascript" src="speechrate-line.js"></script>>
                             </div>
                         </li>
                         <li class=active>
                             <div class="collapsible-header">
                                 <i class="material-icons">timeline</i>Pitch</div>
                             <div class="collapsible-body">
-                                <div id="pitch"></div>
+                                <div id="pitch" class="timelineholder"></div>
                                 <script type="text/javascript" src="pitch-line.js"></script>
                             </div>
                         </li>
@@ -100,7 +101,7 @@
                             <div class="collapsible-header">
                                 <i class="material-icons">whatshot</i>Action</div>
                             <div class="collapsible-body">
-                                <div id="Action1"></div>
+                                <div id="Action1" class="timelineholder"></div>
                                 <script type="text/javascript" src="action-1.js"></script>
                             </div>
                         </li>
@@ -108,7 +109,7 @@
                             <div class="collapsible-header">
                                 <i class="material-icons">insert_emoticon</i>Emotion</div>
                             <div class="collapsible-body">
-                                <div id="Emotion"></div>
+                                <div id="Emotion"  class="timelineholder"></div>
                                 <script type="text/javascript" src="emotion.js"></script>
                             </div>
                         </li>
