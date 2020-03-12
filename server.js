@@ -80,7 +80,10 @@ const multerConfig = {
 /** Create handler to git pull on client request */
 function pullHandler(req, res) {
   var exec = require('child_process').exec;
-  exec("cd /usr/GitHub/uxSense && git resent --hard HEAD && git pull", function(error, stdout, stderr){ callback(stdout); });
+  exec("cd /usr/GitHub/uxSense && git resent --hard HEAD && git pull", function(error, stdout, stderr){ 
+    //callback(stdout);
+    console.log(stdout); 
+  });
   res.redirect('/');
 }
   
