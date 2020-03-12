@@ -170,7 +170,7 @@ function rescaleSpeechrate(){
 
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps
-    var filtdata = _.filter(data, function(o){return parseFloat(o.x) >= newMinFrame & parseFloat(o.x) <= newMaxFrame })
+    var filtdata = _.filter(data, function(o){return parseFloat(o.Start) >= newMinFrame & parseFloat(o.Start) <= newMaxFrame })
     line.datum(filtdata)
 
     var x = d3.scaleLinear()
@@ -178,13 +178,13 @@ function rescaleSpeechrate(){
         .range([0, video.width]);
 
     var y = d3.scaleLinear()
-        .domain([70, 200])
+        .domain([0, 5.5])
         .range([height, 0]);
 
     line.transition().duration(50).attr("d", function(d){    
         return(d3.line()
-        .x(function (d) { return x(d.x) })
-        .y(function (d) { return y(d.y) })
+        .x(function (d) { return x(d.Start) })
+        .y(function (d) { return y(d.Rate) })
         )(d)
     })
 
@@ -203,7 +203,7 @@ function rescaleSpeechrate(){
     .on('click', mouseclick);
         
     // This allows to find the closest X index of the mouse:
-    var bisect = d3.bisector(function (d) { return d.x; }).left;
+    var bisect = d3.bisector(function (d) { return d.Start; }).left;
 
 
     function mousemove() {
@@ -211,19 +211,19 @@ function rescaleSpeechrate(){
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
         selectedData = data[i]
-        var minutes = Math.floor((video.duration * selectedData.x/maxEnd)/60)
-        var seconds = Math.round(60 * (((video.duration * selectedData.x/maxEnd)/60) - minutes))
+        var minutes = Math.floor((video.duration * selectedData.Start/maxEnd)/60)
+        var seconds = Math.round(60 * (((video.duration * selectedData.Start/maxEnd)/60) - minutes))
         var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
         focus
-            .attr("cx", x(selectedData.x))
-            .attr("cy", y(selectedData.y))
+            .attr("cx", x(selectedData.Start))
+            .attr("cy", y(selectedData.Rate))
         focusTextRect
-            .attr("x", x(selectedData.x) + 10)
-            .attr("y", y(selectedData.y) - 15)
+            .attr("x", x(selectedData.Start) + 10)
+            .attr("y", y(selectedData.Rate) - 15)
         focusText
-        .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Pitch:" + selectedData.y)
-        .attr("x", x(selectedData.x) + 15)
-            .attr("y", y(selectedData.y))
+        .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Rate:" + selectedData.Rate)
+        .attr("x", x(selectedData.Start) + 15)
+            .attr("y", y(selectedData.Rate))
     }
 
     function mouseclick(){
@@ -232,7 +232,7 @@ function rescaleSpeechrate(){
         var i = bisect(data, x0, 1);
         selectedData = data[i]
 
-        video.currentTime = video.duration * selectedData.x/maxEnd
+        video.currentTime = video.duration * selectedData.Start/maxEnd
 
     }
 }
