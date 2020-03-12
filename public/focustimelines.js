@@ -34,7 +34,7 @@ var brush = d3.brushX()
         d3.selectAll('.x.axis').call(xAxisTop);
         video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
         //focus.select(".line").attr("d", lineTop);
-        if(focussvg.select('rect.selection').attr('width') > 0){rescaleTimelines();}
+        if(focussvg.select('rect.selection').attr('width') > 0 | focussvg.select('rect.selection').attr('width') == null){rescaleTimelines();}
     })
 
 //Leave space for cursor
@@ -61,6 +61,11 @@ function rescaleEmotions(){
 
     var selwid = parseFloat(selrect.attr('width'))
     var selX = parseFloat(selrect.attr('x'))
+
+    if(isNaN(selwid)){
+        selwid = video.width;
+        selX = 1;
+    }
 
     var minTime = video.duration * selX/video.width
     var maxTime = video.duration * ( selX + selwid )/video.width  
@@ -100,6 +105,12 @@ function rescaleActions(){
 
     var selwid = parseFloat(selrect.attr('width'))
     var selX = parseFloat(selrect.attr('x'))
+
+    if(isNaN(selwid)){
+        selwid = video.width;
+        selX = 1;
+    }
+
 
     var minTime = video.duration * selX/video.width
     var maxTime = video.duration * ( selX + selwid )/video.width  
@@ -143,6 +154,12 @@ function rescaleSpeechrate(){
 
     var selwid = parseFloat(selrect.attr('width'))
     var selX = parseFloat(selrect.attr('x'))
+
+    if(isNaN(selwid)){
+        selwid = video.width;
+        selX = 1;
+    }
+
 
     var minTime = video.duration * selX/video.width
     var maxTime = video.duration * ( selX + selwid )/video.width  
@@ -206,11 +223,6 @@ function rescaleSpeechrate(){
         .attr("x", x(selectedData.x) + 15)
             .attr("y", y(selectedData.y))
     }
-    function mouseout() {
-        focus.style("opacity", 0)
-        focusTextRect.style("opacity", 0)
-        focusText.style("opacity", 0)
-    }
 
     function mouseclick(){
         //get a new maxEnd--paths handle focus differently, so we need to do this.
@@ -237,6 +249,11 @@ function rescalePitch(){
 
     var selwid = parseFloat(selrect.attr('width'))
     var selX = parseFloat(selrect.attr('x'))
+
+    if(isNaN(selwid)){
+        selwid = video.width;
+        selX = 1;
+    }
 
     var minTime = video.duration * selX/video.width
     var maxTime = video.duration * ( selX + selwid )/video.width  
@@ -300,11 +317,6 @@ function rescalePitch(){
         .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Pitch:" + selectedData.y)
         .attr("x", x(selectedData.x) + 15)
             .attr("y", y(selectedData.y))
-    }
-    function mouseout() {
-        focus.style("opacity", 0)
-        focusTextRect.style("opacity", 0)
-        focusText.style("opacity", 0)
     }
 
     function mouseclick(){
