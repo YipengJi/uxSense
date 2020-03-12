@@ -85,7 +85,7 @@ function pullHandler(req, res) {
   function puts(error, stdout, stderr) { sys.puts(stdout) }
     
   var exec = require('child_process').exec;
-  exec("cd /usr/GitHub/uxSense && git resent --hard HEAD && git pull", puts);
+  exec("cd /usr/GitHub/uxSense && git reset --hard HEAD && git pull", puts);
   res.redirect('/');
 }
   
