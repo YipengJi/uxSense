@@ -178,7 +178,11 @@ function rescaleSpeechrate(){
         .range([0, video.width]);
 
     var y = d3.scaleLinear()
+<<<<<<< HEAD
         .domain([0, 5.5])
+=======
+        .domain([0,5.5])
+>>>>>>> 5efce2b36921f19449b2d49c14ee780c22af2741
         .range([height, 0]);
 
     line.transition().duration(50).attr("d", function(d){    
@@ -221,7 +225,11 @@ function rescaleSpeechrate(){
             .attr("x", x(selectedData.Start) + 10)
             .attr("y", y(selectedData.Rate) - 15)
         focusText
+<<<<<<< HEAD
         .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Rate:" + selectedData.Rate)
+=======
+        .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Pitch:" + selectedData.Rate)
+>>>>>>> 5efce2b36921f19449b2d49c14ee780c22af2741
         .attr("x", x(selectedData.Start) + 15)
             .attr("y", y(selectedData.Rate))
     }
