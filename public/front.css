@@ -11,7 +11,7 @@
 .left {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 0.3fr 1.4fr 1.3fr;
+    grid-template-rows: 0.3fr 1.2fr 1.5fr;
     grid-template-areas: "menu""video""timelines";
     grid-area: left;
     /* grid-gap: 5px; */
@@ -165,11 +165,11 @@ tr:hover {
 /* list*/
 ul {
     list-style: none;
-    max-height: 380px;
-    margin: 0;
+    max-height: 400px;
+    /* margin: 0; */
     overflow: auto;
-    padding: 0;
-    text-indent: 10px;
+    /* padding: 0;
+    text-indent: 10px; */
 }
 
 /* .side-nav a {
@@ -188,11 +188,15 @@ ul {
     line-height: 5px !important;
 } */
 
-.collapsible-header {
-    height: 40px;
+
+/* .collapsible-header {
+    height: 35px;
+    font-size: 13px;
+} */
+    /* justify-content: space-between; */
     /* font: size 2px;
     text-align:center; */
-}
+
 
 .collapsible-body{
     height: 140px;
@@ -200,6 +204,24 @@ ul {
 /* li:nth-child(even) {
     background: #ccc;
 } */
+
+.collapsible li.active i:nth-child(2) {
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform-origin: center;
+    transform: rotate(180deg);
+}
+
+.rotate {
+    -moz-transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+.collapsible-header {
+    height: 40px;
+    justify-content: space-between;
+}
 
 /* d3 css */
 .line {
