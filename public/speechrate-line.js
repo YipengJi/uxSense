@@ -40,6 +40,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
     // Create a rect on top of the svg area: this rectangle recovers mouse position
     svg
         .append('rect')
+        .attr('id', 'speechratemouserect')
         .style("fill", "none")
         .style("pointer-events", "all")
         .attr('width', width)
@@ -53,6 +54,9 @@ d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
     svg
         .append("path")
         .datum(data)
+        .attr("id", "speechratelinepath")
+        .attr("maxEnd", maxEnd)
+        .attr("origdata", JSON.stringify(data))
         .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("stroke-width", 1.5)
@@ -67,6 +71,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
     var focus = svg
         .append('g')
         .append('circle')
+        .attr('id', 'speechratefocuscircle')
         .style("fill", "none")
         .attr("stroke", "black")
         .attr('r', 8.5)
@@ -76,6 +81,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
     var focusTextRect = svg
         .append('g')
         .append('rect')
+        .attr('id', 'speechratefocustextbg')
         .style("opacity", 0)
         .attr("width", "110px")
         .attr("height", "25px")
@@ -85,6 +91,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
     var focusText = svg
         .append('g')
         .append('text')
+        .attr('id', 'speechratefocustext')
         .style("opacity", 0)
         .style('text-shadow', '1px 1px 5px white') 
         .attr("text-anchor", "left")

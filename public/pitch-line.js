@@ -23,7 +23,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
 
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
-        .domain([1, 698])
+        .domain([1, maxEnd])
         .range([0, width]);
     svg2.append("g")
         .attr("transform", "translate(0," + height + ")");
@@ -42,6 +42,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
     // Create a rect on top of the svg area: this rectangle recovers mouse position
     svg2
         .append('rect')
+        .attr('id', 'pitchmouserect')
         .style("fill", "none")
         .style("pointer-events", "all")
         .attr('width', width)
@@ -55,6 +56,9 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
     svg2
         .append("path")
         .datum(data)
+        .attr("id", "pitchlinepath")
+        .attr("origdata", JSON.stringify(data))
+        .attr("maxEnd", maxEnd)
         .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("stroke-width", 1.5)
@@ -69,6 +73,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
     var focus = svg2
         .append('g')
         .append('circle')
+        .attr('id', 'pitchfocuscircle')
         .style("fill", "none")
         .attr("stroke", "black")
         .attr('r', 8.5)
@@ -78,6 +83,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
     var focusTextRect = svg2
         .append('g')
         .append('rect')
+        .attr('id', 'pitchfocustextbg')
         .style("opacity", 0)
         .attr("width", "110px")
         .attr("height", "25px")
@@ -86,6 +92,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
     var focusText = svg2
         .append('g')
         .append('text')
+        .attr('id', 'pitchfocustext')
         .style('text-shadow', '1px 1px 5px white') 
         .style("opacity", 0)
         .attr("text-anchor", "left")
@@ -125,6 +132,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
     }
 
     function mouseclick(){
+        //get a new maxEnd--paths handle focus differently, so we need to do this.
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
         selectedData = data[i]

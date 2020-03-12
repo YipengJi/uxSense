@@ -75,6 +75,7 @@ function moveMarker() {
   .attr('x', cursorlineX)
 
   var marker = d3.select("#markertriangle");
+
   if(marker.attr('class') == 'active'){
     setTimeout("moveMarker()", 50)
   } else {

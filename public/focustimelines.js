@@ -3,6 +3,7 @@ var video = document.getElementById('ux-video');
 
 var margin = { top: 10, right: 50, bottom: 10, left: 50 },
     width = video.width;
+var height = 100 - margin.top - margin.bottom;
 var focusHeight = 10;
 var hmargin = 10;
 //Todo: add some margins for animation
@@ -47,6 +48,8 @@ brushg.append('g')
 function rescaleTimelines(){
     rescaleEmotions();
     rescaleActions();
+    rescaleSpeechrate();
+    rescalePitch();
 }
 
 function rescaleEmotions(){
@@ -88,7 +91,6 @@ function rescaleEmotions(){
 
 }
 
-
 function rescaleActions(){
     var actions = d3.select("#action1rects")
     var maxEnd = parseFloat(actions.attr('maxEnd'))
@@ -125,5 +127,197 @@ function rescaleActions(){
     .attr('x', function(d){
         return(x(d.start))
     })
+
+}
+
+function rescaleSpeechrate(){
+    
+    var line = d3.select("#speechratelinepath")
+    var maxEnd = parseFloat(line.attr("maxEnd"));
+
+    var data = JSON.parse(line.attr("origdata"));
+
+    var fps = maxEnd/video.duration
+
+    var selrect = d3.select('#focussvg').select('rect.selection');
+
+    var selwid = parseFloat(selrect.attr('width'))
+    var selX = parseFloat(selrect.attr('x'))
+
+    var minTime = video.duration * selX/video.width
+    var maxTime = video.duration * ( selX + selwid )/video.width  
+
+    var widMult = video.width/selwid
+
+    var newMinFrame = minTime * fps
+    var newMaxFrame = maxTime * fps
+    var filtdata = _.filter(data, function(o){return parseFloat(o.x) >= newMinFrame & parseFloat(o.x) <= newMaxFrame })
+    line.datum(filtdata)
+
+    var x = d3.scaleLinear()
+        .domain([newMinFrame, newMaxFrame])
+        .range([0, video.width]);
+
+    var y = d3.scaleLinear()
+        .domain([70, 200])
+        .range([height, 0]);
+
+    line.transition().duration(50).attr("d", function(d){    
+        console.log(d)
+        return(d3.line()
+        .x(function (d) { return x(d.x) })
+        .y(function (d) { return y(d.y) })
+        )(d)
+    })
+
+    /**
+     * need to update our mouse activity
+     * */
+     // Create the circle that travels along the curve of chart
+     var focus = d3.select('#speechratefocuscircle')
+     // Create bg for the text that travels along the curve of chart
+    var focusTextRect = d3.select('#speechratefocustextbg')
+     // Create the text that travels along the curve of chart
+     var focusText = d3.select('#speechratefocustext')
+    
+   d3.select("#speechratemouserect")
+    .on('mousemove', mousemove)
+    .on('click', mouseclick);
+        
+    // This allows to find the closest X index of the mouse:
+    var bisect = d3.bisector(function (d) { return d.x; }).left;
+
+
+    function mousemove() {
+        // recover coordinate we need
+        var x0 = x.invert(d3.mouse(this)[0]);
+        var i = bisect(data, x0, 1);
+        selectedData = data[i]
+        var minutes = Math.floor((video.duration * selectedData.x/maxEnd)/60)
+        var seconds = Math.round(60 * (((video.duration * selectedData.x/maxEnd)/60) - minutes))
+        var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
+        focus
+            .attr("cx", x(selectedData.x))
+            .attr("cy", y(selectedData.y))
+        focusTextRect
+            .attr("x", x(selectedData.x) + 10)
+            .attr("y", y(selectedData.y) - 15)
+        focusText
+        .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Pitch:" + selectedData.y)
+        .attr("x", x(selectedData.x) + 15)
+            .attr("y", y(selectedData.y))
+    }
+    function mouseout() {
+        focus.style("opacity", 0)
+        focusTextRect.style("opacity", 0)
+        focusText.style("opacity", 0)
+    }
+
+    function mouseclick(){
+        //get a new maxEnd--paths handle focus differently, so we need to do this.
+        var x0 = x.invert(d3.mouse(this)[0]);
+        var i = bisect(data, x0, 1);
+        selectedData = data[i]
+
+        video.currentTime = video.duration * selectedData.x/maxEnd
+
+    }
+}
+
+
+function rescalePitch(){
+    
+    var line = d3.select("#pitchlinepath")
+    var maxEnd = parseFloat(line.attr("maxEnd"));
+
+    var data = JSON.parse(line.attr("origdata"));
+
+    var fps = maxEnd/video.duration
+
+    var selrect = d3.select('#focussvg').select('rect.selection');
+
+    var selwid = parseFloat(selrect.attr('width'))
+    var selX = parseFloat(selrect.attr('x'))
+
+    var minTime = video.duration * selX/video.width
+    var maxTime = video.duration * ( selX + selwid )/video.width  
+
+    var widMult = video.width/selwid
+
+    var newMinFrame = minTime * fps
+    var newMaxFrame = maxTime * fps
+    var filtdata = _.filter(data, function(o){return parseFloat(o.x) >= newMinFrame & parseFloat(o.x) <= newMaxFrame })
+    line.datum(filtdata)
+
+    var x = d3.scaleLinear()
+        .domain([newMinFrame, newMaxFrame])
+        .range([0, video.width]);
+
+
+    var y = d3.scaleLinear()
+        .domain([0, 200])
+        .range([height, 0]);
+        
+    line.transition().duration(50).attr("d", function(d){    
+        console.log(d)
+        return(d3.line()
+        .x(function (d) { return x(d.x) })
+        .y(function (d) { return y(d.y) })
+        )(d)
+    })
+
+        /**
+     * need to update our mouse activity
+     * */
+     // Create the circle that travels along the curve of chart
+     var focus = d3.select('#pitchfocuscircle')
+     // Create bg for the text that travels along the curve of chart
+    var focusTextRect = d3.select('#pitchfocustextbg')
+     // Create the text that travels along the curve of chart
+     var focusText = d3.select('#pitchfocustext')
+    
+   d3.select("#pitchmouserect")
+    .on('mousemove', mousemove)
+    .on('click', mouseclick);
+        
+    // This allows to find the closest X index of the mouse:
+    var bisect = d3.bisector(function (d) { return d.x; }).left;
+
+
+    function mousemove() {
+        // recover coordinate we need
+        var x0 = x.invert(d3.mouse(this)[0]);
+        var i = bisect(data, x0, 1);
+        selectedData = data[i]
+        var minutes = Math.floor((video.duration * selectedData.x/maxEnd)/60)
+        var seconds = Math.round(60 * (((video.duration * selectedData.x/maxEnd)/60) - minutes))
+        var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
+        focus
+            .attr("cx", x(selectedData.x))
+            .attr("cy", y(selectedData.y))
+        focusTextRect
+            .attr("x", x(selectedData.x) + 10)
+            .attr("y", y(selectedData.y) - 15)
+        focusText
+        .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Pitch:" + selectedData.y)
+        .attr("x", x(selectedData.x) + 15)
+            .attr("y", y(selectedData.y))
+    }
+    function mouseout() {
+        focus.style("opacity", 0)
+        focusTextRect.style("opacity", 0)
+        focusText.style("opacity", 0)
+    }
+
+    function mouseclick(){
+        //get a new maxEnd--paths handle focus differently, so we need to do this.
+        var x0 = x.invert(d3.mouse(this)[0]);
+        var i = bisect(data, x0, 1);
+        selectedData = data[i]
+
+        video.currentTime = video.duration * selectedData.x/maxEnd
+
+    }
+
 
 }
