@@ -10,9 +10,11 @@ var hmargin = 10;
 
 var focussvg = d3.select('#premierefocus').append('svg')
     .attr('id', 'focussvg')
-    .attr('width', width)
+    .attr('width', width + margin.left + margin.right)
     .attr('height',focusHeight + hmargin)
     .append('g')
+    .attr("transform",
+        "translate(" + margin.left + ",0)");
     //.attr('transform', 'translate(0,' + hmargin + ')');
 
 var bgslide = focussvg.append('rect')
