@@ -77,6 +77,15 @@ const multerConfig = {
 };
 */
 
+/** Create handler to git pull on client request */
+function pullHandler(req, res) {
+  var exec = require('child_process').exec;
+  exec("cd /usr/GitHub/uxSense && git resent --hard HEAD && git pull", function(error, stdout, stderr){ callback(stdout); });
+  res.redirect('/');
+}
+  
+
+
 /**
  * ...But for now, let's just set up db router, location of public files, and run the app. 
  */
@@ -85,6 +94,11 @@ const multerConfig = {
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.htm')
 })
+
+app.get('/updateServer', function(req, res) {
+  pullHandler(req, res);
+})
+
 
 app.listen(3000, function () {
     console.log('Listening on port 3000!')
