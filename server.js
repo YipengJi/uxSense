@@ -95,7 +95,7 @@ function pullHandler(req, res) {
  app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.htm')
+  res.sendFile(__dirname + '/index.html')
 })
 
 app.get('/updateServer', function(req, res) {
