@@ -15,7 +15,7 @@ var svg = d3.select("#speech-rate")
         "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv('modeloutput/TableauUser_Pitch_x*100.csv', function (data) {
+d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
 
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()

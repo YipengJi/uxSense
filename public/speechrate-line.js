@@ -16,11 +16,12 @@ var svg = d3.select("#speech-rate")
         "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv('modeloutput/TableauUser_Pitch_x*10.csv', function (data) {
+d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
 
+    var maxEnd = _.max(_.map(data, function(dp){return(1*dp['x'])}));
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
-        .domain([0, 7553])
+        .domain([0, maxEnd])
         .range([0, width]);
     svg.append("g")
         .attr("transform", "translate(0," + height + ")");
@@ -36,23 +37,6 @@ d3.csv('modeloutput/TableauUser_Pitch_x*10.csv', function (data) {
     // This allows to find the closest X index of the mouse:
     var bisect = d3.bisector(function (d) { return d.x; }).left;
 
-    // Create the circle that travels along the curve of chart
-    var focus = svg
-        .append('g')
-        .append('circle')
-        .style("fill", "none")
-        .attr("stroke", "black")
-        .attr('r', 8.5)
-        .style("opacity", 0)
-
-    // Create the text that travels along the curve of chart
-    var focusText = svg
-        .append('g')
-        .append('text')
-        .style("opacity", 0)
-        .attr("text-anchor", "left")
-        .attr("alignment-baseline", "middle")
-
     // Create a rect on top of the svg area: this rectangle recovers mouse position
     svg
         .append('rect')
@@ -62,7 +46,8 @@ d3.csv('modeloutput/TableauUser_Pitch_x*10.csv', function (data) {
         .attr('height', height)
         .on('mouseover', mouseover)
         .on('mousemove', mousemove)
-        .on('mouseout', mouseout);
+        .on('mouseout', mouseout)
+        .on('click', mouseclick);
 
     // Add the line
     svg
@@ -76,10 +61,39 @@ d3.csv('modeloutput/TableauUser_Pitch_x*10.csv', function (data) {
             .y(function (d) { return y(d.y) })
         )
 
+    //do these after creating the chart path.
+
+    // Create the circle that travels along the curve of chart
+    var focus = svg
+        .append('g')
+        .append('circle')
+        .style("fill", "none")
+        .attr("stroke", "black")
+        .attr('r', 8.5)
+        .style("opacity", 0)
+
+    // Create bg for the text that travels along the curve of chart
+    var focusTextRect = svg
+        .append('g')
+        .append('rect')
+        .style("opacity", 0)
+        .attr("width", "110px")
+        .attr("height", "25px")
+        .attr("fill", "lightgrey")
+
+    // Create the text that travels along the curve of chart
+    var focusText = svg
+        .append('g')
+        .append('text')
+        .style("opacity", 0)
+        .style('text-shadow', '1px 1px 5px white') 
+        .attr("text-anchor", "left")
+        .attr("alignment-baseline", "middle")
 
     // What happens when the mouse move -> show the annotations at the right positions.
     function mouseover() {
         focus.style("opacity", 1)
+        focusTextRect.style("opacity", 0.75)
         focusText.style("opacity", 1)
     }
 
@@ -88,17 +102,33 @@ d3.csv('modeloutput/TableauUser_Pitch_x*10.csv', function (data) {
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
         selectedData = data[i]
+        var minutes = Math.floor((video.duration * selectedData.x/maxEnd)/60)
+        var seconds = Math.round(60 * (((video.duration * selectedData.x/maxEnd)/60) - minutes))
+        var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
         focus
             .attr("cx", x(selectedData.x))
             .attr("cy", y(selectedData.y))
+        focusTextRect
+            .attr("x", x(selectedData.x) + 10)
+            .attr("y", y(selectedData.y) - 15)
         focusText
-            .html("x:" + selectedData.x + "  -  " + "y:" + selectedData.y)
+            .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Rate:" + selectedData.y)
             .attr("x", x(selectedData.x) + 15)
             .attr("y", y(selectedData.y))
     }
     function mouseout() {
         focus.style("opacity", 0)
+        focusTextRect.style("opacity", 0)
         focusText.style("opacity", 0)
+    }
+
+    function mouseclick(){
+        var x0 = x.invert(d3.mouse(this)[0]);
+        var i = bisect(data, x0, 1);
+        selectedData = data[i]
+
+        video.currentTime = video.duration * selectedData.x/maxEnd
+
     }
 
 })
