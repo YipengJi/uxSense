@@ -16,9 +16,9 @@ var svg = d3.select("#speech-rate")
         "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
+d3.csv('modeloutput/TableauUser_Speech_Rate.csv', function (data) {
 
-    var maxEnd = _.max(_.map(data, function(dp){return(1*dp['x'])}));
+    var maxEnd = _.max(_.map(data, function(dp){return(1*dp['Start'])}));
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
         .domain([0, maxEnd])
@@ -29,13 +29,13 @@ d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
 
     // Add Y axis
     var y = d3.scaleLinear()
-        .domain([70, 200])
+        .domain([0,5.5])
         .range([height, 0]);
     // svg.append("g")
     //     .call(d3.axisLeft(y));
 
     // This allows to find the closest X index of the mouse:
-    var bisect = d3.bisector(function (d) { return d.x; }).left;
+    var bisect = d3.bisector(function (d) { return d.Start; }).left;
 
     // Create a rect on top of the svg area: this rectangle recovers mouse position
     svg
@@ -61,8 +61,8 @@ d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
         .attr("stroke", "steelblue")
         .attr("stroke-width", 1.5)
         .attr("d", d3.line()
-            .x(function (d) { return x(d.x) })
-            .y(function (d) { return y(d.y) })
+            .x(function (d) { return x(d.Start) })
+            .y(function (d) { return y(d.Rate) })
         )
 
     //do these after creating the chart path.
@@ -109,19 +109,19 @@ d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
         selectedData = data[i]
-        var minutes = Math.floor((video.duration * selectedData.x/maxEnd)/60)
-        var seconds = Math.round(60 * (((video.duration * selectedData.x/maxEnd)/60) - minutes))
+        var minutes = Math.floor((video.duration * selectedData.Start/maxEnd)/60)
+        var seconds = Math.round(60 * (((video.duration * selectedData.Start/maxEnd)/60) - minutes))
         var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
         focus
-            .attr("cx", x(selectedData.x))
-            .attr("cy", y(selectedData.y))
+            .attr("cx", x(selectedData.Start))
+            .attr("cy", y(selectedData.Rate))
         focusTextRect
-            .attr("x", x(selectedData.x) + 10)
-            .attr("y", y(selectedData.y) - 15)
+            .attr("x", x(selectedData.Start) + 10)
+            .attr("y", y(selectedData.Rate) - 15)
         focusText
-            .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Rate:" + selectedData.y)
-            .attr("x", x(selectedData.x) + 15)
-            .attr("y", y(selectedData.y))
+            .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Rate:" + selectedData.Rate)
+            .attr("x", x(selectedData.Start) + 15)
+            .attr("y", y(selectedData.Rate))
     }
     function mouseout() {
         focus.style("opacity", 0)
@@ -134,7 +134,7 @@ d3.csv('modeloutput/TableauUser_Pitch_x100.csv', function (data) {
         var i = bisect(data, x0, 1);
         selectedData = data[i]
 
-        video.currentTime = video.duration * selectedData.x/maxEnd
+        video.currentTime = video.duration * selectedData.Start/maxEnd
 
     }
 
