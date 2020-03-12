@@ -35,7 +35,7 @@ var brush = d3.brushX()
         video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
         //focus.select(".line").attr("d", lineTop);
         if(focussvg.select('rect.selection').attr('width') > 0){rescaleTimelines();}
-    });
+    })
 
 //Leave space for cursor
 brushg = focussvg.append('g').attr('class', 'context').attr('transform', 'translate(0,'+ hmargin + ')')
@@ -163,7 +163,6 @@ function rescaleSpeechrate(){
         .range([height, 0]);
 
     line.transition().duration(50).attr("d", function(d){    
-        console.log(d)
         return(d3.line()
         .x(function (d) { return x(d.x) })
         .y(function (d) { return y(d.y) })
@@ -259,7 +258,6 @@ function rescalePitch(){
         .range([height, 0]);
         
     line.transition().duration(50).attr("d", function(d){    
-        console.log(d)
         return(d3.line()
         .x(function (d) { return x(d.x) })
         .y(function (d) { return y(d.y) })
