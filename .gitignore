@@ -3,4 +3,3 @@
 node_modules/*
 mongo/*
 public/userAnnotations/data.json
-frames/*
