@@ -1,0 +1,2425 @@
+Transcript: starting recording and
+Word: starting
+Start time: 0.0 seconds
+End time: 1.8 seconds
+Word: recording
+Start time: 1.8 seconds
+End time: 2.5 seconds
+Word: and
+Start time: 2.5 seconds
+End time: 5.7 seconds
+Transcript:  so we are going to have a 10-minute long session where you're going to be exploring a Forbes 2018 list of wealthiest people data set and you're going to be thinking aloud as you're exploring the data and at the end you're going to make one or two interesting points about the data features of the day to be found revealing or interesting or informative and I will give you a five minute warning one minute warning I may ask questions you may ask questions with me but other than that I'm going to try to act so go ahead and begin by importing the data and then analyzes
+Word: so
+Start time: 8.8 seconds
+End time: 11.5 seconds
+Word: we
+Start time: 11.5 seconds
+End time: 12.2 seconds
+Word: are
+Start time: 12.2 seconds
+End time: 12.4 seconds
+Word: going
+Start time: 12.4 seconds
+End time: 13.0 seconds
+Word: to
+Start time: 13.0 seconds
+End time: 13.3 seconds
+Word: have
+Start time: 13.3 seconds
+End time: 13.7 seconds
+Word: a
+Start time: 13.7 seconds
+End time: 13.9 seconds
+Word: 10-minute
+Start time: 13.9 seconds
+End time: 14.7 seconds
+Word: long
+Start time: 14.7 seconds
+End time: 15.2 seconds
+Word: session
+Start time: 15.2 seconds
+End time: 15.7 seconds
+Word: where
+Start time: 15.7 seconds
+End time: 16.1 seconds
+Word: you're
+Start time: 16.1 seconds
+End time: 16.4 seconds
+Word: going
+Start time: 16.4 seconds
+End time: 16.8 seconds
+Word: to
+Start time: 16.8 seconds
+End time: 17.2 seconds
+Word: be
+Start time: 17.2 seconds
+End time: 17.9 seconds
+Word: exploring
+Start time: 17.9 seconds
+End time: 18.6 seconds
+Word: a
+Start time: 18.6 seconds
+End time: 19.0 seconds
+Word: Forbes
+Start time: 19.0 seconds
+End time: 20.1 seconds
+Word: 2018
+Start time: 20.1 seconds
+End time: 21.7 seconds
+Word: list
+Start time: 21.7 seconds
+End time: 21.8 seconds
+Word: of
+Start time: 21.8 seconds
+End time: 22.0 seconds
+Word: wealthiest
+Start time: 22.0 seconds
+End time: 23.2 seconds
+Word: people
+Start time: 23.2 seconds
+End time: 23.7 seconds
+Word: data
+Start time: 23.7 seconds
+End time: 25.1 seconds
+Word: set
+Start time: 25.1 seconds
+End time: 25.4 seconds
+Word: and
+Start time: 25.4 seconds
+End time: 26.0 seconds
+Word: you're
+Start time: 26.0 seconds
+End time: 26.2 seconds
+Word: going
+Start time: 26.2 seconds
+End time: 26.5 seconds
+Word: to
+Start time: 26.5 seconds
+End time: 26.7 seconds
+Word: be
+Start time: 26.7 seconds
+End time: 26.9 seconds
+Word: thinking
+Start time: 26.9 seconds
+End time: 27.2 seconds
+Word: aloud
+Start time: 27.2 seconds
+End time: 27.7 seconds
+Word: as
+Start time: 27.7 seconds
+End time: 27.8 seconds
+Word: you're
+Start time: 27.8 seconds
+End time: 28.0 seconds
+Word: exploring
+Start time: 28.0 seconds
+End time: 28.3 seconds
+Word: the
+Start time: 28.3 seconds
+End time: 28.6 seconds
+Word: data
+Start time: 28.6 seconds
+End time: 28.8 seconds
+Word: and
+Start time: 28.8 seconds
+End time: 30.0 seconds
+Word: at
+Start time: 30.0 seconds
+End time: 30.1 seconds
+Word: the
+Start time: 30.1 seconds
+End time: 30.2 seconds
+Word: end
+Start time: 30.2 seconds
+End time: 30.3 seconds
+Word: you're
+Start time: 30.3 seconds
+End time: 30.9 seconds
+Word: going
+Start time: 30.9 seconds
+End time: 31.2 seconds
+Word: to
+Start time: 31.2 seconds
+End time: 31.6 seconds
+Word: make
+Start time: 31.6 seconds
+End time: 33.4 seconds
+Word: one
+Start time: 33.4 seconds
+End time: 34.1 seconds
+Word: or
+Start time: 34.1 seconds
+End time: 34.5 seconds
+Word: two
+Start time: 34.5 seconds
+End time: 34.7 seconds
+Word: interesting
+Start time: 34.7 seconds
+End time: 35.2 seconds
+Word: points
+Start time: 35.2 seconds
+End time: 35.6 seconds
+Word: about
+Start time: 35.6 seconds
+End time: 35.8 seconds
+Word: the
+Start time: 35.8 seconds
+End time: 36.0 seconds
+Word: data
+Start time: 36.0 seconds
+End time: 36.2 seconds
+Word: features
+Start time: 36.2 seconds
+End time: 36.9 seconds
+Word: of
+Start time: 36.9 seconds
+End time: 37.0 seconds
+Word: the
+Start time: 37.0 seconds
+End time: 37.1 seconds
+Word: day
+Start time: 37.1 seconds
+End time: 37.1 seconds
+Word: to
+Start time: 37.1 seconds
+End time: 37.2 seconds
+Word: be
+Start time: 37.2 seconds
+End time: 37.3 seconds
+Word: found
+Start time: 37.3 seconds
+End time: 37.8 seconds
+Word: revealing
+Start time: 37.8 seconds
+End time: 40.5 seconds
+Word: or
+Start time: 40.5 seconds
+End time: 40.7 seconds
+Word: interesting
+Start time: 40.7 seconds
+End time: 41.2 seconds
+Word: or
+Start time: 41.2 seconds
+End time: 41.3 seconds
+Word: informative
+Start time: 41.3 seconds
+End time: 41.8 seconds
+Word: and
+Start time: 41.8 seconds
+End time: 43.1 seconds
+Word: I
+Start time: 43.1 seconds
+End time: 43.3 seconds
+Word: will
+Start time: 43.3 seconds
+End time: 43.5 seconds
+Word: give
+Start time: 43.5 seconds
+End time: 43.7 seconds
+Word: you
+Start time: 43.7 seconds
+End time: 43.7 seconds
+Word: a
+Start time: 43.7 seconds
+End time: 43.9 seconds
+Word: five
+Start time: 43.9 seconds
+End time: 44.3 seconds
+Word: minute
+Start time: 44.3 seconds
+End time: 44.5 seconds
+Word: warning
+Start time: 44.5 seconds
+End time: 44.6 seconds
+Word: one
+Start time: 44.6 seconds
+End time: 45.6 seconds
+Word: minute
+Start time: 45.6 seconds
+End time: 45.8 seconds
+Word: warning
+Start time: 45.8 seconds
+End time: 46.1 seconds
+Word: I
+Start time: 46.1 seconds
+End time: 47.7 seconds
+Word: may
+Start time: 47.7 seconds
+End time: 48.0 seconds
+Word: ask
+Start time: 48.0 seconds
+End time: 48.6 seconds
+Word: questions
+Start time: 48.6 seconds
+End time: 48.8 seconds
+Word: you
+Start time: 48.8 seconds
+End time: 50.1 seconds
+Word: may
+Start time: 50.1 seconds
+End time: 50.3 seconds
+Word: ask
+Start time: 50.3 seconds
+End time: 50.5 seconds
+Word: questions
+Start time: 50.5 seconds
+End time: 50.7 seconds
+Word: with
+Start time: 50.7 seconds
+End time: 51.1 seconds
+Word: me
+Start time: 51.1 seconds
+End time: 51.2 seconds
+Word: but
+Start time: 51.2 seconds
+End time: 51.8 seconds
+Word: other
+Start time: 51.8 seconds
+End time: 51.9 seconds
+Word: than
+Start time: 51.9 seconds
+End time: 52.4 seconds
+Word: that
+Start time: 52.4 seconds
+End time: 53.0 seconds
+Word: I'm
+Start time: 53.0 seconds
+End time: 53.6 seconds
+Word: going
+Start time: 53.6 seconds
+End time: 53.8 seconds
+Word: to
+Start time: 53.8 seconds
+End time: 54.1 seconds
+Word: try
+Start time: 54.1 seconds
+End time: 54.5 seconds
+Word: to
+Start time: 54.5 seconds
+End time: 54.8 seconds
+Word: act
+Start time: 54.8 seconds
+End time: 57.6 seconds
+Word: so
+Start time: 57.6 seconds
+End time: 57.7 seconds
+Word: go
+Start time: 57.7 seconds
+End time: 58.1 seconds
+Word: ahead
+Start time: 58.1 seconds
+End time: 58.2 seconds
+Word: and
+Start time: 58.2 seconds
+End time: 58.4 seconds
+Word: begin
+Start time: 58.4 seconds
+End time: 58.7 seconds
+Word: by
+Start time: 58.7 seconds
+End time: 59.0 seconds
+Word: importing
+Start time: 59.0 seconds
+End time: 59.4 seconds
+Word: the
+Start time: 59.4 seconds
+End time: 59.4 seconds
+Word: data
+Start time: 59.4 seconds
+End time: 59.7 seconds
+Word: and
+Start time: 59.7 seconds
+End time: 59.8 seconds
+Word: then
+Start time: 59.8 seconds
+End time: 60.1 seconds
+Word: analyzes
+Start time: 60.1 seconds
+End time: 60.8 seconds
+Transcript:  so why do you have so many things
+Word: so
+Start time: 129.1 seconds
+End time: 129.4 seconds
+Word: why
+Start time: 129.4 seconds
+End time: 129.6 seconds
+Word: do
+Start time: 129.6 seconds
+End time: 129.6 seconds
+Word: you
+Start time: 129.6 seconds
+End time: 129.7 seconds
+Word: have
+Start time: 129.7 seconds
+End time: 129.8 seconds
+Word: so
+Start time: 129.8 seconds
+End time: 130.4 seconds
+Word: many
+Start time: 130.4 seconds
+End time: 130.5 seconds
+Word: things
+Start time: 130.5 seconds
+End time: 131.1 seconds
+Transcript:  oh I pick this one
+Word: oh
+Start time: 133.5 seconds
+End time: 133.9 seconds
+Word: I
+Start time: 133.9 seconds
+End time: 134.1 seconds
+Word: pick
+Start time: 134.1 seconds
+End time: 134.5 seconds
+Word: this
+Start time: 134.5 seconds
+End time: 134.6 seconds
+Word: one
+Start time: 134.6 seconds
+End time: 134.9 seconds
+Transcript:  I thought
+Word: I
+Start time: 136.7 seconds
+End time: 137.4 seconds
+Word: thought
+Start time: 137.4 seconds
+End time: 137.8 seconds
+Transcript:  it'll be interesting to kind of compare by countries
+Word: it'll
+Start time: 139.2 seconds
+End time: 139.7 seconds
+Word: be
+Start time: 139.7 seconds
+End time: 139.8 seconds
+Word: interesting
+Start time: 139.8 seconds
+End time: 140.0 seconds
+Word: to
+Start time: 140.0 seconds
+End time: 140.5 seconds
+Word: kind
+Start time: 140.5 seconds
+End time: 141.1 seconds
+Word: of
+Start time: 141.1 seconds
+End time: 141.1 seconds
+Word: compare
+Start time: 141.1 seconds
+End time: 141.6 seconds
+Word: by
+Start time: 141.6 seconds
+End time: 142.0 seconds
+Word: countries
+Start time: 142.0 seconds
+End time: 142.7 seconds
+Transcript:  that's like the first thing that just came to my mind
+Word: that's
+Start time: 144.2 seconds
+End time: 144.7 seconds
+Word: like
+Start time: 144.7 seconds
+End time: 144.9 seconds
+Word: the
+Start time: 144.9 seconds
+End time: 145.0 seconds
+Word: first
+Start time: 145.0 seconds
+End time: 145.3 seconds
+Word: thing
+Start time: 145.3 seconds
+End time: 145.6 seconds
+Word: that
+Start time: 145.6 seconds
+End time: 145.8 seconds
+Word: just
+Start time: 145.8 seconds
+End time: 146.1 seconds
+Word: came
+Start time: 146.1 seconds
+End time: 146.4 seconds
+Word: to
+Start time: 146.4 seconds
+End time: 146.5 seconds
+Word: my
+Start time: 146.5 seconds
+End time: 146.7 seconds
+Word: mind
+Start time: 146.7 seconds
+End time: 146.9 seconds
+Transcript:  you can see that France and Germany is pretty good and retails we are at night Estates is also good
+Word: you
+Start time: 157.9 seconds
+End time: 158.3 seconds
+Word: can
+Start time: 158.3 seconds
+End time: 158.5 seconds
+Word: see
+Start time: 158.5 seconds
+End time: 158.7 seconds
+Word: that
+Start time: 158.7 seconds
+End time: 158.9 seconds
+Word: France
+Start time: 158.9 seconds
+End time: 159.4 seconds
+Word: and
+Start time: 159.4 seconds
+End time: 159.5 seconds
+Word: Germany
+Start time: 159.5 seconds
+End time: 159.7 seconds
+Word: is
+Start time: 159.7 seconds
+End time: 160.2 seconds
+Word: pretty
+Start time: 160.2 seconds
+End time: 160.6 seconds
+Word: good
+Start time: 160.6 seconds
+End time: 160.9 seconds
+Word: and
+Start time: 160.9 seconds
+End time: 161.0 seconds
+Word: retails
+Start time: 161.0 seconds
+End time: 162.7 seconds
+Word: we
+Start time: 162.7 seconds
+End time: 162.9 seconds
+Word: are
+Start time: 162.9 seconds
+End time: 163.0 seconds
+Word: at
+Start time: 163.0 seconds
+End time: 163.3 seconds
+Word: night
+Start time: 163.3 seconds
+End time: 163.6 seconds
+Word: Estates
+Start time: 163.6 seconds
+End time: 164.2 seconds
+Word: is
+Start time: 164.2 seconds
+End time: 164.3 seconds
+Word: also
+Start time: 164.3 seconds
+End time: 164.6 seconds
+Word: good
+Start time: 164.6 seconds
+End time: 164.9 seconds
+Transcript:  different terms of finance and Investments
+Word: different
+Start time: 165.9 seconds
+End time: 166.6 seconds
+Word: terms
+Start time: 166.6 seconds
+End time: 166.8 seconds
+Word: of
+Start time: 166.8 seconds
+End time: 166.9 seconds
+Word: finance
+Start time: 166.9 seconds
+End time: 167.6 seconds
+Word: and
+Start time: 167.6 seconds
+End time: 167.7 seconds
+Word: Investments
+Start time: 167.7 seconds
+End time: 168.6 seconds
+Transcript:  well United States is number one others are not very bad maybe Russia
+Word: well
+Start time: 169.5 seconds
+End time: 169.9 seconds
+Word: United
+Start time: 169.9 seconds
+End time: 170.4 seconds
+Word: States
+Start time: 170.4 seconds
+End time: 170.7 seconds
+Word: is
+Start time: 170.7 seconds
+End time: 170.8 seconds
+Word: number
+Start time: 170.8 seconds
+End time: 171.1 seconds
+Word: one
+Start time: 171.1 seconds
+End time: 171.4 seconds
+Word: others
+Start time: 171.4 seconds
+End time: 171.9 seconds
+Word: are
+Start time: 171.9 seconds
+End time: 172.1 seconds
+Word: not
+Start time: 172.1 seconds
+End time: 172.5 seconds
+Word: very
+Start time: 172.5 seconds
+End time: 173.1 seconds
+Word: bad
+Start time: 173.1 seconds
+End time: 173.4 seconds
+Word: maybe
+Start time: 173.4 seconds
+End time: 173.8 seconds
+Word: Russia
+Start time: 173.8 seconds
+End time: 174.3 seconds
+Transcript:  food and beverage
+Word: food
+Start time: 177.2 seconds
+End time: 177.7 seconds
+Word: and
+Start time: 177.7 seconds
+End time: 177.8 seconds
+Word: beverage
+Start time: 177.8 seconds
+End time: 178.3 seconds
+Transcript:  you asked
+Word: you
+Start time: 180.5 seconds
+End time: 180.9 seconds
+Word: asked
+Start time: 180.9 seconds
+End time: 181.2 seconds
+Transcript:  Healthcare
+Word: Healthcare
+Start time: 183.6 seconds
+End time: 184.5 seconds
+Transcript:  China
+Word: China
+Start time: 185.5 seconds
+End time: 186.6 seconds
+Transcript:  exception
+Word: exception
+Start time: 187.9 seconds
+End time: 188.7 seconds
+Transcript:  Manufacturing
+Word: Manufacturing
+Start time: 189.9 seconds
+End time: 191.1 seconds
+Transcript:  China's number one as expected
+Word: China's
+Start time: 192.3 seconds
+End time: 193.0 seconds
+Word: number
+Start time: 193.0 seconds
+End time: 193.1 seconds
+Word: one
+Start time: 193.1 seconds
+End time: 193.6 seconds
+Word: as
+Start time: 193.6 seconds
+End time: 193.9 seconds
+Word: expected
+Start time: 193.9 seconds
+End time: 194.7 seconds
+Transcript:  media and entertainment yeah look at the movies they make Oscars
+Word: media
+Start time: 198.3 seconds
+End time: 198.8 seconds
+Word: and
+Start time: 198.8 seconds
+End time: 198.9 seconds
+Word: entertainment
+Start time: 198.9 seconds
+End time: 199.1 seconds
+Word: yeah
+Start time: 199.1 seconds
+End time: 199.7 seconds
+Word: look
+Start time: 199.7 seconds
+End time: 200.4 seconds
+Word: at
+Start time: 200.4 seconds
+End time: 200.5 seconds
+Word: the
+Start time: 200.5 seconds
+End time: 200.7 seconds
+Word: movies
+Start time: 200.7 seconds
+End time: 201.1 seconds
+Word: they
+Start time: 201.1 seconds
+End time: 201.3 seconds
+Word: make
+Start time: 201.3 seconds
+End time: 201.7 seconds
+Word: Oscars
+Start time: 201.7 seconds
+End time: 203.3 seconds
+Transcript:  metals and Mining Russia this is pretty interesting real estate
+Word: metals
+Start time: 205.1 seconds
+End time: 205.7 seconds
+Word: and
+Start time: 205.7 seconds
+End time: 205.8 seconds
+Word: Mining
+Start time: 205.8 seconds
+End time: 206.0 seconds
+Word: Russia
+Start time: 206.0 seconds
+End time: 206.9 seconds
+Word: this
+Start time: 206.9 seconds
+End time: 208.1 seconds
+Word: is
+Start time: 208.1 seconds
+End time: 208.3 seconds
+Word: pretty
+Start time: 208.3 seconds
+End time: 208.5 seconds
+Word: interesting
+Start time: 208.5 seconds
+End time: 208.7 seconds
+Word: real
+Start time: 208.7 seconds
+End time: 209.1 seconds
+Word: estate
+Start time: 209.1 seconds
+End time: 209.7 seconds
+Transcript:  Hong Kong
+Word: Hong
+Start time: 212.8 seconds
+End time: 213.3 seconds
+Word: Kong
+Start time: 213.3 seconds
+End time: 213.7 seconds
+Transcript:  new Hong Kong China time is China's money was actually going to Hong Kong to China should be a much bigger than this one
+Word: new
+Start time: 215.7 seconds
+End time: 216.1 seconds
+Word: Hong
+Start time: 216.1 seconds
+End time: 216.2 seconds
+Word: Kong
+Start time: 216.2 seconds
+End time: 216.4 seconds
+Word: China
+Start time: 216.4 seconds
+End time: 216.9 seconds
+Word: time
+Start time: 216.9 seconds
+End time: 217.3 seconds
+Word: is
+Start time: 217.3 seconds
+End time: 217.5 seconds
+Word: China's
+Start time: 217.5 seconds
+End time: 217.9 seconds
+Word: money
+Start time: 217.9 seconds
+End time: 218.1 seconds
+Word: was
+Start time: 218.1 seconds
+End time: 218.4 seconds
+Word: actually
+Start time: 218.4 seconds
+End time: 218.7 seconds
+Word: going
+Start time: 218.7 seconds
+End time: 218.9 seconds
+Word: to
+Start time: 218.9 seconds
+End time: 218.9 seconds
+Word: Hong
+Start time: 218.9 seconds
+End time: 219.1 seconds
+Word: Kong
+Start time: 219.1 seconds
+End time: 219.2 seconds
+Word: to
+Start time: 219.2 seconds
+End time: 220.1 seconds
+Word: China
+Start time: 220.1 seconds
+End time: 220.3 seconds
+Word: should
+Start time: 220.3 seconds
+End time: 221.2 seconds
+Word: be
+Start time: 221.2 seconds
+End time: 221.4 seconds
+Word: a
+Start time: 221.4 seconds
+End time: 221.4 seconds
+Word: much
+Start time: 221.4 seconds
+End time: 221.6 seconds
+Word: bigger
+Start time: 221.6 seconds
+End time: 221.8 seconds
+Word: than
+Start time: 221.8 seconds
+End time: 222.0 seconds
+Word: this
+Start time: 222.0 seconds
+End time: 222.2 seconds
+Word: one
+Start time: 222.2 seconds
+End time: 222.5 seconds
+Transcript:  and United States they've got a lot of land New York Maybe
+Word: and
+Start time: 223.7 seconds
+End time: 224.2 seconds
+Word: United
+Start time: 224.2 seconds
+End time: 224.4 seconds
+Word: States
+Start time: 224.4 seconds
+End time: 224.6 seconds
+Word: they've
+Start time: 224.6 seconds
+End time: 225.7 seconds
+Word: got
+Start time: 225.7 seconds
+End time: 225.9 seconds
+Word: a
+Start time: 225.9 seconds
+End time: 226.0 seconds
+Word: lot
+Start time: 226.0 seconds
+End time: 226.0 seconds
+Word: of
+Start time: 226.0 seconds
+End time: 226.3 seconds
+Word: land
+Start time: 226.3 seconds
+End time: 226.7 seconds
+Word: New
+Start time: 226.7 seconds
+End time: 227.6 seconds
+Word: York
+Start time: 227.6 seconds
+End time: 227.9 seconds
+Word: Maybe
+Start time: 227.9 seconds
+End time: 228.2 seconds
+Transcript:  technology
+Word: technology
+Start time: 229.3 seconds
+End time: 230.3 seconds
+Transcript:  what who are you at yeah apple
+Word: what
+Start time: 232.3 seconds
+End time: 232.8 seconds
+Word: who
+Start time: 232.8 seconds
+End time: 232.9 seconds
+Word: are
+Start time: 232.9 seconds
+End time: 233.0 seconds
+Word: you
+Start time: 233.0 seconds
+End time: 233.2 seconds
+Word: at
+Start time: 233.2 seconds
+End time: 233.4 seconds
+Word: yeah
+Start time: 233.4 seconds
+End time: 233.5 seconds
+Word: apple
+Start time: 233.5 seconds
+End time: 234.6 seconds
+Transcript:  Facebook these things
+Word: Facebook
+Start time: 236.8 seconds
+End time: 237.7 seconds
+Word: these
+Start time: 237.7 seconds
+End time: 237.9 seconds
+Word: things
+Start time: 237.9 seconds
+End time: 238.3 seconds
+Transcript:  call Consuelo.
+Word: call
+Start time: 239.3 seconds
+End time: 239.9 seconds
+Word: Consuelo.
+Start time: 239.9 seconds
+End time: 240.7 seconds
+Transcript:  Popular right now so
+Word: Popular
+Start time: 243.0 seconds
+End time: 243.6 seconds
+Word: right
+Start time: 243.6 seconds
+End time: 243.7 seconds
+Word: now
+Start time: 243.7 seconds
+End time: 243.8 seconds
+Word: so
+Start time: 243.8 seconds
+End time: 244.2 seconds
+Transcript:  find me take off industrial now
+Word: find
+Start time: 246.3 seconds
+End time: 246.7 seconds
+Word: me
+Start time: 246.7 seconds
+End time: 246.8 seconds
+Word: take
+Start time: 246.8 seconds
+End time: 247.0 seconds
+Word: off
+Start time: 247.0 seconds
+End time: 247.2 seconds
+Word: industrial
+Start time: 247.2 seconds
+End time: 247.7 seconds
+Word: now
+Start time: 247.7 seconds
+End time: 248.1 seconds
+Transcript:  somewhat
+Word: somewhat
+Start time: 253.9 seconds
+End time: 254.8 seconds
+Transcript:  US law surprise
+Word: US
+Start time: 256.6 seconds
+End time: 257.8 seconds
+Word: law
+Start time: 257.8 seconds
+End time: 258.4 seconds
+Word: surprise
+Start time: 258.4 seconds
+End time: 258.6 seconds
+Transcript:  Thunder
+Word: Thunder
+Start time: 265.6 seconds
+End time: 266.2 seconds
+Transcript:  Aspera predictable that males have higher the values
+Word: Aspera
+Start time: 274.1 seconds
+End time: 276.2 seconds
+Word: predictable
+Start time: 276.2 seconds
+End time: 276.9 seconds
+Word: that
+Start time: 276.9 seconds
+End time: 277.1 seconds
+Word: males
+Start time: 277.1 seconds
+End time: 277.9 seconds
+Word: have
+Start time: 277.9 seconds
+End time: 279.1 seconds
+Word: higher
+Start time: 279.1 seconds
+End time: 279.2 seconds
+Word: the
+Start time: 279.2 seconds
+End time: 280.6 seconds
+Word: values
+Start time: 280.6 seconds
+End time: 281.4 seconds
+Transcript:  with basically no exception but how long the female us is the largest
+Word: with
+Start time: 282.5 seconds
+End time: 283.0 seconds
+Word: basically
+Start time: 283.0 seconds
+End time: 283.7 seconds
+Word: no
+Start time: 283.7 seconds
+End time: 283.8 seconds
+Word: exception
+Start time: 283.8 seconds
+End time: 284.7 seconds
+Word: but
+Start time: 284.7 seconds
+End time: 284.9 seconds
+Word: how
+Start time: 284.9 seconds
+End time: 285.3 seconds
+Word: long
+Start time: 285.3 seconds
+End time: 285.5 seconds
+Word: the
+Start time: 285.5 seconds
+End time: 285.7 seconds
+Word: female
+Start time: 285.7 seconds
+End time: 286.2 seconds
+Word: us
+Start time: 286.2 seconds
+End time: 287.3 seconds
+Word: is
+Start time: 287.3 seconds
+End time: 287.5 seconds
+Word: the
+Start time: 287.5 seconds
+End time: 287.7 seconds
+Word: largest
+Start time: 287.7 seconds
+End time: 288.3 seconds
+Transcript:  yeah I want to see that
+Word: yeah
+Start time: 292.0 seconds
+End time: 292.4 seconds
+Word: I
+Start time: 292.4 seconds
+End time: 293.3 seconds
+Word: want
+Start time: 293.3 seconds
+End time: 293.4 seconds
+Word: to
+Start time: 293.4 seconds
+End time: 293.5 seconds
+Word: see
+Start time: 293.5 seconds
+End time: 293.6 seconds
+Word: that
+Start time: 293.6 seconds
+End time: 293.8 seconds
+Transcript:  H I don't I don't think it's going to be that much difference
+Word: H
+Start time: 298.0 seconds
+End time: 298.6 seconds
+Word: I
+Start time: 298.6 seconds
+End time: 299.0 seconds
+Word: don't
+Start time: 299.0 seconds
+End time: 299.3 seconds
+Word: I
+Start time: 299.3 seconds
+End time: 299.5 seconds
+Word: don't
+Start time: 299.5 seconds
+End time: 299.7 seconds
+Word: think
+Start time: 299.7 seconds
+End time: 299.8 seconds
+Word: it's
+Start time: 299.8 seconds
+End time: 300.1 seconds
+Word: going
+Start time: 300.1 seconds
+End time: 300.3 seconds
+Word: to
+Start time: 300.3 seconds
+End time: 300.3 seconds
+Word: be
+Start time: 300.3 seconds
+End time: 300.4 seconds
+Word: that
+Start time: 300.4 seconds
+End time: 300.6 seconds
+Word: much
+Start time: 300.6 seconds
+End time: 300.8 seconds
+Word: difference
+Start time: 300.8 seconds
+End time: 301.5 seconds
+Transcript:  what was this age
+Word: what
+Start time: 307.2 seconds
+End time: 308.5 seconds
+Word: was
+Start time: 308.5 seconds
+End time: 308.9 seconds
+Word: this
+Start time: 308.9 seconds
+End time: 309.1 seconds
+Word: age
+Start time: 309.1 seconds
+End time: 309.9 seconds
+Transcript:  average average average
+Word: average
+Start time: 311.8 seconds
+End time: 314.2 seconds
+Word: average
+Start time: 314.2 seconds
+End time: 314.6 seconds
+Word: average
+Start time: 314.6 seconds
+End time: 315.1 seconds
+Transcript:  yeah there's no correlation in the age I could see that
+Word: yeah
+Start time: 317.7 seconds
+End time: 318.4 seconds
+Word: there's
+Start time: 318.4 seconds
+End time: 318.7 seconds
+Word: no
+Start time: 318.7 seconds
+End time: 318.9 seconds
+Word: correlation
+Start time: 318.9 seconds
+End time: 319.3 seconds
+Word: in
+Start time: 319.3 seconds
+End time: 319.6 seconds
+Word: the
+Start time: 319.6 seconds
+End time: 319.7 seconds
+Word: age
+Start time: 319.7 seconds
+End time: 319.9 seconds
+Word: I
+Start time: 319.9 seconds
+End time: 320.2 seconds
+Word: could
+Start time: 320.2 seconds
+End time: 320.5 seconds
+Word: see
+Start time: 320.5 seconds
+End time: 320.6 seconds
+Word: that
+Start time: 320.6 seconds
+End time: 320.7 seconds
+Transcript:  I'm a text away
+Word: I'm
+Start time: 322.2 seconds
+End time: 322.6 seconds
+Word: a
+Start time: 322.6 seconds
+End time: 322.6 seconds
+Word: text
+Start time: 322.6 seconds
+End time: 322.9 seconds
+Word: away
+Start time: 322.9 seconds
+End time: 323.1 seconds
+Transcript:  well thesaurus
+Word: well
+Start time: 324.2 seconds
+End time: 325.2 seconds
+Word: thesaurus
+Start time: 325.2 seconds
+End time: 326.0 seconds
+Transcript:  this is bad visualization they have so many things
+Word: this
+Start time: 333.0 seconds
+End time: 333.4 seconds
+Word: is
+Start time: 333.4 seconds
+End time: 333.6 seconds
+Word: bad
+Start time: 333.6 seconds
+End time: 333.8 seconds
+Word: visualization
+Start time: 333.8 seconds
+End time: 334.9 seconds
+Word: they
+Start time: 334.9 seconds
+End time: 335.8 seconds
+Word: have
+Start time: 335.8 seconds
+End time: 336.0 seconds
+Word: so
+Start time: 336.0 seconds
+End time: 336.2 seconds
+Word: many
+Start time: 336.2 seconds
+End time: 336.4 seconds
+Word: things
+Start time: 336.4 seconds
+End time: 337.1 seconds
+Transcript:  Ralph Lauren wool source
+Word: Ralph
+Start time: 341.6 seconds
+End time: 342.8 seconds
+Word: Lauren
+Start time: 342.8 seconds
+End time: 343.3 seconds
+Word: wool
+Start time: 343.3 seconds
+End time: 343.8 seconds
+Word: source
+Start time: 343.8 seconds
+End time: 344.4 seconds
+Transcript:  I know I don't like this I don't like this feature here
+Word: I
+Start time: 348.2 seconds
+End time: 348.5 seconds
+Word: know
+Start time: 348.5 seconds
+End time: 348.7 seconds
+Word: I
+Start time: 348.7 seconds
+End time: 348.7 seconds
+Word: don't
+Start time: 348.7 seconds
+End time: 348.9 seconds
+Word: like
+Start time: 348.9 seconds
+End time: 349.0 seconds
+Word: this
+Start time: 349.0 seconds
+End time: 349.3 seconds
+Word: I
+Start time: 349.3 seconds
+End time: 350.2 seconds
+Word: don't
+Start time: 350.2 seconds
+End time: 350.4 seconds
+Word: like
+Start time: 350.4 seconds
+End time: 350.4 seconds
+Word: this
+Start time: 350.4 seconds
+End time: 350.7 seconds
+Word: feature
+Start time: 350.7 seconds
+End time: 351.5 seconds
+Word: here
+Start time: 351.5 seconds
+End time: 351.6 seconds
+Transcript:  what is position
+Word: what
+Start time: 352.8 seconds
+End time: 353.3 seconds
+Word: is
+Start time: 353.3 seconds
+End time: 353.3 seconds
+Word: position
+Start time: 353.3 seconds
+End time: 353.6 seconds
+Transcript:  possession
+Word: possession
+Start time: 363.0 seconds
+End time: 363.8 seconds
+Transcript:  I don't know what position is but I look at the average it doesn't seem to have any kind of
+Word: I
+Start time: 372.4 seconds
+End time: 373.7 seconds
+Word: don't
+Start time: 373.7 seconds
+End time: 373.9 seconds
+Word: know
+Start time: 373.9 seconds
+End time: 374.0 seconds
+Word: what
+Start time: 374.0 seconds
+End time: 374.1 seconds
+Word: position
+Start time: 374.1 seconds
+End time: 374.3 seconds
+Word: is
+Start time: 374.3 seconds
+End time: 374.7 seconds
+Word: but
+Start time: 374.7 seconds
+End time: 375.0 seconds
+Word: I
+Start time: 375.0 seconds
+End time: 375.6 seconds
+Word: look
+Start time: 375.6 seconds
+End time: 375.9 seconds
+Word: at
+Start time: 375.9 seconds
+End time: 376.1 seconds
+Word: the
+Start time: 376.1 seconds
+End time: 376.2 seconds
+Word: average
+Start time: 376.2 seconds
+End time: 376.4 seconds
+Word: it
+Start time: 376.4 seconds
+End time: 376.7 seconds
+Word: doesn't
+Start time: 376.7 seconds
+End time: 377.1 seconds
+Word: seem
+Start time: 377.1 seconds
+End time: 377.2 seconds
+Word: to
+Start time: 377.2 seconds
+End time: 377.4 seconds
+Word: have
+Start time: 377.4 seconds
+End time: 377.5 seconds
+Word: any
+Start time: 377.5 seconds
+End time: 377.5 seconds
+Word: kind
+Start time: 377.5 seconds
+End time: 377.8 seconds
+Word: of
+Start time: 377.8 seconds
+End time: 378.0 seconds
+Transcript:  addition is
+Word: addition
+Start time: 380.7 seconds
+End time: 381.3 seconds
+Word: is
+Start time: 381.3 seconds
+End time: 381.6 seconds
+Transcript:  do you have a guess as to what position is in this list of rankings of
+Word: do
+Start time: 383.5 seconds
+End time: 384.7 seconds
+Word: you
+Start time: 384.7 seconds
+End time: 384.8 seconds
+Word: have
+Start time: 384.8 seconds
+End time: 384.9 seconds
+Word: a
+Start time: 384.9 seconds
+End time: 385.0 seconds
+Word: guess
+Start time: 385.0 seconds
+End time: 385.2 seconds
+Word: as
+Start time: 385.2 seconds
+End time: 385.3 seconds
+Word: to
+Start time: 385.3 seconds
+End time: 385.4 seconds
+Word: what
+Start time: 385.4 seconds
+End time: 385.6 seconds
+Word: position
+Start time: 385.6 seconds
+End time: 385.8 seconds
+Word: is
+Start time: 385.8 seconds
+End time: 386.2 seconds
+Word: in
+Start time: 386.2 seconds
+End time: 386.3 seconds
+Word: this
+Start time: 386.3 seconds
+End time: 386.6 seconds
+Word: list
+Start time: 386.6 seconds
+End time: 387.0 seconds
+Word: of
+Start time: 387.0 seconds
+End time: 387.2 seconds
+Word: rankings
+Start time: 387.2 seconds
+End time: 387.9 seconds
+Word: of
+Start time: 387.9 seconds
+End time: 388.1 seconds
+Transcript:  richest people in the world
+Word: richest
+Start time: 389.7 seconds
+End time: 390.6 seconds
+Word: people
+Start time: 390.6 seconds
+End time: 390.8 seconds
+Word: in
+Start time: 390.8 seconds
+End time: 391.0 seconds
+Word: the
+Start time: 391.0 seconds
+End time: 391.1 seconds
+Word: world
+Start time: 391.1 seconds
+End time: 391.2 seconds
+Transcript:  all is it like how many rich people are in that place
+Word: all
+Start time: 392.9 seconds
+End time: 393.6 seconds
+Word: is
+Start time: 393.6 seconds
+End time: 393.8 seconds
+Word: it
+Start time: 393.8 seconds
+End time: 393.9 seconds
+Word: like
+Start time: 393.9 seconds
+End time: 394.2 seconds
+Word: how
+Start time: 394.2 seconds
+End time: 394.3 seconds
+Word: many
+Start time: 394.3 seconds
+End time: 394.5 seconds
+Word: rich
+Start time: 394.5 seconds
+End time: 395.0 seconds
+Word: people
+Start time: 395.0 seconds
+End time: 395.6 seconds
+Word: are
+Start time: 395.6 seconds
+End time: 395.7 seconds
+Word: in
+Start time: 395.7 seconds
+End time: 396.1 seconds
+Word: that
+Start time: 396.1 seconds
+End time: 396.3 seconds
+Word: place
+Start time: 396.3 seconds
+End time: 396.8 seconds
+Transcript:  I think it's just the individuals position on the ranking list
+Word: I
+Start time: 398.4 seconds
+End time: 399.0 seconds
+Word: think
+Start time: 399.0 seconds
+End time: 399.7 seconds
+Word: it's
+Start time: 399.7 seconds
+End time: 399.9 seconds
+Word: just
+Start time: 399.9 seconds
+End time: 400.1 seconds
+Word: the
+Start time: 400.1 seconds
+End time: 400.4 seconds
+Word: individuals
+Start time: 400.4 seconds
+End time: 402.0 seconds
+Word: position
+Start time: 402.0 seconds
+End time: 403.7 seconds
+Word: on
+Start time: 403.7 seconds
+End time: 404.0 seconds
+Word: the
+Start time: 404.0 seconds
+End time: 404.2 seconds
+Word: ranking
+Start time: 404.2 seconds
+End time: 404.5 seconds
+Word: list
+Start time: 404.5 seconds
+End time: 405.3 seconds
+Transcript:  well either way it doesn't seem to have any correlation to the ripped the Networth takes away
+Word: well
+Start time: 413.4 seconds
+End time: 413.9 seconds
+Word: either
+Start time: 413.9 seconds
+End time: 414.5 seconds
+Word: way
+Start time: 414.5 seconds
+End time: 414.7 seconds
+Word: it
+Start time: 414.7 seconds
+End time: 415.4 seconds
+Word: doesn't
+Start time: 415.4 seconds
+End time: 415.5 seconds
+Word: seem
+Start time: 415.5 seconds
+End time: 415.9 seconds
+Word: to
+Start time: 415.9 seconds
+End time: 416.0 seconds
+Word: have
+Start time: 416.0 seconds
+End time: 416.1 seconds
+Word: any
+Start time: 416.1 seconds
+End time: 416.2 seconds
+Word: correlation
+Start time: 416.2 seconds
+End time: 416.6 seconds
+Word: to
+Start time: 416.6 seconds
+End time: 417.1 seconds
+Word: the
+Start time: 417.1 seconds
+End time: 417.5 seconds
+Word: ripped
+Start time: 417.5 seconds
+End time: 417.8 seconds
+Word: the
+Start time: 417.8 seconds
+End time: 418.1 seconds
+Word: Networth
+Start time: 418.1 seconds
+End time: 418.8 seconds
+Word: takes
+Start time: 418.8 seconds
+End time: 419.8 seconds
+Word: away
+Start time: 419.8 seconds
+End time: 420.1 seconds
+Transcript:  latitude
+Word: latitude
+Start time: 421.3 seconds
+End time: 422.3 seconds
+Transcript:  yeah like when I was in high school people just to stay Rich North for South
+Word: yeah
+Start time: 429.3 seconds
+End time: 430.2 seconds
+Word: like
+Start time: 430.2 seconds
+End time: 430.6 seconds
+Word: when
+Start time: 430.6 seconds
+End time: 430.9 seconds
+Word: I
+Start time: 430.9 seconds
+End time: 431.0 seconds
+Word: was
+Start time: 431.0 seconds
+End time: 431.1 seconds
+Word: in
+Start time: 431.1 seconds
+End time: 431.2 seconds
+Word: high
+Start time: 431.2 seconds
+End time: 431.3 seconds
+Word: school
+Start time: 431.3 seconds
+End time: 431.6 seconds
+Word: people
+Start time: 431.6 seconds
+End time: 431.9 seconds
+Word: just
+Start time: 431.9 seconds
+End time: 432.2 seconds
+Word: to
+Start time: 432.2 seconds
+End time: 432.3 seconds
+Word: stay
+Start time: 432.3 seconds
+End time: 432.6 seconds
+Word: Rich
+Start time: 432.6 seconds
+End time: 433.8 seconds
+Word: North
+Start time: 433.8 seconds
+End time: 434.4 seconds
+Word: for
+Start time: 434.4 seconds
+End time: 434.7 seconds
+Word: South
+Start time: 434.7 seconds
+End time: 435.2 seconds
+Transcript:  longest field
+Word: longest
+Start time: 436.4 seconds
+End time: 437.1 seconds
+Word: field
+Start time: 437.1 seconds
+End time: 437.2 seconds
+Transcript:  I have a feeling that latitude and longitude are pretty much similar
+Word: I
+Start time: 439.8 seconds
+End time: 440.1 seconds
+Word: have
+Start time: 440.1 seconds
+End time: 440.4 seconds
+Word: a
+Start time: 440.4 seconds
+End time: 440.4 seconds
+Word: feeling
+Start time: 440.4 seconds
+End time: 440.7 seconds
+Word: that
+Start time: 440.7 seconds
+End time: 441.0 seconds
+Word: latitude
+Start time: 441.0 seconds
+End time: 441.4 seconds
+Word: and
+Start time: 441.4 seconds
+End time: 441.6 seconds
+Word: longitude
+Start time: 441.6 seconds
+End time: 442.2 seconds
+Word: are
+Start time: 442.2 seconds
+End time: 442.4 seconds
+Word: pretty
+Start time: 442.4 seconds
+End time: 442.8 seconds
+Word: much
+Start time: 442.8 seconds
+End time: 443.0 seconds
+Word: similar
+Start time: 443.0 seconds
+End time: 443.4 seconds
+Transcript:  well not similar
+Word: well
+Start time: 452.8 seconds
+End time: 453.3 seconds
+Word: not
+Start time: 453.3 seconds
+End time: 453.8 seconds
+Word: similar
+Start time: 453.8 seconds
+End time: 454.3 seconds
+Transcript:  source
+Word: source
+Start time: 459.6 seconds
+End time: 460.2 seconds
+Transcript:  yeah it would be better if I saw it this way
+Word: yeah
+Start time: 475.2 seconds
+End time: 475.6 seconds
+Word: it
+Start time: 475.6 seconds
+End time: 476.1 seconds
+Word: would
+Start time: 476.1 seconds
+End time: 476.2 seconds
+Word: be
+Start time: 476.2 seconds
+End time: 476.3 seconds
+Word: better
+Start time: 476.3 seconds
+End time: 476.5 seconds
+Word: if
+Start time: 476.5 seconds
+End time: 476.6 seconds
+Word: I
+Start time: 476.6 seconds
+End time: 476.7 seconds
+Word: saw
+Start time: 476.7 seconds
+End time: 476.9 seconds
+Word: it
+Start time: 476.9 seconds
+End time: 477.1 seconds
+Word: this
+Start time: 477.1 seconds
+End time: 477.2 seconds
+Word: way
+Start time: 477.2 seconds
+End time: 477.5 seconds
+Transcript:  real estate yeah that makes people rich
+Word: real
+Start time: 481.5 seconds
+End time: 482.0 seconds
+Word: estate
+Start time: 482.0 seconds
+End time: 482.4 seconds
+Word: yeah
+Start time: 482.4 seconds
+End time: 482.6 seconds
+Word: that
+Start time: 482.6 seconds
+End time: 483.6 seconds
+Word: makes
+Start time: 483.6 seconds
+End time: 483.8 seconds
+Word: people
+Start time: 483.8 seconds
+End time: 484.1 seconds
+Word: rich
+Start time: 484.1 seconds
+End time: 484.5 seconds
+Transcript:  take away the country
+Word: take
+Start time: 486.6 seconds
+End time: 487.2 seconds
+Word: away
+Start time: 487.2 seconds
+End time: 487.4 seconds
+Word: the
+Start time: 487.4 seconds
+End time: 487.5 seconds
+Word: country
+Start time: 487.5 seconds
+End time: 488.0 seconds
+Transcript:  spraying my more or less the same
+Word: spraying
+Start time: 489.2 seconds
+End time: 489.7 seconds
+Word: my
+Start time: 489.7 seconds
+End time: 489.9 seconds
+Word: more
+Start time: 489.9 seconds
+End time: 490.2 seconds
+Word: or
+Start time: 490.2 seconds
+End time: 490.2 seconds
+Word: less
+Start time: 490.2 seconds
+End time: 490.4 seconds
+Word: the
+Start time: 490.4 seconds
+End time: 490.5 seconds
+Word: same
+Start time: 490.5 seconds
+End time: 490.5 seconds
+Transcript:  Diversified
+Word: Diversified
+Start time: 495.1 seconds
+End time: 496.2 seconds
+Transcript:  hedge funds Investments
+Word: hedge
+Start time: 498.1 seconds
+End time: 498.6 seconds
+Word: funds
+Start time: 498.6 seconds
+End time: 499.1 seconds
+Word: Investments
+Start time: 499.1 seconds
+End time: 500.3 seconds
+Transcript:  real estate Whipple you're the winner
+Word: real
+Start time: 501.4 seconds
+End time: 501.9 seconds
+Word: estate
+Start time: 501.9 seconds
+End time: 502.4 seconds
+Word: Whipple
+Start time: 502.4 seconds
+End time: 503.0 seconds
+Word: you're
+Start time: 503.0 seconds
+End time: 503.2 seconds
+Word: the
+Start time: 503.2 seconds
+End time: 503.4 seconds
+Word: winner
+Start time: 503.4 seconds
+End time: 503.7 seconds
+Transcript:  Walmart
+Word: Walmart
+Start time: 507.7 seconds
+End time: 508.5 seconds
+Transcript:  Zara
+Word: Zara
+Start time: 510.7 seconds
+End time: 511.6 seconds
+Transcript:  we're just about at the one minute warning here okay no problem to discuss
+Word: we're
+Start time: 512.6 seconds
+End time: 513.0 seconds
+Word: just
+Start time: 513.0 seconds
+End time: 513.1 seconds
+Word: about
+Start time: 513.1 seconds
+End time: 513.3 seconds
+Word: at
+Start time: 513.3 seconds
+End time: 513.5 seconds
+Word: the
+Start time: 513.5 seconds
+End time: 513.5 seconds
+Word: one
+Start time: 513.5 seconds
+End time: 513.7 seconds
+Word: minute
+Start time: 513.7 seconds
+End time: 513.9 seconds
+Word: warning
+Start time: 513.9 seconds
+End time: 514.2 seconds
+Word: here
+Start time: 514.2 seconds
+End time: 514.5 seconds
+Word: okay
+Start time: 514.5 seconds
+End time: 515.8 seconds
+Word: no
+Start time: 515.8 seconds
+End time: 516.2 seconds
+Word: problem
+Start time: 516.2 seconds
+End time: 516.8 seconds
+Word: to
+Start time: 516.8 seconds
+End time: 518.0 seconds
+Word: discuss
+Start time: 518.0 seconds
+End time: 518.2 seconds
+Transcript:  number of Records
+Word: number
+Start time: 523.5 seconds
+End time: 524.0 seconds
+Word: of
+Start time: 524.0 seconds
+End time: 524.1 seconds
+Word: Records
+Start time: 524.1 seconds
+End time: 524.5 seconds
+Transcript:  average poor okay
+Word: average
+Start time: 541.4 seconds
+End time: 542.1 seconds
+Word: poor
+Start time: 542.1 seconds
+End time: 542.4 seconds
+Word: okay
+Start time: 542.4 seconds
+End time: 543.2 seconds
+Transcript:  tender
+Word: tender
+Start time: 549.9 seconds
+End time: 551.3 seconds
+Transcript:  getting here
+Word: getting
+Start time: 552.4 seconds
+End time: 553.0 seconds
+Word: here
+Start time: 553.0 seconds
+End time: 553.1 seconds
+Transcript:  but on the average there isn't much difference between man and woman which means that
+Word: but
+Start time: 558.6 seconds
+End time: 559.6 seconds
+Word: on
+Start time: 559.6 seconds
+End time: 560.3 seconds
+Word: the
+Start time: 560.3 seconds
+End time: 560.4 seconds
+Word: average
+Start time: 560.4 seconds
+End time: 560.7 seconds
+Word: there
+Start time: 560.7 seconds
+End time: 562.0 seconds
+Word: isn't
+Start time: 562.0 seconds
+End time: 562.3 seconds
+Word: much
+Start time: 562.3 seconds
+End time: 562.5 seconds
+Word: difference
+Start time: 562.5 seconds
+End time: 563.1 seconds
+Word: between
+Start time: 563.1 seconds
+End time: 563.3 seconds
+Word: man
+Start time: 563.3 seconds
+End time: 563.7 seconds
+Word: and
+Start time: 563.7 seconds
+End time: 563.7 seconds
+Word: woman
+Start time: 563.7 seconds
+End time: 563.9 seconds
+Word: which
+Start time: 563.9 seconds
+End time: 564.4 seconds
+Word: means
+Start time: 564.4 seconds
+End time: 564.8 seconds
+Word: that
+Start time: 564.8 seconds
+End time: 564.9 seconds
+Transcript:  it's just the Mad difference in the numbers I think that there is much difference in the net worth
+Word: it's
+Start time: 566.0 seconds
+End time: 566.5 seconds
+Word: just
+Start time: 566.5 seconds
+End time: 566.8 seconds
+Word: the
+Start time: 566.8 seconds
+End time: 567.4 seconds
+Word: Mad
+Start time: 567.4 seconds
+End time: 567.7 seconds
+Word: difference
+Start time: 567.7 seconds
+End time: 568.2 seconds
+Word: in
+Start time: 568.2 seconds
+End time: 568.4 seconds
+Word: the
+Start time: 568.4 seconds
+End time: 568.5 seconds
+Word: numbers
+Start time: 568.5 seconds
+End time: 569.1 seconds
+Word: I
+Start time: 569.1 seconds
+End time: 569.4 seconds
+Word: think
+Start time: 569.4 seconds
+End time: 570.0 seconds
+Word: that
+Start time: 570.0 seconds
+End time: 570.4 seconds
+Word: there
+Start time: 570.4 seconds
+End time: 570.7 seconds
+Word: is
+Start time: 570.7 seconds
+End time: 570.8 seconds
+Word: much
+Start time: 570.8 seconds
+End time: 571.2 seconds
+Word: difference
+Start time: 571.2 seconds
+End time: 571.7 seconds
+Word: in
+Start time: 571.7 seconds
+End time: 571.8 seconds
+Word: the
+Start time: 571.8 seconds
+End time: 572.0 seconds
+Word: net
+Start time: 572.0 seconds
+End time: 572.2 seconds
+Word: worth
+Start time: 572.2 seconds
+End time: 572.7 seconds
+Transcript:  probably
+Word: probably
+Start time: 573.9 seconds
+End time: 574.7 seconds
+Transcript:  last name name of source I'm not so much interested
+Word: last
+Start time: 576.0 seconds
+End time: 577.5 seconds
+Word: name
+Start time: 577.5 seconds
+End time: 577.7 seconds
+Word: name
+Start time: 577.7 seconds
+End time: 578.0 seconds
+Word: of
+Start time: 578.0 seconds
+End time: 578.1 seconds
+Word: source
+Start time: 578.1 seconds
+End time: 578.7 seconds
+Word: I'm
+Start time: 578.7 seconds
+End time: 579.1 seconds
+Word: not
+Start time: 579.1 seconds
+End time: 579.2 seconds
+Word: so
+Start time: 579.2 seconds
+End time: 579.4 seconds
+Word: much
+Start time: 579.4 seconds
+End time: 579.4 seconds
+Word: interested
+Start time: 579.4 seconds
+End time: 579.9 seconds
+Transcript:  h
+Word: h
+Start time: 581.6 seconds
+End time: 582.2 seconds
+Transcript:  63 richest people's average age in 63
+Word: 63
+Start time: 596.4 seconds
+End time: 597.3 seconds
+Word: richest
+Start time: 597.3 seconds
+End time: 597.7 seconds
+Word: people's
+Start time: 597.7 seconds
+End time: 598.1 seconds
+Word: average
+Start time: 598.1 seconds
+End time: 598.4 seconds
+Word: age
+Start time: 598.4 seconds
+End time: 598.7 seconds
+Word: in
+Start time: 598.7 seconds
+End time: 598.9 seconds
+Word: 63
+Start time: 598.9 seconds
+End time: 599.5 seconds
+Transcript:  so we're out of time is there one or two main points that you found most interesting looking at the state of Fest
+Word: so
+Start time: 603.8 seconds
+End time: 604.6 seconds
+Word: we're
+Start time: 604.6 seconds
+End time: 604.8 seconds
+Word: out
+Start time: 604.8 seconds
+End time: 604.9 seconds
+Word: of
+Start time: 604.9 seconds
+End time: 604.9 seconds
+Word: time
+Start time: 604.9 seconds
+End time: 605.2 seconds
+Word: is
+Start time: 605.2 seconds
+End time: 607.3 seconds
+Word: there
+Start time: 607.3 seconds
+End time: 607.5 seconds
+Word: one
+Start time: 607.5 seconds
+End time: 607.8 seconds
+Word: or
+Start time: 607.8 seconds
+End time: 607.9 seconds
+Word: two
+Start time: 607.9 seconds
+End time: 608.2 seconds
+Word: main
+Start time: 608.2 seconds
+End time: 608.6 seconds
+Word: points
+Start time: 608.6 seconds
+End time: 608.8 seconds
+Word: that
+Start time: 608.8 seconds
+End time: 609.2 seconds
+Word: you
+Start time: 609.2 seconds
+End time: 609.3 seconds
+Word: found
+Start time: 609.3 seconds
+End time: 609.5 seconds
+Word: most
+Start time: 609.5 seconds
+End time: 610.2 seconds
+Word: interesting
+Start time: 610.2 seconds
+End time: 610.5 seconds
+Word: looking
+Start time: 610.5 seconds
+End time: 611.2 seconds
+Word: at
+Start time: 611.2 seconds
+End time: 611.3 seconds
+Word: the
+Start time: 611.3 seconds
+End time: 611.4 seconds
+Word: state
+Start time: 611.4 seconds
+End time: 611.7 seconds
+Word: of
+Start time: 611.7 seconds
+End time: 611.7 seconds
+Word: Fest
+Start time: 611.7 seconds
+End time: 612.1 seconds
+Transcript:  well let's Davis I'd probably it's about
+Word: well
+Start time: 613.0 seconds
+End time: 613.6 seconds
+Word: let's
+Start time: 613.6 seconds
+End time: 614.3 seconds
+Word: Davis
+Start time: 614.3 seconds
+End time: 614.7 seconds
+Word: I'd
+Start time: 614.7 seconds
+End time: 615.0 seconds
+Word: probably
+Start time: 615.0 seconds
+End time: 616.4 seconds
+Word: it's
+Start time: 616.4 seconds
+End time: 616.8 seconds
+Word: about
+Start time: 616.8 seconds
+End time: 617.1 seconds
+Transcript:  but a distribution of the rich people I could see that
+Word: but
+Start time: 618.3 seconds
+End time: 618.7 seconds
+Word: a
+Start time: 618.7 seconds
+End time: 618.7 seconds
+Word: distribution
+Start time: 618.7 seconds
+End time: 619.1 seconds
+Word: of
+Start time: 619.1 seconds
+End time: 619.4 seconds
+Word: the
+Start time: 619.4 seconds
+End time: 619.6 seconds
+Word: rich
+Start time: 619.6 seconds
+End time: 619.8 seconds
+Word: people
+Start time: 619.8 seconds
+End time: 620.1 seconds
+Word: I
+Start time: 620.1 seconds
+End time: 620.3 seconds
+Word: could
+Start time: 620.3 seconds
+End time: 620.5 seconds
+Word: see
+Start time: 620.5 seconds
+End time: 620.7 seconds
+Word: that
+Start time: 620.7 seconds
+End time: 620.8 seconds
+Transcript:  all the rich people the real estate has the
+Word: all
+Start time: 622.0 seconds
+End time: 622.5 seconds
+Word: the
+Start time: 622.5 seconds
+End time: 623.9 seconds
+Word: rich
+Start time: 623.9 seconds
+End time: 624.2 seconds
+Word: people
+Start time: 624.2 seconds
+End time: 624.3 seconds
+Word: the
+Start time: 624.3 seconds
+End time: 625.4 seconds
+Word: real
+Start time: 625.4 seconds
+End time: 625.6 seconds
+Word: estate
+Start time: 625.6 seconds
+End time: 626.3 seconds
+Word: has
+Start time: 626.3 seconds
+End time: 627.6 seconds
+Word: the
+Start time: 627.6 seconds
+End time: 627.9 seconds
+Transcript:  the source of richness comes from a real estate it is the most effective thing like Donald Trump examples and probably the net worth between man and woman were different but the average value between each per per per person about men and women were not that different as the net worth which kind of shows that probably the number of rich people in men are more than women by
+Word: the
+Start time: 630.3 seconds
+End time: 631.2 seconds
+Word: source
+Start time: 631.2 seconds
+End time: 631.6 seconds
+Word: of
+Start time: 631.6 seconds
+End time: 631.7 seconds
+Word: richness
+Start time: 631.7 seconds
+End time: 632.3 seconds
+Word: comes
+Start time: 632.3 seconds
+End time: 632.9 seconds
+Word: from
+Start time: 632.9 seconds
+End time: 633.2 seconds
+Word: a
+Start time: 633.2 seconds
+End time: 633.3 seconds
+Word: real
+Start time: 633.3 seconds
+End time: 633.7 seconds
+Word: estate
+Start time: 633.7 seconds
+End time: 634.0 seconds
+Word: it
+Start time: 634.0 seconds
+End time: 635.0 seconds
+Word: is
+Start time: 635.0 seconds
+End time: 635.2 seconds
+Word: the
+Start time: 635.2 seconds
+End time: 635.4 seconds
+Word: most
+Start time: 635.4 seconds
+End time: 635.5 seconds
+Word: effective
+Start time: 635.5 seconds
+End time: 636.0 seconds
+Word: thing
+Start time: 636.0 seconds
+End time: 636.2 seconds
+Word: like
+Start time: 636.2 seconds
+End time: 636.8 seconds
+Word: Donald
+Start time: 636.8 seconds
+End time: 637.2 seconds
+Word: Trump
+Start time: 637.2 seconds
+End time: 637.6 seconds
+Word: examples
+Start time: 637.6 seconds
+End time: 637.9 seconds
+Word: and
+Start time: 637.9 seconds
+End time: 639.7 seconds
+Word: probably
+Start time: 639.7 seconds
+End time: 640.6 seconds
+Word: the
+Start time: 640.6 seconds
+End time: 640.9 seconds
+Word: net
+Start time: 640.9 seconds
+End time: 641.1 seconds
+Word: worth
+Start time: 641.1 seconds
+End time: 641.7 seconds
+Word: between
+Start time: 641.7 seconds
+End time: 642.5 seconds
+Word: man
+Start time: 642.5 seconds
+End time: 642.9 seconds
+Word: and
+Start time: 642.9 seconds
+End time: 643.0 seconds
+Word: woman
+Start time: 643.0 seconds
+End time: 643.1 seconds
+Word: were
+Start time: 643.1 seconds
+End time: 643.6 seconds
+Word: different
+Start time: 643.6 seconds
+End time: 644.2 seconds
+Word: but
+Start time: 644.2 seconds
+End time: 644.3 seconds
+Word: the
+Start time: 644.3 seconds
+End time: 645.0 seconds
+Word: average
+Start time: 645.0 seconds
+End time: 645.3 seconds
+Word: value
+Start time: 645.3 seconds
+End time: 645.7 seconds
+Word: between
+Start time: 645.7 seconds
+End time: 646.1 seconds
+Word: each
+Start time: 646.1 seconds
+End time: 646.7 seconds
+Word: per
+Start time: 646.7 seconds
+End time: 647.0 seconds
+Word: per
+Start time: 647.0 seconds
+End time: 647.2 seconds
+Word: per
+Start time: 647.2 seconds
+End time: 647.8 seconds
+Word: person
+Start time: 647.8 seconds
+End time: 648.4 seconds
+Word: about
+Start time: 648.4 seconds
+End time: 649.5 seconds
+Word: men
+Start time: 649.5 seconds
+End time: 649.8 seconds
+Word: and
+Start time: 649.8 seconds
+End time: 649.9 seconds
+Word: women
+Start time: 649.9 seconds
+End time: 650.3 seconds
+Word: were
+Start time: 650.3 seconds
+End time: 650.9 seconds
+Word: not
+Start time: 650.9 seconds
+End time: 651.0 seconds
+Word: that
+Start time: 651.0 seconds
+End time: 651.6 seconds
+Word: different
+Start time: 651.6 seconds
+End time: 652.2 seconds
+Word: as
+Start time: 652.2 seconds
+End time: 652.8 seconds
+Word: the
+Start time: 652.8 seconds
+End time: 652.9 seconds
+Word: net
+Start time: 652.9 seconds
+End time: 653.2 seconds
+Word: worth
+Start time: 653.2 seconds
+End time: 653.5 seconds
+Word: which
+Start time: 653.5 seconds
+End time: 654.2 seconds
+Word: kind
+Start time: 654.2 seconds
+End time: 654.6 seconds
+Word: of
+Start time: 654.6 seconds
+End time: 654.6 seconds
+Word: shows
+Start time: 654.6 seconds
+End time: 655.2 seconds
+Word: that
+Start time: 655.2 seconds
+End time: 655.3 seconds
+Word: probably
+Start time: 655.3 seconds
+End time: 656.7 seconds
+Word: the
+Start time: 656.7 seconds
+End time: 656.9 seconds
+Word: number
+Start time: 656.9 seconds
+End time: 657.3 seconds
+Word: of
+Start time: 657.3 seconds
+End time: 657.7 seconds
+Word: rich
+Start time: 657.7 seconds
+End time: 658.0 seconds
+Word: people
+Start time: 658.0 seconds
+End time: 658.5 seconds
+Word: in
+Start time: 658.5 seconds
+End time: 659.4 seconds
+Word: men
+Start time: 659.4 seconds
+End time: 659.7 seconds
+Word: are
+Start time: 659.7 seconds
+End time: 660.1 seconds
+Word: more
+Start time: 660.1 seconds
+End time: 660.5 seconds
+Word: than
+Start time: 660.5 seconds
+End time: 660.6 seconds
+Word: women
+Start time: 660.6 seconds
+End time: 661.8 seconds
+Word: by
+Start time: 661.8 seconds
+End time: 662.2 seconds
+Transcript:  women the rich people the rich women have almost as equivalent money as the men
+Word: women
+Start time: 663.3 seconds
+End time: 664.1 seconds
+Word: the
+Start time: 664.1 seconds
+End time: 664.7 seconds
+Word: rich
+Start time: 664.7 seconds
+End time: 665.0 seconds
+Word: people
+Start time: 665.0 seconds
+End time: 665.2 seconds
+Word: the
+Start time: 665.2 seconds
+End time: 666.5 seconds
+Word: rich
+Start time: 666.5 seconds
+End time: 666.8 seconds
+Word: women
+Start time: 666.8 seconds
+End time: 667.3 seconds
+Word: have
+Start time: 667.3 seconds
+End time: 668.7 seconds
+Word: almost
+Start time: 668.7 seconds
+End time: 670.0 seconds
+Word: as
+Start time: 670.0 seconds
+End time: 670.3 seconds
+Word: equivalent
+Start time: 670.3 seconds
+End time: 670.6 seconds
+Word: money
+Start time: 670.6 seconds
+End time: 671.1 seconds
+Word: as
+Start time: 671.1 seconds
+End time: 671.4 seconds
+Word: the
+Start time: 671.4 seconds
+End time: 671.6 seconds
+Word: men
+Start time: 671.6 seconds
+End time: 671.8 seconds
+Transcript:  that's something I discovered and
+Word: that's
+Start time: 672.7 seconds
+End time: 673.2 seconds
+Word: something
+Start time: 673.2 seconds
+End time: 673.5 seconds
+Word: I
+Start time: 673.5 seconds
+End time: 673.6 seconds
+Word: discovered
+Start time: 673.6 seconds
+End time: 674.2 seconds
+Word: and
+Start time: 674.2 seconds
+End time: 674.9 seconds
+Transcript:  it doesn't really have a lot of correlation with latitude and longitude
+Word: it
+Start time: 676.0 seconds
+End time: 676.5 seconds
+Word: doesn't
+Start time: 676.5 seconds
+End time: 676.8 seconds
+Word: really
+Start time: 676.8 seconds
+End time: 676.9 seconds
+Word: have
+Start time: 676.9 seconds
+End time: 677.3 seconds
+Word: a
+Start time: 677.3 seconds
+End time: 677.5 seconds
+Word: lot
+Start time: 677.5 seconds
+End time: 677.7 seconds
+Word: of
+Start time: 677.7 seconds
+End time: 677.9 seconds
+Word: correlation
+Start time: 677.9 seconds
+End time: 680.2 seconds
+Word: with
+Start time: 680.2 seconds
+End time: 680.6 seconds
+Word: latitude
+Start time: 680.6 seconds
+End time: 682.1 seconds
+Word: and
+Start time: 682.1 seconds
+End time: 682.2 seconds
+Word: longitude
+Start time: 682.2 seconds
+End time: 682.4 seconds
+Transcript:  age was about 6465 average age of the rich people average
+Word: age
+Start time: 684.5 seconds
+End time: 685.1 seconds
+Word: was
+Start time: 685.1 seconds
+End time: 685.3 seconds
+Word: about
+Start time: 685.3 seconds
+End time: 685.6 seconds
+Word: 6465
+Start time: 685.6 seconds
+End time: 687.4 seconds
+Word: average
+Start time: 687.4 seconds
+End time: 688.2 seconds
+Word: age
+Start time: 688.2 seconds
+End time: 688.3 seconds
+Word: of
+Start time: 688.3 seconds
+End time: 691.0 seconds
+Word: the
+Start time: 691.0 seconds
+End time: 691.1 seconds
+Word: rich
+Start time: 691.1 seconds
+End time: 691.3 seconds
+Word: people
+Start time: 691.3 seconds
+End time: 691.6 seconds
+Word: average
+Start time: 691.6 seconds
+End time: 692.1 seconds
+Transcript:  yep
+Word: yep
+Start time: 693.1 seconds
+End time: 693.6 seconds

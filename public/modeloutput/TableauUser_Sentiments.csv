@@ -1,0 +1,88 @@
+,Start,End,Sentiment,Transcript
+0,0.0,693.0,0.0,starting recording and
+1,8.8,5.7,0.34, so we are going to have a 10-minute long session where you're going to be exploring a Forbes 2018 list of wealthiest people data set and you're going to be thinking aloud as you're exploring the data and at the end you're going to make one or two interesting points about the data features of the day to be found revealing or interesting or informative and I will give you a five minute warning one minute warning I may ask questions you may ask questions with me but other than that I'm going to try to act so go ahead and begin by importing the data and then analyzes
+2,129.0,60.0,0.0, so why do you have so many things
+3,133.0,131.0,0.0, oh I pick this one
+4,136.0,134.0,0.0, I thought
+5,139.0,137.0,0.4019, it'll be interesting to kind of compare by countries
+6,144.0,142.0,0.3612, that's like the first thing that just came to my mind
+7,157.0,146.0,0.8402, you can see that France and Germany is pretty good and retails we are at night Estates is also good
+8,165.0,164.0,0.0, different terms of finance and Investments
+9,169.0,168.0,0.8056, well United States is number one others are not very bad maybe Russia
+10,177.0,174.0,0.0, food and beverage
+11,180.0,178.0,0.0, you asked
+12,183.0,181.0,0.0, Healthcare
+13,185.0,184.0,0.0, China
+14,187.0,186.0,0.0, exception
+15,189.0,188.0,0.0, Manufacturing
+16,192.0,191.0,0.0772, China's number one as expected
+17,198.0,194.0,0.6124, media and entertainment yeah look at the movies they make Oscars
+18,205.0,203.0,0.7096, metals and Mining Russia this is pretty interesting real estate
+19,212.0,209.0,0.0, Hong Kong
+20,215.0,213.0,0.0, new Hong Kong China time is China's money was actually going to Hong Kong to China should be a much bigger than this one
+21,223.0,222.0,0.4215, and United States they've got a lot of land New York Maybe
+22,229.0,228.0,0.0, technology
+23,232.0,230.0,0.296, what who are you at yeah apple
+24,236.0,234.0,0.0, Facebook these things
+25,239.0,238.0,0.0, call Consuelo.
+26,243.0,240.0,0.4215, Popular right now so
+27,246.0,244.0,0.0, find me take off industrial now
+28,253.0,248.0,0.0, somewhat
+29,256.0,254.0,0.2732, US law surprise
+30,265.0,258.0,0.0, Thunder
+31,274.0,266.0,0.4019, Aspera predictable that males have higher the values
+32,282.0,281.0,-0.1531, with basically no exception but how long the female us is the largest
+33,292.0,288.0,0.3612, yeah I want to see that
+34,298.0,293.0,0.0, H I don't I don't think it's going to be that much difference
+35,307.0,301.0,0.0, what was this age
+36,311.0,309.0,0.0, average average average
+37,317.0,315.0,0.0, yeah there's no correlation in the age I could see that
+38,322.0,320.0,0.0, I'm a text away
+39,324.0,323.0,0.2732, well thesaurus
+40,333.0,326.0,-0.5423, this is bad visualization they have so many things
+41,341.0,337.0,0.0, Ralph Lauren wool source
+42,348.0,344.0,-0.4973, I know I don't like this I don't like this feature here
+43,352.0,351.0,0.0, what is position
+44,363.0,353.0,0.0, possession
+45,372.0,363.0,0.0, I don't know what position is but I look at the average it doesn't seem to have any kind of
+46,380.0,378.0,0.0, addition is
+47,383.0,381.0,0.0, do you have a guess as to what position is in this list of rankings of
+48,389.0,388.0,0.5267, richest people in the world
+49,392.0,391.0,0.7269, all is it like how many rich people are in that place
+50,398.0,396.0,0.0, I think it's just the individuals position on the ranking list
+51,413.0,405.0,0.2732, well either way it doesn't seem to have any correlation to the ripped the Networth takes away
+52,421.0,420.0,0.0, latitude
+53,429.0,422.0,0.8074, yeah like when I was in high school people just to stay Rich North for South
+54,436.0,435.0,0.0, longest field
+55,439.0,437.0,0.5719, I have a feeling that latitude and longitude are pretty much similar
+56,452.0,443.0,0.2732, well not similar
+57,459.0,454.0,0.0, source
+58,475.0,460.0,0.6249, yeah it would be better if I saw it this way
+59,481.0,477.0,0.7003, real estate yeah that makes people rich
+60,486.0,484.0,0.0, take away the country
+61,489.0,488.0,0.0, spraying my more or less the same
+62,495.0,490.0,0.0, Diversified
+63,498.0,496.0,0.0, hedge funds Investments
+64,501.0,500.0,0.5859, real estate Whipple you're the winner
+65,507.0,503.0,0.0, Walmart
+66,510.0,508.0,0.0, Zara
+67,512.0,511.0,-0.6597, we're just about at the one minute warning here okay no problem to discuss
+68,523.0,518.0,0.0772, number of Records
+69,541.0,524.0,-0.296, average poor okay
+70,549.0,543.0,0.0, tender
+71,552.0,551.0,0.0, getting here
+72,558.0,553.0,0.0, but on the average there isn't much difference between man and woman which means that
+73,566.0,564.0,-0.3182, it's just the Mad difference in the numbers I think that there is much difference in the net worth
+74,573.0,572.0,0.0, probably
+75,576.0,574.0,-0.3536, last name name of source I'm not so much interested
+76,581.0,579.0,0.0, h
+77,596.0,582.0,0.5267, 63 richest people's average age in 63
+78,603.0,599.0,0.4576, so we're out of time is there one or two main points that you found most interesting looking at the state of Fest
+79,613.0,612.0,0.2732, well let's Davis I'd probably it's about
+80,618.0,617.0,0.7096, but a distribution of the rich people I could see that
+81,622.0,620.0,0.5574, all the rich people the real estate has the
+82,630.0,627.0,0.9471, the source of richness comes from a real estate it is the most effective thing like Donald Trump examples and probably the net worth between man and woman were different but the average value between each per per per person about men and women were not that different as the net worth which kind of shows that probably the number of rich people in men are more than women by
+83,663.0,662.0,0.802, women the rich people the rich women have almost as equivalent money as the men
+84,672.0,671.0,0.0, that's something I discovered and
+85,676.0,674.0,0.0, it doesn't really have a lot of correlation with latitude and longitude
+86,684.0,682.0,0.5574, age was about 6465 average age of the rich people average
