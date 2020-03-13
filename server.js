@@ -37,6 +37,7 @@ var app = express();
  */
 app.use(bodyParser.urlencoded({extended:false})); 
 app.use(bodyParser.json());
+app.use(bodyParser.raw());
 
 /**
  * MULTER CONFIG: we will want to set this up for our server video storage
@@ -157,3 +158,39 @@ app.post('/log', function (req, res){
  });
 
 
+
+app.get('/framesaver', function(req, res){
+  var filename = "/public/frames/"+req.query.frameno+".png";
+  var base64Data = req.query['imgdata'];
+    console.log(base64Data);
+    fs.writeFile(__dirname + filename, base64Data, {encoding: 'base64'}, function(err) {
+      console.log(err);
+    });
+    res.send(filename);
+
+})
+
+app.post('/framesaver', function(req, res){
+  var filename = "/public/frames/"+req.query.frameno+".png";
+  var stream = fs.createWriteStream('temp.txt');
+
+  req.pipe(stream);
+
+  stream.on('close', () => {
+    var base64Data = Object.keys(req.body)[0].replace(/^data:image\/png;base64,/, "");
+    var buf = new Buffer(base64Data, 'base64');    
+    //console.log(req.body);
+    //writeStream = fs.createWriteStream(__dirname + filename);
+    fs.writeFile(__dirname + filename, buf, function(err){console.log(err)});
+      /*
+    fs.writeFile(__dirname + filename, base64Data, {encoding: 'base64'}, function(err) {
+      console.log(err);
+
+    });
+    writeStream.on('finish', () => {
+      console.log('done');    
+    });
+    */
+   res.send(filename);
+  });
+})
