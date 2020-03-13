@@ -6,7 +6,7 @@ var height = 100;
 //var width = video.width;
 
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 0, bottom: 30, left: 0 }
+var margin = { top: 10, right: 50, bottom: 30, left: 50 }
 
 var focussvg = d3.select('#focussvg').select('g')
 var markersize = 100;
