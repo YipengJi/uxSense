@@ -10,7 +10,6 @@ var margin = { top: 0, right: 50, bottom: 0, left: 50 },
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    
     drawPathSlider('speech-rate', 'speechratelinepath');
     drawPathSlider('pitch', 'pitchlinepath');
     drawBarSlider('Action1');

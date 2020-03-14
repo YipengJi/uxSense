@@ -64,103 +64,6 @@
                     </div>                    
                 </div>
             </div>
-            <div class="timelines">
-                <div class="timelines-box">
-
-                    <ul class="collapsible expandable">
-                        <li class=active>
-                            <div class="collapsible-header">
-                                <i class="material-icons">video_library</i>Thumbnails
-                                <i class="material-icons rotate right">expand_more</i></div>
-                            <div class="collapsible-body">
-                                <div id="vidtimelineholder" class="timelineholder">
-                                <canvas id="myCanvas" width="600" height="80" style="border:1px solid #d3d3d3;">
-                                <!--canvas id="myCanvas" width="138" height="80" style="border:1px solid #d3d3d3;"-->
-                                        <div id="thumbnails">
-                                    </div>
-                                    </div>
-                                </canvas>
-                                <!--script type="text/javascript" src="video-timeline-pregenthumbs.js"></script-->
-                                <script type="text/javascript" src="video-timeline.js"></script>
-                            </div>
-                        </li>
-                        <li class=active>
-                            <div class="collapsible-header" >
-                                <i class="material-icons">insert_chart</i>Speech Rate
-                                <i class="material-icons rotate right">expand_more</i>
-                                </div>
-                            <div class="collapsible-body" >
-                                <div id="speech-rate" class="timelineholder"></div>
-                                <script type="text/javascript" src="speechrate-line.js"></script>
-                                <!-- <script type="text/javascript" src="speechrate-bar.js"></script> -->
-                            </div>
-                        </li>
-                        <li class=active>
-                            <div class="collapsible-header">
-                                <i class="material-icons">timeline</i>Pitch
-                                <i class="material-icons rotate right">expand_more</i>
-                                </div>
-                            <div class="collapsible-body">
-                                <div id="pitch" class="timelineholder"></div>
-                                <script type="text/javascript" src="pitch-line.js"></script>
-                            </div>
-                        </li>
-                        <li class=active>
-                            <div class="collapsible-header">
-                                <i class="material-icons">whatshot</i>Action
-                                <i class="material-icons rotate right">expand_more</i>
-                                </div>
-                            <div class="collapsible-body">
-                                <div id="Action1" class="timelineholder"></div>
-                                <script type="text/javascript" src="action-1.js"></script>
-                            </div>
-                        </li>
-                        <li class=active>
-                            <div class="collapsible-header">
-                                <i class="material-icons">insert_emoticon</i>Emotion
-                                <i class="material-icons rotate right">expand_more</i>
-                                </div>
-                            <div class="collapsible-body">
-                                <div id="Emotion"  class="timelineholder"></div>
-                                <script type="text/javascript" src="emotion.js"></script>
-                            </div>
-                        </li>
-                        <li class=active>
-                            <div class="collapsible-header">
-                                <i class="material-icons">assignment</i>User Annotations
-                                <i class="material-icons rotate right">expand_more</i>
-                                </div>
-                            <div class="collapsible-body">
-                                <div id="AnnotationTimeline"  class="timelineholder"></div>
-                                <script type="text/javascript" src="annotationtimeline.js"></script>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-                    
-                    <script>
-                        $(document).ready(function () {
-                            $('.collapsible.expandable').collapsible({
-                                accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-                            });
-                        });
-                    </script>
-
-                    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-                        document.addEventListener('DOMContentLoaded', function () {
-                            M.AutoInit();
-                            var elem = document.querySelector('.collapsible.expandable');
-                            var instance = M.Collapsible.init(elem, {
-                                accordion: false
-                            });
-                        });
-                    </script> -->
-                    
-                    <script type="text/javascript" src="timeline-filters.js"></script>
-                </div>
-            </div>
         </div>
         <div class="right">
             <div class="search">
@@ -218,7 +121,7 @@
                 </div>
                 <script src="load-annotations.js"></script>
             </div>
-            <div class="filter">
+            <!--div class="filter">
                 <div class="filter-box">
                     <form action="#">
                         <p>
@@ -233,10 +136,6 @@
                                         <div id="speechrate_slider"></div>
                                     </div>
                                 </li>
-                            <!-- <script src="nouislider.js">
-                            </script>
-                            <script src="noui-slider.js">
-                            </script> -->
                                 <li>
                                     <label>
                                         <input type="checkbox" />
@@ -273,7 +172,105 @@
                     <script src="noui-slider.js">
                     </script>
                 </div>
-            </div>
+            </div-->
+        </div>
+
+    </div>
+    <div class="timelines">
+        <div class="timelines-box">
+
+            <ul class="collapsible expandable">
+                <li class=active>
+                    <div class="collapsible-header">
+                        <i class="material-icons">video_library</i>Thumbnails
+                        <i class="material-icons rotate right">expand_more</i></div>
+                    <div class="collapsible-body">
+                        <div id="vidtimelineholder" class="timelineholder">
+                        <canvas id="myCanvas" width="600" height="80" style="border:1px solid #d3d3d3;">
+                        <!--canvas id="myCanvas" width="138" height="80" style="border:1px solid #d3d3d3;"-->
+                                <div id="thumbnails">
+                            </div>
+                            </div>
+                        </canvas>
+                        <!--script type="text/javascript" src="video-timeline-pregenthumbs.js"></script-->
+                        <script type="text/javascript" src="video-timeline.js"></script>
+                    </div>
+                </li>
+                <li class=active>
+                    <div class="collapsible-header" >
+                        <i class="material-icons">insert_chart</i>Speech Rate
+                        <i class="material-icons rotate right">expand_more</i>
+                        </div>
+                    <div class="collapsible-body" >
+                        <div id="speech-rate" class="timelineholder"></div>
+                        <script type="text/javascript" src="speechrate-line.js"></script>
+                        <!-- <script type="text/javascript" src="speechrate-bar.js"></script> -->
+                    </div>
+                </li>
+                <li class=active>
+                    <div class="collapsible-header">
+                        <i class="material-icons">timeline</i>Pitch
+                        <i class="material-icons rotate right">expand_more</i>
+                        </div>
+                    <div class="collapsible-body">
+                        <div id="pitch" class="timelineholder"></div>
+                        <script type="text/javascript" src="pitch-line.js"></script>
+                    </div>
+                </li>
+                <li class=active>
+                    <div class="collapsible-header">
+                        <i class="material-icons">whatshot</i>Action
+                        <i class="material-icons rotate right">expand_more</i>
+                        </div>
+                    <div class="collapsible-body">
+                        <div id="Action1" class="timelineholder"></div>
+                        <script type="text/javascript" src="action-1.js"></script>
+                    </div>
+                </li>
+                <li class=active>
+                    <div class="collapsible-header">
+                        <i class="material-icons">insert_emoticon</i>Emotion
+                        <i class="material-icons rotate right">expand_more</i>
+                        </div>
+                    <div class="collapsible-body">
+                        <div id="Emotion"  class="timelineholder"></div>
+                        <script type="text/javascript" src="emotion.js"></script>
+                    </div>
+                </li>
+                <li class=active>
+                    <div class="collapsible-header">
+                        <i class="material-icons">assignment</i>User Annotations
+                        <i class="material-icons rotate right">expand_more</i>
+                        </div>
+                    <div class="collapsible-body">
+                        <div id="AnnotationTimeline"  class="timelineholder"></div>
+                        <script type="text/javascript" src="annotationtimeline.js"></script>
+                    </div>
+                </li>
+            </ul>
+            <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+            <script>
+                $(document).ready(function () {
+                    $('.collapsible.expandable').collapsible({
+                        accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+                    });
+                });
+            </script>
+
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+                document.addEventListener('DOMContentLoaded', function () {
+                    M.AutoInit();
+                    var elem = document.querySelector('.collapsible.expandable');
+                    var instance = M.Collapsible.init(elem, {
+                        accordion: false
+                    });
+                });
+            </script> -->
+            
+            <script type="text/javascript" src="timeline-filters.js"></script>
         </div>
     </div>
 </body> 
