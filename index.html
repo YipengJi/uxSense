@@ -38,23 +38,23 @@
     <!-- Check if firefox; otherwise assume chrome -->
     <script>window.isFirefox = typeof InstallTrigger !== 'undefined';
     </script>
-    <div class="grid-container">
-        <div class="left">
-            <div class="menu">
-                <div class="menu-box">
-                    <!-- <h6>Search and Filter</h6> -->
-                    <nav style="background-color: #0099cc">
-                        <div class="nav-wrapper">
-                            <a href="#" class="brand-logo center" style="color:white">
-                                <bold>uxSense</bold>
-                            </a>
-                        </div>
-                    </nav>
+    <div class="menu">
+        <div class="menu-box">
+            <!-- <h6>Search and Filter</h6> -->
+            <div style="background-color: #0099cc">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo center" style="color:white">
+                        <bold>uxSense</bold>
+                    </a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="left">
             <div class="video">
                 <div class="video-box">
-                    <video id="ux-video" width="600" height="350" style="text-align: center;" controls muted=true autoplay preload>
+                    <video id="ux-video" width="700" height="400" style="text-align: center;" controls muted=true autoplay preload>
                         <source src="TableauUser.mp4" type="video/mp4">
                         <source src="TableauUser.ogg" type="video/ogg"> Your browser does not support HTML5 video.
                     </video>
@@ -72,7 +72,7 @@
                         <div class="nav-wrapper">
                         <form>
                         <div class="input-field">
-                            <input id="search" type="search" required placeholder="Search and Filter Annotations">
+                            <input id="search" type="search" required placeholder="Search and Filter Transcript">
                             <label class="label-icon" for="search">
                                 <i class="material-icons" style="color:gray">search</i>
                             </label>
@@ -83,7 +83,9 @@
                 </nav>                    
                 </div>
             </div>
-            <div class="annotations">
+            <!-- The annotations box looks good and should be what we use when the user opts to add annotation to timeline-->
+            <!-- Temporary suppression is only to see what layout looks like if we have only text table and search bar-->
+            <!--div class="annotations">
                 <div class="annotations-box">
                     <form accept-charset="UTF-8" autocomplete="off">
                         <fieldset>
@@ -96,7 +98,7 @@
                     <input id="annotate-submit" class="btn" type="button" value="Submit" onclick="addAnnotation()"></button>
                 </div>
                 <script src="annotate.js"></script>
-            </div>
+            </div-->
             <div class="tags">
                 <div class="tags-table">
                     <div class="responsive-table table-status-sheet">

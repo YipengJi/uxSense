@@ -2,7 +2,7 @@
 var video = document.getElementById('ux-video');
 
 var margin = { top: 10, right: 50, bottom: 10, left: 50 },
-    width = video.width;
+    width = 1200;
 var height = 100 - margin.top - margin.bottom;
 var focusHeight = 10;
 var hmargin = 10;
@@ -10,7 +10,7 @@ var hmargin = 10;
 
 var focussvg = d3.select('#premierefocus').append('svg')
     .attr('id', 'focussvg')
-    .attr('width', width + margin.left + margin.right)
+    .attr('width', video.width + margin.left + margin.right)
     .attr('height',focusHeight + hmargin)
     .append('g')
     .attr("transform",
@@ -20,21 +20,21 @@ var focussvg = d3.select('#premierefocus').append('svg')
 var bgslide = focussvg.append('rect')
 .attr('id', 'focusrectback')
 .attr('fill', "lightgrey")
-.attr('width', width)
+.attr('width', video.width)
 .attr('height', focusHeight)
 .attr('y', hmargin)
 
-var xScaleTop = d3.scaleTime().range([0, width]);
-var xScaleBottom = d3.scaleTime().range([0, width]);
+var xScaleTop = d3.scaleTime().range([0, video.width]);
+var xScaleBottom = d3.scaleTime().range([0, video.width]);
 var xAxisTop = d3.axisBottom(xScaleTop);
 
 var brush = d3.brushX()
-    .extent([[0, 0], [width, focusHeight]])
+    .extent([[0, 0], [video.width, focusHeight]])
     .on("brush end", function () {
         var s = d3.event.selection || xScaleBottom.range();
         xScaleTop.domain(s.map(xScaleBottom.invert, xScaleBottom));
         d3.selectAll('.x.axis').call(xAxisTop);
-        video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
+        video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / video.width)
         //focus.select(".line").attr("d", lineTop);
         if(focussvg.select('rect.selection').attr('width') > 0 | focussvg.select('rect.selection').attr('width') == null){rescaleTimelines();}
     })
@@ -79,11 +79,11 @@ function rescaleEmotions(){
 
     var x = d3.scaleLinear()
     .domain([newMinFrame, newMaxFrame])
-    .range([0, video.width]);
+    .range([0, width]);
 
     function rectWidth(lowerVal, upperVal){
         gap = upperVal-lowerVal;
-        rangeMult = widMult * (video.width/maxEnd)
+        rangeMult = widMult * (width/maxEnd)
         return (gap * rangeMult)
     }
 
@@ -124,11 +124,11 @@ function rescaleActions(){
 
     var x = d3.scaleLinear()
     .domain([newMinFrame, newMaxFrame])
-    .range([0, video.width]);
+    .range([0, width]);
 
     function rectWidth(lowerVal, upperVal){
         gap = upperVal-lowerVal;
-        rangeMult = widMult * (video.width/maxEnd)
+        rangeMult = widMult * (width/maxEnd)
         return (gap * rangeMult)
     }
 
@@ -166,8 +166,6 @@ function rescaleSpeechrate(){
     var minTime = video.duration * selX/video.width
     var maxTime = video.duration * ( selX + selwid )/video.width  
 
-    var widMult = video.width/selwid
-
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps
     var filtdata = _.filter(data, function(o){return parseFloat(o.Start) >= newMinFrame & parseFloat(o.Start) <= newMaxFrame })
@@ -175,7 +173,7 @@ function rescaleSpeechrate(){
 
     var x = d3.scaleLinear()
         .domain([newMinFrame, newMaxFrame])
-        .range([0, video.width]);
+        .range([0, width]);
 
     var y = d3.scaleLinear()
         .domain([0,5.5])
@@ -232,7 +230,7 @@ function rescaleSpeechrate(){
         var i = bisect(data, x0, 1);
         selectedData = data[i]
 
-        video.currentTime = video.duration * selectedData.Start/maxEnd
+        video.currentTime = video.duration * selectedData.Start/maxEnd 
 
     }
 }
@@ -260,8 +258,6 @@ function rescalePitch(){
     var minTime = video.duration * selX/video.width
     var maxTime = video.duration * ( selX + selwid )/video.width  
 
-    var widMult = video.width/selwid
-
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps
     var filtdata = _.filter(data, function(o){return parseFloat(o.x) >= newMinFrame & parseFloat(o.x) <= newMaxFrame })
@@ -269,7 +265,7 @@ function rescalePitch(){
 
     var x = d3.scaleLinear()
         .domain([newMinFrame, newMaxFrame])
-        .range([0, video.width]);
+        .range([0, width]);
 
 
     var y = d3.scaleLinear()

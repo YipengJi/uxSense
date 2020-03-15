@@ -3,7 +3,7 @@
  */
 var video = document.getElementById('ux-video');
 var height = 100;
-//var width = video.width;
+var width = 1200;
 
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 50, bottom: 30, left: 50 }
@@ -52,7 +52,7 @@ function moveMarker() {
     maxTime = video.duration * (parseFloat(focusselectbox.attr('x')) + parseFloat(focusselectbox.attr('width')))/video.width  
   } 
 
-  var cursorlineX = video.width * (video.currentTime - minTime)/(maxTime-minTime)
+  var cursorlineX = width * (video.currentTime - minTime)/(maxTime-minTime)
 
   try{
     //try to remove marker g.rects for all timelines

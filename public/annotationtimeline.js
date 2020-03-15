@@ -3,7 +3,7 @@ var video = document.getElementById("ux-video");
 
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 50, bottom: 10, left: 50 },
-    width = video.width,
+    width = 1200,
     height = 100 - margin.top - margin.bottom;
 
 var crectheight = 5
@@ -22,7 +22,7 @@ d3.json('userAnnotations/data.json', function(data){
 
     var mainanno = annosvg.append('rect')
     .attr('fill', '#ffa31a')
-    .attr('width', video.width)
+    .attr('width', width)
     .attr('height', crectheight)
     .attr('rx', 5)
     .attr('ry', 5)
