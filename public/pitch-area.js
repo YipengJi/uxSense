@@ -5,7 +5,7 @@ var margin = { top: 10, right: 50, bottom: 10, left: 50 },
     // width = 460 - margin.left - margin.right,
     // height = 400 - margin.top - margin.bottom;
     width = 1200,
-    height = 100 - margin.top - margin.bottom;
+    height = 70;
 
 // append the svg object to the body of the page
 var svg2 = d3.select("#pitch")
@@ -25,16 +25,23 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
     var x = d3.scaleLinear()
         .domain([1, maxEnd])
         .range([0, width]);
-    svg2.append("g")
-        .attr("transform", "translate(0," + height + ")");
-    // .call(d3.axisBottom(x));
 
-    // Add Y axis
+    svg2.append("g")
+        .attr('id', 'pitchxaxis')
+        .attr("transform", "translate(0," + 50 + ")")
+        .call(d3.axisBottom(x)
+            .tickFormat(function(d) {
+                return d3.timeFormat('%M:%S')( new Date(0).setSeconds(d) )            
+            })
+        )
+
+    // Add Y axis--half size
     var y = d3.scaleLinear()
         .domain([0, 200])
-        .range([height, 0]);
-    // svg.append("g")
-    //     .call(d3.axisLeft(y));
+        .range([height/2, 0]);
+
+    svg2.append("g")
+         .call(d3.axisLeft(y).ticks(1))
 
     // This allows to find the closest X index of the mouse:
     var bisect = d3.bisector(function (d) { return d.x; }).left;

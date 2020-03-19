@@ -33,7 +33,7 @@ var brush = d3.brushX()
     .on("brush end", function () {
         var s = d3.event.selection || xScaleBottom.range();
         xScaleTop.domain(s.map(xScaleBottom.invert, xScaleBottom));
-        d3.selectAll('.x.axis').call(xAxisTop);
+        //d3.selectAll('.x.axis').call(xAxisTop);
         video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
         //focus.select(".line").attr("d", lineTop);
         if(focussvg.select('rect.selection').attr('width') > 0 | focussvg.select('rect.selection').attr('width') == null){rescaleTimelines();}
@@ -87,8 +87,16 @@ function rescaleEmotions(){
         return (gap * rangeMult)
     }
 
+    d3.select('#emoxaxis')
+    .call(d3.axisBottom(x)
+        .tickFormat(function(d) {
+            return d3.timeFormat('%M:%S')( new Date(0).setSeconds(d/fps) )            
+        })
+    )
+
+
     emotions.selectAll('.emotionrect')
-    .transition().duration(50)
+    .transition().duration(1)
     .attr('width', function(d){
         return(rectWidth(d.start, d.end))
     })
@@ -132,8 +140,18 @@ function rescaleActions(){
         return (gap * rangeMult)
     }
 
+
+    d3.select('#actxaxis')
+    .call(d3.axisBottom(x)
+        .tickFormat(function(d) {
+            return d3.timeFormat('%M:%S')( new Date(0).setSeconds(d/fps) )            
+        })
+    )
+
+
+
     actions.selectAll('.action1rect')
-    .transition().duration(50)
+    .transition().duration(1)
     .attr('width', function(d){
         return(rectWidth(d.start, d.end))
     })
@@ -179,7 +197,7 @@ function rescaleSpeechrate(){
         .domain([0,5.5])
         .range([height, 0]);
 
-    line.transition().duration(50).attr("d", function(d){    
+    line.transition().duration(1).attr("d", function(d){    
         return(d3.line()
         .x(function (d) { return x(d.Start) })
         .y(function (d) { return y(d.Rate) })
@@ -270,9 +288,17 @@ function rescalePitch(){
 
     var y = d3.scaleLinear()
         .domain([0, 200])
-        .range([height, 0]);
+        .range([height/2, 0]);
         
-    line.transition().duration(10).attr("d", function(d){    
+    d3.select('#pitch').select('#pitchxaxis')
+        .call(d3.axisBottom(x)
+            .tickFormat(function(d) {
+                return d3.timeFormat('%M:%S')( new Date(0).setSeconds(d) )            
+            })    
+        );
+
+
+    line.transition().duration(1).attr("d", function(d){ 
         return(d3.area()
         .x(function (d) { return x(d.x) })
         .y0(function (d) { return y(1) })

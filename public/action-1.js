@@ -20,6 +20,8 @@ d3.csv('modeloutput/actions_all.csv', function(data){
     .domain(_.uniq(_.map(data, 'action')));
 
     var maxEnd = _.max(_.map(data, function(dp){return(1*dp['end'])}));
+    var fps = maxEnd/video.duration
+
     var x = d3.scaleLinear()
         .domain([1, maxEnd])
         .range([0, width]);
@@ -27,7 +29,7 @@ d3.csv('modeloutput/actions_all.csv', function(data){
     var maxProb = _.max(_.map(data, function(dp){return(1*dp['prob'])}));
     var y = d3.scaleLinear()
         .domain([0, maxProb])
-        .range([height, 0]);
+        .range([height/2, 0]);
 
     function rectWidth(lowerVal, upperVal){
         gap = upperVal-lowerVal;
@@ -36,9 +38,18 @@ d3.csv('modeloutput/actions_all.csv', function(data){
     }
 
     function rectHeight(prob){
-        rangeMult = (height/maxProb)
+        rangeMult = (height/(2*maxProb))
         return (prob * rangeMult)
     }
+
+    actsvg.append('g')
+    .attr('id', 'actxaxis')
+    .attr("transform", "translate(0," + 50 + ")")
+    .call(d3.axisBottom(x)
+        .tickFormat(function(d) {
+            return d3.timeFormat('%M:%S')( new Date(0).setSeconds(d/fps) )            
+        })
+    )
 
     var actg = actsvg.append('g')
         .data(data)

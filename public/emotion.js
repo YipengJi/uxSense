@@ -70,6 +70,8 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
     .domain(['N/A', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']);
 
     var maxEnd = _.max(_.map(data, function(dp){return(1*dp['end'])}));
+    var fps = maxEnd/video.duration
+
     var x = d3.scaleLinear()
         .domain([1, maxEnd])
         .range([0, width]);
@@ -77,7 +79,7 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
     var maxProb = _.max(_.map(data, function(dp){return(1*dp['prob'])}));
     var y = d3.scaleLinear()
         .domain([0, maxProb])
-        .range([height, 0]);
+        .range([height/2, 0]);
 
     function rectWidth(lowerVal, upperVal){
         gap = upperVal-lowerVal;
@@ -86,9 +88,19 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
     }
 
     function rectHeight(prob){
-        rangeMult = (height/maxProb)
+        rangeMult = (height/(2*maxProb))
         return (prob * rangeMult)
     }
+
+    emosvg.append('g')
+    .attr('id', 'emoxaxis')
+    .attr("transform", "translate(0," + 50 + ")")
+    .call(d3.axisBottom(x)
+        .tickFormat(function(d) {
+            return d3.timeFormat('%M:%S')( new Date(0).setSeconds(d/fps) )            
+        })
+    )
+
 
     var emog = emosvg.append('g')
         .data(data)
