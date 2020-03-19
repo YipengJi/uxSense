@@ -10,7 +10,7 @@ var hmargin = 10;
 
 var focussvg = d3.select('#premierefocus').append('svg')
     .attr('id', 'focussvg')
-    .attr('width', video.width + margin.left + margin.right)
+    .attr('width', width + margin.left + margin.right)
     .attr('height',focusHeight + hmargin)
     .append('g')
     .attr("transform",
@@ -20,21 +20,21 @@ var focussvg = d3.select('#premierefocus').append('svg')
 var bgslide = focussvg.append('rect')
 .attr('id', 'focusrectback')
 .attr('fill', "lightgrey")
-.attr('width', video.width)
+.attr('width', width)
 .attr('height', focusHeight)
 .attr('y', hmargin)
 
-var xScaleTop = d3.scaleTime().range([0, video.width]);
-var xScaleBottom = d3.scaleTime().range([0, video.width]);
+var xScaleTop = d3.scaleTime().range([0, width]);
+var xScaleBottom = d3.scaleTime().range([0, width]);
 var xAxisTop = d3.axisBottom(xScaleTop);
 
 var brush = d3.brushX()
-    .extent([[0, 0], [video.width, focusHeight]])
+    .extent([[0, 0], [width, focusHeight]])
     .on("brush end", function () {
         var s = d3.event.selection || xScaleBottom.range();
         xScaleTop.domain(s.map(xScaleBottom.invert, xScaleBottom));
         d3.selectAll('.x.axis').call(xAxisTop);
-        video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / video.width)
+        video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
         //focus.select(".line").attr("d", lineTop);
         if(focussvg.select('rect.selection').attr('width') > 0 | focussvg.select('rect.selection').attr('width') == null){rescaleTimelines();}
     })
@@ -65,14 +65,14 @@ function rescaleEmotions(){
     var selX = parseFloat(selrect.attr('x'))
 
     if(isNaN(selwid)){
-        selwid = video.width;
+        selwid = width;
         selX = 1;
     }
 
-    var minTime = video.duration * selX/video.width
-    var maxTime = video.duration * ( selX + selwid )/video.width  
+    var minTime = video.duration * selX/width
+    var maxTime = video.duration * ( selX + selwid )/width  
 
-    var widMult = video.width/selwid
+    var widMult = width/selwid
 
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps
@@ -109,15 +109,15 @@ function rescaleActions(){
     var selX = parseFloat(selrect.attr('x'))
 
     if(isNaN(selwid)){
-        selwid = video.width;
+        selwid = width;
         selX = 1;
     }
 
 
-    var minTime = video.duration * selX/video.width
-    var maxTime = video.duration * ( selX + selwid )/video.width  
+    var minTime = video.duration * selX/width
+    var maxTime = video.duration * ( selX + selwid )/width  
 
-    var widMult = video.width/selwid
+    var widMult = width/selwid
 
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps
@@ -158,13 +158,13 @@ function rescaleSpeechrate(){
     var selX = parseFloat(selrect.attr('x'))
 
     if(isNaN(selwid)){
-        selwid = video.width;
+        selwid = width;
         selX = 1;
     }
 
 
-    var minTime = video.duration * selX/video.width
-    var maxTime = video.duration * ( selX + selwid )/video.width  
+    var minTime = video.duration * selX/width
+    var maxTime = video.duration * ( selX + selwid )/width  
 
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps
@@ -251,12 +251,12 @@ function rescalePitch(){
     var selX = parseFloat(selrect.attr('x'))
 
     if(isNaN(selwid)){
-        selwid = video.width;
+        selwid = width;
         selX = 1;
     }
 
-    var minTime = video.duration * selX/video.width
-    var maxTime = video.duration * ( selX + selwid )/video.width  
+    var minTime = video.duration * selX/width
+    var maxTime = video.duration * ( selX + selwid )/width  
 
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps

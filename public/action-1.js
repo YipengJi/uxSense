@@ -121,5 +121,11 @@ d3.csv('modeloutput/actions_all.csv', function(data){
         })
 
     })
-
+    //and we're going to add rects as background to our filter sliders (and also to block out edges on focus)
+    actsvg.append('rect')
+    .attr('fill', 'white')
+    .attr('height', height + margin.top + margin.bottom)
+    .attr('width', margin.left)
+    .attr('x', 0)
+    .attr('y', 0)
 })

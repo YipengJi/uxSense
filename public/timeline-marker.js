@@ -33,13 +33,13 @@ function dragstarted() {
 }
 
 function dragged() {
-  video.currentTime = video.duration * d3.event.x/video.width
+  video.currentTime = video.duration * d3.event.x/width
   d3.select(this)
   .attr('transform', 'rotate(180) translate('+(-d3.event.x)+',0)')
 }
 
 function dragended() {
-  video.currentTime = video.duration * d3.event.x/video.width
+  video.currentTime = video.duration * d3.event.x/width
   d3.select(this).classed("active", false);
 }
 
@@ -48,8 +48,8 @@ function moveMarker() {
   var maxTime = video.duration;
   var focusselectbox = focussvg.select('rect.selection');
   if(focusselectbox.attr('style') == ""){
-    minTime = video.duration * focusselectbox.attr('x')/video.width
-    maxTime = video.duration * (parseFloat(focusselectbox.attr('x')) + parseFloat(focusselectbox.attr('width')))/video.width  
+    minTime = video.duration * focusselectbox.attr('x')/width
+    maxTime = video.duration * (parseFloat(focusselectbox.attr('x')) + parseFloat(focusselectbox.attr('width')))/width  
   } 
 
   var cursorlineX = width * (video.currentTime - minTime)/(maxTime-minTime)
@@ -61,7 +61,7 @@ function moveMarker() {
     console.log(err)
   }
 
-  var markerX = video.width * (video.currentTime/video.duration)
+  var markerX = width * (video.currentTime/video.duration)
 
   //add marker g.rects for all timelines
   d3.select('.timelines-box').selectAll('svg')
