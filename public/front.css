@@ -1,6 +1,6 @@
 /* grid css */
 .grid-container {
-    height: 450px;
+    height: 430px;
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     grid-template-rows: 1fr 1fr;
@@ -166,7 +166,7 @@ tr:hover {
 /* list*/
 ul {
     list-style: none;
-    max-height: 400px;
+    max-height: 380px;
     /* margin: 0; */
     overflow: auto;
     /* padding: 0;
