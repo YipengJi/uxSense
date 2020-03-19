@@ -272,10 +272,11 @@ function rescalePitch(){
         .domain([0, 200])
         .range([height, 0]);
         
-    line.transition().duration(50).attr("d", function(d){    
-        return(d3.line()
+    line.transition().duration(10).attr("d", function(d){    
+        return(d3.area()
         .x(function (d) { return x(d.x) })
-        .y(function (d) { return y(d.y) })
+        .y0(function (d) { return y(1) })
+        .y1(function (d) { return y(d.y) })
         )(d)
     })
 
@@ -289,10 +290,18 @@ function rescalePitch(){
      // Create the text that travels along the curve of chart
      var focusText = d3.select('#pitchfocustext')
     
+     //Different from line
+    /*
    d3.select("#pitchmouserect")
     .on('mousemove', mousemove)
     .on('click', mouseclick);
-        
+    */
+
+    line
+    .on('mousemove', mousemove)
+    .on('click', mouseclick);
+
+
     // This allows to find the closest X index of the mouse:
     var bisect = d3.bisector(function (d) { return d.x; }).left;
 
