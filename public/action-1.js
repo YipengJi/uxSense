@@ -147,4 +147,8 @@ d3.csv('modeloutput/actions_all.csv', function(data){
     .attr('x', width)
     .attr('y', 0)
 
+    //Add axis labels and ticks after
+    actsvg.append("g")
+         .call(d3.axisLeft(y).ticks(5))
+
 })

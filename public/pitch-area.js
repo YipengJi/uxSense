@@ -41,7 +41,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
         .range([height/2, 0]);
 
     svg2.append("g")
-         .call(d3.axisLeft(y).ticks(1))
+         .call(d3.axisLeft(y).ticks(3))
 
     // This allows to find the closest X index of the mouse:
     var bisect = d3.bisector(function (d) { return d.x; }).left;

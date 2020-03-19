@@ -92,6 +92,7 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
         return (prob * rangeMult)
     }
 
+
     emosvg.append('g')
     .attr('id', 'emoxaxis')
     .attr("transform", "translate(0," + 50 + ")")
@@ -198,5 +199,11 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
     .attr('width', margin.right)
     .attr('x', width)
     .attr('y', 0)
+
+
+    //Add axis labels and ticks after
+    emosvg.append("g")
+    .call(d3.axisLeft(y).ticks(5))
+
 
 })
