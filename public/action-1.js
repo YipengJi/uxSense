@@ -126,6 +126,14 @@ d3.csv('modeloutput/actions_all.csv', function(data){
     .attr('fill', 'white')
     .attr('height', height + margin.top + margin.bottom)
     .attr('width', margin.left)
-    .attr('x', 0)
+    .attr('x', -margin.left)
     .attr('y', 0)
+
+    actsvg.append('rect')
+    .attr('fill', 'white')
+    .attr('height', height + margin.top + margin.bottom)
+    .attr('width', margin.right)
+    .attr('x', width)
+    .attr('y', 0)
+
 })

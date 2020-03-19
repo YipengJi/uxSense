@@ -172,4 +172,19 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
 
     })
 
+    //and we're going to add rects as background to our filter sliders (and also to block out edges on focus)
+    emosvg.append('rect')
+    .attr('fill', 'white')
+    .attr('height', height + margin.top + margin.bottom)
+    .attr('width', margin.left)
+    .attr('x', -margin.left)
+    .attr('y', 0)
+
+    emosvg.append('rect')
+    .attr('fill', 'white')
+    .attr('height', height + margin.top + margin.bottom)
+    .attr('width', margin.right)
+    .attr('x', width)
+    .attr('y', 0)
+
 })
