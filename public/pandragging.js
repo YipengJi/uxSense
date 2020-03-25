@@ -33,6 +33,15 @@ function redrawBrush() {
     var newextmax = mouseStartExtMax + moveDistance
 
     var newext = [newextmin, newextmax]
+
+    if(newextmin < 0){
+        newext = [0, parseFloat(selRect.attr('width'))];
+    }
+
+    if(newextmax > width){
+        newext = [width - parseFloat(selRect.attr('width')), width];
+    }
+
     //we are kind of depending on the brush var from our focustimelines.js script to not be redefined elsewhere; not a great practice, but time limits!
     brush.move(focusBrush, newext)
 
