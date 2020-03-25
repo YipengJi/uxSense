@@ -6,7 +6,6 @@ var margin = { top: 10, right: 50, bottom: 10, left: 50 },
 var height = 100 - margin.top - margin.bottom;
 var focusHeight = 10;
 var hmargin = 10;
-//Todo: add some margins for animation
 
 var focussvg = d3.select('#premierefocus').append('svg')
     .attr('id', 'focussvg')

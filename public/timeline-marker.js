@@ -47,6 +47,7 @@ function moveMarker() {
   var minTime = 0;
   var maxTime = video.duration;
   var focusselectbox = focussvg.select('rect.selection');
+  
   if(focusselectbox.attr('style') == ""){
     minTime = video.duration * focusselectbox.attr('x')/width
     maxTime = video.duration * (parseFloat(focusselectbox.attr('x')) + parseFloat(focusselectbox.attr('width')))/width  
