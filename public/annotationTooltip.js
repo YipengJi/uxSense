@@ -143,14 +143,14 @@ $(document).ready(function () {
         d3.select(this.previousSibling)
         .select('text')
         .attr('style', 'font:bold 12px sans-serif; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; fill:white')
-        .attr('x', -40)
+        .attr('x', -50)
         .text('Interval Note')
 
         d3.select(this.previousSibling)
         .select('rect')
-        .attr('width', 80)
+        .attr('width', 100)
         .attr('height', 35)
-        .attr('x', -45)
+        .attr('x', -60)
     }
 
     function annMouseOut(){
@@ -183,10 +183,8 @@ $(document).ready(function () {
     }
 
     function annMouseClick(annotType){
-        console.log(window.innerHeight)
         d3.select('#AnnotationTooltip')
-        .transition().duration(100)
-        .style("transform", "translate(" + (d3.event.pageX - 300) + "px," + (d3.event.pageY - window.innerHeight) + "px)")   
+        .style("transform", "translate(" + (d3.event.pageX - 300) + "px," + (d3.event.pageY + 30 -  window.devicePixelRatio * window.screen.height) + "px)")   
         .style('display', 'flex')
 
         annotLegend.text(annotType + " Annotation")

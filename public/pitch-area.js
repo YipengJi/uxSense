@@ -119,19 +119,23 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
         selectedData = data[i]
-        var minutes = Math.floor((video.duration * selectedData.x/maxEnd)/60)
-        var seconds = Math.round(60 * (((video.duration * selectedData.x/maxEnd)/60) - minutes))
-        var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
-        focus
-            .attr("cx", x(selectedData.x))
-            .attr("cy", y(selectedData.y))
-        focusTextRect
-            .attr("x", x(selectedData.x) + 10)
-            .attr("y", y(selectedData.y) - 15)
-        focusText
-        .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Pitch:" + selectedData.y)
-        .attr("x", x(selectedData.x) + 15)
-            .attr("y", y(selectedData.y))
+        if(typeof selectedData == 'undefined'){
+            console.warn('Hmm, something is wrong with observation '+i.toString()+' of the pitch data')
+        } else {
+            var minutes = Math.floor((video.duration * selectedData.x/maxEnd)/60)
+            var seconds = Math.round(60 * (((video.duration * selectedData.x/maxEnd)/60) - minutes))
+            var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
+            focus
+                .attr("cx", x(selectedData.x))
+                .attr("cy", y(selectedData.y))
+            focusTextRect
+                .attr("x", x(selectedData.x) + 10)
+                .attr("y", y(selectedData.y) - 15)
+            focusText
+            .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Pitch:" + selectedData.y)
+            .attr("x", x(selectedData.x) + 15)
+                .attr("y", y(selectedData.y))    
+        }
     }
     function mouseout() {
         focus.style("opacity", 0)
