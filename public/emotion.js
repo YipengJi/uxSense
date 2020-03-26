@@ -106,6 +106,7 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
     var emog = emosvg.append('g')
         .data(data)
         .attr('id', 'emotionrects')
+        .attr('origdata', JSON.stringify(data))
         .attr('maxEnd', maxEnd)
 
     d3.select('body').append('div')

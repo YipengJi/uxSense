@@ -54,6 +54,7 @@ d3.csv('modeloutput/actions_all.csv', function(data){
     var actg = actsvg.append('g')
         .data(data)
         .attr('id', 'action1rects')
+        .attr('origdata', JSON.stringify(data))
         .attr('maxEnd', maxEnd)
 
     d3.select('body').append('div')
