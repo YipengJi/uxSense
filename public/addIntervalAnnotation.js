@@ -1,4 +1,5 @@
-function addIntervalAnnotation(){
+//obsolete
+function garbageaddIntervalAnnotation(){
     var annotation = document.getElementById('annotation-text');
     var video = document.getElementById("ux-video");
     var selrect = d3.select('#focussvg').select('rect.selection');
@@ -26,7 +27,8 @@ function addIntervalAnnotation(){
         } 
         , success: function(data){
             document.getElementById("annotation-text").value = null
-            annotationTabPop();
+            d3.select('#AnnotationTooltip').style('display', 'none')
+            //annotationTabPop();
         }
         , error: function(jqXHR, textStatus, err){
             console.log('text status '+textStatus+', err '+err)
