@@ -15,6 +15,13 @@ var actsvg = d3.select("#Action1")
         "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv('modeloutput/actions_all.csv', function(data){
+//d3.csv('modeloutput/actions_best.csv', function(data){
+d3.csv('arbitrary_action_relabel.csv', function(renamedata){
+    
+    data.forEach(function(d){
+        d.old_action = d.action;
+        d.action = _.filter(renamedata, function(o){return o.action == d.old_action})[0].arbitrary_action
+    })
 
     var colorScale = d3.scaleOrdinal(d3.schemeCategory20c)
     .domain(_.uniq(_.map(data, 'action')));
@@ -70,7 +77,6 @@ d3.csv('modeloutput/actions_all.csv', function(data){
         var bestprob = _.max(_.map(thisData,  function(dp){return(1*dp['prob'])}));
 
         var d = _.filter(thisData, function(dp){return(1*dp['prob']==bestprob)})[0]
-
         actg.append('rect')
         .datum(d)
         .attr('width', rectWidth(parseFloat(d.start), parseFloat(d.end)))
@@ -151,5 +157,5 @@ d3.csv('modeloutput/actions_all.csv', function(data){
     //Add axis labels and ticks after
     actsvg.append("g")
          .call(d3.axisLeft(y).ticks(5))
-
+})
 })

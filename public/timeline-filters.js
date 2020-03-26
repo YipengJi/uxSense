@@ -50,7 +50,6 @@ function drawPathSlider(containerID, pathID){
     .extent([[0, 0], [sliderwidth, filterheight]])
     .on("brush end", function () {
         var s = d3.event.selection || yScaleBottom.range();
-        console.log(s)
         yScaleTop.domain(s.map(yScaleBottom.invert, yScaleBottom));
         //d3.selectAll('.x.axis').call(xAxisTop);
         //video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
@@ -123,10 +122,8 @@ function drawBarSlider(containerID){
     .on("brush end", function () {
         var s = d3.event.selection || yScaleBottom.range();
         yScaleTop.domain(s.map(yScaleBottom.invert, yScaleBottom));
-        console.log(yScaleTop.domain())
 
         g.selectAll('.'+rectclass).each(function(d){
-            //console.log(d)
             if(1*d.prob >= yScaleTop.domain()[1] & 1*d.prob <= yScaleTop.domain()[0]){
                 d3.select(this).attr('opacity', 1)
             } else {
