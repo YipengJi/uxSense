@@ -47,17 +47,32 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div>s
     </div-->
     <div class="grid-container">
         <div class="left">
             <div class="video">
                 <div class="video-box">
-                    <video id="ux-video" width="700" height="400" style="text-align: center;" controls preload>
+                    <video id="ux-video" width="600" height="380" style="text-align: center;" controls preload>
                         <source src="TableauUser.mp4" type="video/mp4">
                         <source src="TableauUser.ogg" type="video/ogg"> Your browser does not support HTML5 video.
                     </video>
                 </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="transcript">
+                <div class="transcript-box">
+                    <form accept-charset="UTF-8" autocomplete="off">
+                        <fieldset>
+                            <legend> Transcript </legend>
+                            <label for="name"></label>
+                            <textarea id="transcript-text" style="height:300px;"></textarea>
+                            <br/>
+                        </fieldset>
+                    </form>
+                </div>
+                <script src="annotate.js"></script>
             </div>
         </div>
         <div class="right">
