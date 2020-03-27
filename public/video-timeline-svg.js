@@ -144,5 +144,6 @@ var frameSkip = Math.round(maxThumb/sliderImgCount) - 8;
   
 var thumbframes = thumbs.selectAll('.thumbframe')
     .on('mouseover', function(d){
-        d3.
+        //d3.
+        console.log("don't forget to finish video-timeline-svg.js")
     })
