@@ -1,11 +1,41 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
 /* grid css */
 .grid-container {
-    height: 430px;
+    height: 400px;
+    /* height: 20%; */
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 0.9fr 0.4fr 0.7fr;
     grid-template-rows: 1fr 1fr;
-    grid-template-areas: "left right";
+    grid-template-areas: "left middle right";
     grid-gap: 10px,10px;
+}
+
+.middle {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "transcript";
+    grid-area: middle;
+    margin-top:15px;
+}
+
+.transcript {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "transcript-box";
+    grid-area: transcript;
+}
+
+.transcript-box {
+    grid-area: transcript-box;
 }
 
 .left {
@@ -40,8 +70,9 @@
 
 .video-box {
     grid-area: video-box;
-    margin:0;
-    padding: 0;
+    margin-left: 20px;
+    margin-right: 10px;
+    /* padding: 0; */
     /* border: 1px dotted black; */
     text-align: center;
 }
@@ -52,6 +83,7 @@
     grid-template-rows: 1fr;
     grid-template-areas: "timelines-box";
     grid-area: timelines;
+    height: -webkit-fill-available;
 }
 
 .timelines-box {
@@ -70,9 +102,17 @@
     grid-template-rows: 0.3fr 1.7fr;
     grid-template-areas: "search""tags";
     grid-area: right;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 20px;
 }
 
 .annotations {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "annotations-box";
+    grid-area: annotations;
 }
 
 .annotations-box {
@@ -89,6 +129,7 @@
 
 .tags-table {
     grid-area: tags-table;
+    height: 280px;
 }
 .search {
     display: grid;
@@ -128,13 +169,13 @@ form {
 /*table css*/
 table {
     width: 100%;
-    height: 180px;
+    height: 100%;
     /* border: 1px dotted black; */
 }
 
 tbody {
     display: block;
-    height: 180px;
+    max-height: 250px;
     padding-left:10px; 
     padding-right:10px;
     overflow: auto;
@@ -161,9 +202,12 @@ tr:hover {
 /* list*/
 ul {
     list-style: none;
-    max-height: 380px;
+    /* max-height: 380px; */
     /* margin: 0; */
-    overflow: auto;
+    /* overflow: auto; */
+    height:auto;
+    max-height:80%;
+    overflow:auto;
     /* padding: 0;
     text-indent: 10px; */
 }
@@ -257,7 +301,19 @@ ul {
     border: 0px;
     pointer-events: none;
   }
-  
+
+
+label {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right; */
+    /* width: 400px;
+    line-height: 26px; */
+    /* margin-bottom: 10px; */
+    margin-right: 20px;
+}
+
 
 /* slider */
 
