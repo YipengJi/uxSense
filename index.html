@@ -32,6 +32,11 @@
     
     <!-- <script src="https://demos.jquerymobile.com/1.4.2/js/jquery.mobile-1.4.2.min.js"></script> -->
 
+    <!-- transcript -->
+    <link href="https://vjs.zencdn.net/5.6.0/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/5.6.0/video.js"></script>
+    <script src="videojs-transcript.js"></script>
+
 </head>
 
 <body>
@@ -51,30 +56,52 @@
     </div-->
     <div class="grid-container">
         <div class="left">
-            <div class="video">
-                <div class="video-box">
+            <div class="video-grid">
+                <!-- <div class="video-box">
                     <video id="ux-video" width="600" height="380" style="text-align: center;" controls preload>
                         <source src="TableauUser.mp4" type="video/mp4">
                         <source src="TableauUser.ogg" type="video/ogg"> Your browser does not support HTML5 video.
                     </video>
+                </div> -->
+                <div class="video-container">
+                    <video id="video" class="video-js vjs-default-skin" controls>
+                        <!-- <source src="http://www.openbeelden.nl/files/92/104101.ed_hd.mp4" type="video/mp4">
+                        <source src="http://www.openbeelden.nl/files/92/104105.ed_hd.webm" type="video/webm"> -->
+                        <source src="TableauUser.mp4" type="video/mp4">
+                        <source src="TableauUser.ogg" type="video/ogg">
+                        <track kind="captions" src="captions/TableauUser_captions.vtt" srclang="en" label="English" default>
+                    </video>
+                    <div id="transcript"></div>
                 </div>
+                <script>
+                    var video = videojs('video').ready(function () {
+
+                        // fire up the plugin
+                        var options = {};
+                        var transcript = this.transcript(options);
+                        // var transcript = this.transcript();
+
+                        // attach the widget to the page
+                        var transcriptContainer = document.querySelector('#transcript');
+                        transcriptContainer.appendChild(transcript.el());
+                    });
+                </script>
             </div>
         </div>
-        <div class="middle">
-            <div class="transcript">
+        <!-- <div class="middle">
+            <div class="transcript-grid">
                 <div class="transcript-box">
                     <form accept-charset="UTF-8" autocomplete="off">
                         <fieldset>
                             <legend> Transcript </legend>
                             <label for="name"></label>
-                            <textarea id="transcript-text" style="height:300px;"></textarea>
+                            <textarea id="transcript-area" style="height:300px;"></textarea>
                             <br/>
                         </fieldset>
                     </form>
                 </div>
-                <script src="annotate.js"></script>
             </div>
-        </div>
+        </div> -->
         <div class="right">
             <div class="search">
                 <div class="search-bar">
