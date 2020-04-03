@@ -5,6 +5,11 @@ var margin = { top: 10, right: 50, bottom: 10, left: 50 },
     width = 1200,
     height = 100 - margin.top - margin.bottom;
 
+//windowsize fix
+width = width * 1.25/window.devicePixelRatio
+
+
+
 // append the svg object to the body of the page
 var actsvg = d3.select("#Action1")
     .append("svg")

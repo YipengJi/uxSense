@@ -7,6 +7,11 @@ var width = 1200;
 var focusHeight = 10;
 var hmargin = 10;
 
+
+//windowsize fix
+width = width * 1.25/window.devicePixelRatio
+
+
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 50, bottom: 30, left: 50 }
 

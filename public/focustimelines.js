@@ -7,6 +7,10 @@ var height = 100 - margin.top - margin.bottom;
 var focusHeight = 10;
 var hmargin = 10;
 
+//windowsize fix
+width = width * 1.25/window.devicePixelRatio
+
+
 var focussvg = d3.select('#premierefocus').append('svg')
     .attr('id', 'focussvg')
     .attr('width', width + margin.left + margin.right)
