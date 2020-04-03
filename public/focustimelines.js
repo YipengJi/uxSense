@@ -1,5 +1,5 @@
 //This is where we handle both the focus timeline and the timeline marker that hits all the table svgs
-var video = document.getElementById('ux-video');
+var uxvideo = document.getElementById('video_html5_api');
 
 var margin = { top: 10, right: 50, bottom: 10, left: 50 },
     width = 1200;
@@ -56,7 +56,7 @@ function rescaleTimelines(){
 function rescaleEmotions(){
     var emotions = d3.select("#emotionrects")
     var maxEnd = parseFloat(emotions.attr('maxEnd'))
-    var fps = maxEnd/video.duration
+    var fps = maxEnd/uxvideo.duration
 
     var selrect = d3.select('#focussvg').select('rect.selection');
 
@@ -68,8 +68,8 @@ function rescaleEmotions(){
         selX = 1;
     }
 
-    var minTime = video.duration * selX/width
-    var maxTime = video.duration * ( selX + selwid )/width  
+    var minTime = uxvideo.duration * selX/width
+    var maxTime = uxvideo.duration * ( selX + selwid )/width  
 
     var widMult = width/selwid
 
@@ -108,7 +108,7 @@ function rescaleEmotions(){
 function rescaleActions(){
     var actions = d3.select("#action1rects")
     var maxEnd = parseFloat(actions.attr('maxEnd'))
-    var fps = maxEnd/video.duration
+    var fps = maxEnd/uxvideo.duration
 
     var selrect = d3.select('#focussvg').select('rect.selection');
 
@@ -121,8 +121,8 @@ function rescaleActions(){
     }
 
 
-    var minTime = video.duration * selX/width
-    var maxTime = video.duration * ( selX + selwid )/width  
+    var minTime = uxvideo.duration * selX/width
+    var maxTime = uxvideo.duration * ( selX + selwid )/width  
 
     var widMult = width/selwid
 
@@ -180,8 +180,8 @@ function rescaleSpeechrate(){
     }
 
 
-    var minTime = video.duration * selX/width
-    var maxTime = video.duration * ( selX + selwid )/width  
+    var minTime = uxvideo.duration * selX/width
+    var maxTime = uxvideo.duration * ( selX + selwid )/width  
 
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps
@@ -226,8 +226,8 @@ function rescaleSpeechrate(){
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
         selectedData = data[i]
-        var minutes = Math.floor((video.duration * selectedData.Start/maxEnd)/60)
-        var seconds = Math.round(60 * (((video.duration * selectedData.Start/maxEnd)/60) - minutes))
+        var minutes = Math.floor((uxvideo.duration * selectedData.Start/maxEnd)/60)
+        var seconds = Math.round(60 * (((uxvideo.duration * selectedData.Start/maxEnd)/60) - minutes))
         var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
         focus
             .attr("cx", x(selectedData.Start))
@@ -247,7 +247,7 @@ function rescaleSpeechrate(){
         var i = bisect(data, x0, 1);
         selectedData = data[i]
 
-        video.currentTime = video.duration * selectedData.Start/maxEnd 
+        uxvideo.currentTime = uxvideo.duration * selectedData.Start/maxEnd 
 
     }
 }
@@ -260,7 +260,7 @@ function rescalePitch(){
 
     var data = JSON.parse(line.attr("origdata"));
 
-    var fps = maxEnd/video.duration
+    var fps = maxEnd/uxvideo.duration
 
     var selrect = d3.select('#focussvg').select('rect.selection');
 
@@ -272,8 +272,8 @@ function rescalePitch(){
         selX = 1;
     }
 
-    var minTime = video.duration * selX/width
-    var maxTime = video.duration * ( selX + selwid )/width  
+    var minTime = uxvideo.duration * selX/width
+    var maxTime = uxvideo.duration * ( selX + selwid )/width  
 
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps
@@ -336,8 +336,8 @@ function rescalePitch(){
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
         selectedData = data[i]
-        var minutes = Math.floor((video.duration * selectedData.x/maxEnd)/60)
-        var seconds = Math.round(60 * (((video.duration * selectedData.x/maxEnd)/60) - minutes))
+        var minutes = Math.floor((uxvideo.duration * selectedData.x/maxEnd)/60)
+        var seconds = Math.round(60 * (((uxvideo.duration * selectedData.x/maxEnd)/60) - minutes))
         var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
         focus
             .attr("cx", x(selectedData.x))
@@ -357,7 +357,7 @@ function rescalePitch(){
         var i = bisect(data, x0, 1);
         selectedData = data[i]
 
-        video.currentTime = video.duration * selectedData.x/maxEnd
+        uxvideo.currentTime = uxvideo.duration * selectedData.x/maxEnd
 
     }
 

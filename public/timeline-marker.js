@@ -1,7 +1,7 @@
 /**
  * I should really start commenting my code better. Create timeline "cursor" (current time indicator)--should be draggable
  */
-var video = document.getElementById('ux-video');
+var video = document.getElementById('video_html5_api');
 var height = 100;
 var width = 1200;
 

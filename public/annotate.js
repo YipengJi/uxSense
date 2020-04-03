@@ -5,7 +5,7 @@ function addAnnotation(){
         url: '/annotate'
         , type: 'POST'
         , cache: false
-        , data: { annotation: annotation.value, timestamp:document.getElementById("ux-video").currentTime, posttime:(new Date().getTime())}
+        , data: { annotation: annotation.value, timestamp:document.getElementById("video_html5_api").currentTime, posttime:(new Date().getTime())}
         , callback: function(response){
             console.log(response)
         } 
@@ -57,7 +57,7 @@ function addPointAnnotation(){
         url: '/annotate'
         , type: 'POST'
         , cache: false
-        , data: { annotation: annotation.value, timestamp:document.getElementById("ux-video").currentTime, posttime:(new Date().getTime())}
+        , data: { annotation: annotation.value, timestamp:document.getElementById("video_html5_api").currentTime, posttime:(new Date().getTime())}
         , callback: function(response){
             console.log(response)
         } 
@@ -109,7 +109,7 @@ function addIntervalAnnotation(){
         url: '/annotate'
         , type: 'POST'
         , cache: false
-        , data: { annotation: annotation.value, timestamp:document.getElementById("ux-video").currentTime, posttime:(new Date().getTime())}
+        , data: { annotation: annotation.value, timestamp:document.getElementById("video_html5_api").currentTime, posttime:(new Date().getTime())}
         , callback: function(response){
             console.log(response)
         } 

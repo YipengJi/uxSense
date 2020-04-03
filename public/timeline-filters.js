@@ -1,4 +1,4 @@
-var video = document.getElementById('ux-video');
+var uxvideo = document.getElementById('video_html5_api');
 
 var margin = { top: 0, right: 50, bottom: 0, left: 50 },
     // width = 460 - margin.left - margin.right,
@@ -52,7 +52,7 @@ function drawPathSlider(containerID, pathID){
         var s = d3.event.selection || yScaleBottom.range();
         yScaleTop.domain(s.map(yScaleBottom.invert, yScaleBottom));
         //d3.selectAll('.x.axis').call(xAxisTop);
-        //video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
+        //uxvideo.currentTime = uxvideo.duration * (focussvg.select('rect.selection').attr('x') / width)
         //focus.select(".line").attr("d", lineTop);
         //if(focussvg.select('rect.selection').attr('width') > 0 | focussvg.select('rect.selection').attr('width') == null){rescaleTimelines();}
     })

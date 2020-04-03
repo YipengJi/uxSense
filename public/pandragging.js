@@ -1,7 +1,7 @@
 /**
  * Add pan dragging to all timelines. 
  */
-var video = document.getElementById('ux-video');
+var video = document.getElementById('video_html5_api');
 var height = 100;
 var width = 1200;
 var focusHeight = 10;

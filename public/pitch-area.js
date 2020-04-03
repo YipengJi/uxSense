@@ -1,4 +1,4 @@
-var video = document.getElementById('ux-video');
+var uxvideo = document.getElementById('video_html5_api');
 
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 50, bottom: 10, left: 50 },
@@ -122,8 +122,8 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
         if(typeof selectedData == 'undefined'){
             console.warn('Hmm, something is wrong with observation '+i.toString()+' of the pitch data')
         } else {
-            var minutes = Math.floor((video.duration * selectedData.x/maxEnd)/60)
-            var seconds = Math.round(60 * (((video.duration * selectedData.x/maxEnd)/60) - minutes))
+            var minutes = Math.floor((uxvideo.duration * selectedData.x/maxEnd)/60)
+            var seconds = Math.round(60 * (((uxvideo.duration * selectedData.x/maxEnd)/60) - minutes))
             var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
             focus
                 .attr("cx", x(selectedData.x))
@@ -149,7 +149,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
         var i = bisect(data, x0, 1);
         selectedData = data[i]
 
-        video.currentTime = video.duration * selectedData.x/maxEnd
+        uxvideo.currentTime = uxvideo.duration * selectedData.x/maxEnd
 
     }
 

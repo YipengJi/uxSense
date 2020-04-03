@@ -1,4 +1,4 @@
-var video = document.getElementById("ux-video");
+var uxvideo = document.getElementById("video_html5_api");
 
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 50, bottom: 10, left: 50 },
@@ -27,7 +27,7 @@ d3.csv('arbitrary_action_relabel.csv', function(renamedata){
     .domain(_.uniq(_.map(data, 'action')));
 
     var maxEnd = _.max(_.map(data, function(dp){return(1*dp['end'])}));
-    var fps = maxEnd/video.duration
+    var fps = maxEnd/uxvideo.duration
 
     var x = d3.scaleLinear()
         .domain([1, maxEnd])
@@ -133,8 +133,8 @@ d3.csv('arbitrary_action_relabel.csv', function(renamedata){
 
         })
         .on('click', function(){
-            var fps = maxEnd/video.duration;
-            video.currentTime = d.start/fps;
+            var fps = maxEnd/uxvideo.duration;
+            uxvideo.currentTime = d.start/fps;
 
         })
 
