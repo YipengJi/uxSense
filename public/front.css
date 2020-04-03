@@ -269,6 +269,7 @@ ul {
 }
 
 .collapsible-header {
+    padding-top:0;
     height: 40px;
     justify-content: space-between;
 }
@@ -323,6 +324,16 @@ label {
     margin-right: 20px;
 }
 
+.material-icons {
+    padding-top:0.5rem;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+
+/* #filters {
+    width: 300px; 
+    float: left; 
+} */
 
 /* slider */
 
