@@ -27,7 +27,7 @@ var thumbsvg = d3.select("#vidtimelineholder")
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+        "translate(" + (window.devicePixelRatio/1.25) * margin.left + "," + margin.top + ")");
 
 
 var thumbs = thumbsvg.append('g')

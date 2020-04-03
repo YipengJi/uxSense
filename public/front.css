@@ -8,8 +8,8 @@ body {
 
 /* grid css */
 .grid-container {
-    height: 400px;
-    /* height: 20%; */
+    max-height: 400px;
+    height: 40%; 
     display: grid;
     grid-template-columns: 1.4fr 0.6fr;
     grid-template-rows: 1fr 1fr;
@@ -76,8 +76,13 @@ body {
     /* border: 1px dotted black; */
     text-align: center;
 }
+.premiere-focus{
+    height: 5%; 
+}
+
 
 .timelines {
+    height: 55%; 
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -409,14 +414,14 @@ svg {
 .video-container {
     margin: 20px auto;
     position: relative;
-    width: 1000px;
+    width: 100%;
     height: 375px;
     padding-bottom: 0px;
 }
 
 #video {
     width:580px;
-    height:360px;
+    height:100%;
     margin-left: 20px;
     position: absolute;
 }
@@ -424,16 +429,16 @@ svg {
 #transcript {
     position: absolute;
     margin-left:10px;
-    left: 600px;
-    width: 380px;
+    left: 60%;
+    width: 38%;
     font-family: Arial, sans-serif;
     overflow-x: scroll;
-    height: 360px;
+    height: 100%;
     /* border: 1px solid #111; */
 }
 
 .transcript-header {
-    height: 25px;
+    height: 5%;
     padding: 2px;
     font-weight: bold;
 }
@@ -443,10 +448,10 @@ svg {
 }
 
 .transcript-body {
-    width: 380px;
+    width: 100%;
     overflow-y: scroll;
     background-color: #e7e7e7;
-    height: 335px;
+    height: 95%;
 }
 
 .transcript-line {
