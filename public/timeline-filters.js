@@ -3,13 +3,13 @@ var uxvideo = document.getElementById('video_html5_api');
 var margin = { top: 0, right: 50, bottom: 0, left: 50 },
     // width = 460 - margin.left - margin.right,
     // height = 400 - margin.top - margin.bottom;
-    width = 1200,
     filterheight = 50;
 
     var sliderwidth = 15;
 
 //windowsize fix
-width = width * 1.25/window.devicePixelRatio
+width = window.innerWidth - (margin.left + margin.right)
+
 
 
 //document.addEventListener("DOMContentLoaded", function (event) {

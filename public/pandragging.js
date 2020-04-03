@@ -3,13 +3,14 @@
  */
 var video = document.getElementById('video_html5_api');
 var height = 100;
-var width = 1200;
 var focusHeight = 10;
 var hmargin = 10;
 
+var margin = { top: 10, right: 50, bottom: 10, left: 50 }
 
 //windowsize fix
-width = width * 1.25/window.devicePixelRatio
+width = window.innerWidth - (margin.left + margin.right)
+
 
 
 // set the dimensions and margins of the graph

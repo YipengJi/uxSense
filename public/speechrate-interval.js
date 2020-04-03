@@ -3,11 +3,11 @@ var video = document.getElementById('video_html5_api');
 var margin = { top: 0, right: 50, bottom: 0, left: 50 },
     // width = 460 - margin.left - margin.right,
     // height = 400 - margin.top - margin.bottom;
-    width = 1200,
     height = 100 - margin.top - margin.bottom;
 
    //windowsize fix
-width = width * 1.25/window.devicePixelRatio
+   width = window.innerWidth - (margin.left + margin.right)
+
 
  
 // append the svg object to the body of the page

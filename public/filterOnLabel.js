@@ -86,8 +86,8 @@ function showFilters(checkedfilters, rectclass, containerID, g){
 }    
 
 
-setTimeout('filterOnLabel("Emotion")', 1000)
-setTimeout('filterOnLabel("Action1")', 1000)
+//setTimeout('filterOnLabel("Emotion")', 1000)
+//setTimeout('filterOnLabel("Action1")', 1000)
 
 d3.selectAll('.collapsible-header').selectAll('.filters').selectAll('span').on('click', function(){
     var thisElem = d3.select(this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);
