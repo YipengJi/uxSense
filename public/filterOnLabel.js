@@ -28,15 +28,20 @@ function filterOnLabel(containerID){
     for (var i = 0; i < container.childNodes.length; i++) {
         if (container.childNodes[i].className == "collapsible-header") {
             collapseheader = container.childNodes[i];
-            for(var j = 0; j < collapseheader.childNodes.length; j++){
-                if(collapseheader.childNodes[j].className == "filters"){
-                    filtercontainer = collapseheader.childNodes[j];
-                    var filters = filtercontainer.getElementsByTagName('label');
+            //console.log(collapseheader)
+            //for(var j = 0; j < collapseheader.childNodes.length; j++){
+            //var filtercontainer = d3.select(collapseheader).selectAll('.filters')._groups[0];
+            var filtercontainer = d3.select(collapseheader).selectAll('.filters');
+            //console.log(filtercontainer)
+
+
+                //if(collapseheader.childNodes[j].className == "filters"){
+                    //filtercontainer = collapseheader.childNodes[j];
+                    //var filters = filtercontainer.getElementsByTagName('label');
+                    var filters = filtercontainer.selectAll('label')._groups[0];
+                    //console.log(filters)
                     for(var k = 0; k < filters.length; k++){
                         //console.log(container)
-                        //console.log(collapseheader)
-                        //console.log(filtercontainer)
-                        //console.log(filters)
                         var inputfield = filters[k].childNodes[1];
                         var spanfield = filters[k].childNodes[3].firstChild.nodeValue;
                         allfilters.push({[attrName]:spanfield});
@@ -45,8 +50,8 @@ function filterOnLabel(containerID){
                         }
                     }
                     break;
-                }
-            }
+                //}
+            //}
             break;
         }        
     }
@@ -84,7 +89,12 @@ function showFilters(checkedfilters, rectclass, containerID, g){
 setTimeout('filterOnLabel("Emotion")', 1000)
 setTimeout('filterOnLabel("Action1")', 1000)
 
-d3.selectAll('.collapsible-header').selectAll('span').on('click', function(){
-    var thiscontainerID = d3.select(this.parentElement.parentElement.parentElement.parentElement).select('.timelineholder').attr('id');
+d3.selectAll('.collapsible-header').selectAll('.filters').selectAll('span').on('click', function(){
+    var thisElem = d3.select(this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);
+    
+    var thiscontainerID = thisElem.selectAll('.timelineholder').attr('id');
+
+    //console.log(thisElem);
+    //console.log(thiscontainerID);
     setTimeout("filterOnLabel('"+thiscontainerID+"')", 50);
 })
