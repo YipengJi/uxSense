@@ -410,7 +410,8 @@ svg {
     margin: 20px auto;
     position: relative;
     width: 1000px;
-    height: 400px;
+    height: 375px;
+    padding-bottom: 0px;
 }
 
 #video {
