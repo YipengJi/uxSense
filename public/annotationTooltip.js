@@ -184,7 +184,7 @@ $(document).ready(function () {
 
     function annMouseClick(annotType){
         d3.select('#AnnotationTooltip')
-        .style("transform", "translate(" + (d3.event.pageX - 300) + "px," + (d3.event.pageY + 30 -  window.devicePixelRatio * window.screen.height) + "px)")   
+        .style("transform", "translate(" + (d3.event.pageX - 300) + "px," + (d3.event.pageY + 30 -  1.5*window.devicePixelRatio * window.screen.height) + "px)")   
         .style('display', 'flex')
 
         annotLegend.text(annotType + " Annotation")
