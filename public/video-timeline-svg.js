@@ -23,10 +23,12 @@ for(i = 0; i<=maxThumb; i++){
 // append the svg object to the body of the page
 var thumbsvg = d3.select("#vidtimelineholder")
     .append("svg")
+    .attr("id", "vidthumbnailsvg")
     .attr("width", "100%")
     .attr("height", (height + margin.top + margin.bottom))
     .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
     .attr("preserveAspectRatio", "none")
+    .attr("isdragging", false)
     .style('display', 'inline-block')
     .style('position', 'relative')
     .on("mouseover", function(){
@@ -49,7 +51,7 @@ var thumbsvg = d3.select("#vidtimelineholder")
           //var adjX = Math.max(d3.mouse(this).x, distortX)
           var xChk = fisheye(imgPaths[(imgPaths.length-1)]).x
           //if(xChk-(margin.left+margin.right) < width-2*(margin.right+margin.left)){
-          if(xChk < 1000){
+          if((xChk < 1000) || (d3.select(this).attr('isdragging') == "true")){
             return d.x
           } else {
             return distortX;   
@@ -63,10 +65,6 @@ var thumbsvg = d3.select("#vidtimelineholder")
           .attr("x", function(d) { return(d.x)})
     })
     .on('click', function(){
-      //console.log(d3.mouse(this))
-      //var fps = maxThumb/uxvideo.duration;
-      //uxvideo.currentTime = d.vidnum/fps;
-
       uxvideo.currentTime = uxvideo.duration*(d3.mouse(this)[0]-margin.left)/width;
 
     })
@@ -97,7 +95,7 @@ var frameSkip = Math.ceil(maxThumb/sliderImgCount);
       imgPaths[i].y = 1
 
       if(thumbX + thumbWid <= width){
-        thumbs.append('g').datum(imgPaths[i]).append("svg:image")
+        thumbs.append('g').datum(imgPaths[i]).attr('class', 'thumbframeg').append("svg:image")
         .attr("xlink:href",  'frames/frame'+i.toString()+'.png')
         .attr("class",  'thumbframe')
         .attr("x", thumbX)

@@ -416,8 +416,7 @@ function rescaleFrames(){
     var frameSkip = Math.ceil(newMaxFrame/sliderImgCount);
     
 
-    d3.select("#vidtimelineholder")
-    .select("svg")
+    d3.select("#vidthumbnailsvg")
     .on("mouseover", function(){
       var fisheye = d3.fisheye.circular()
       .radius(width/5)
@@ -432,7 +431,7 @@ function rescaleFrames(){
         .attr("x", function(d) {
           var distortX = Math.min(Math.max(d.fisheye.x, 0), (width-(margin.right+margin.left)))
           var xChk = fisheye(imgPaths[(imgPaths.length-1)]).x
-          if(xChk < 1000){
+          if((xChk < 1000) || (d3.select("#vidthumbnailsvg").attr('isdragging') == "true")){
             return d.x
           } else {
             return distortX;   
@@ -450,7 +449,7 @@ function rescaleFrames(){
     .on('click', mouseclick)
 
     //inelegant
-    d3.selectAll(".thumbframe").remove()
+    d3.selectAll(".thumbframeg").remove()
 
     for(i = 0; i<filtdata.length; i+=frameSkip){
         var thumbX = widMult * ( (i/frameSkip)*(width/sliderImgCount) - i*bunchMult )
@@ -460,7 +459,7 @@ function rescaleFrames(){
         filtdata[i].y = 1
 
         if(thumbX + thumbWid <= width){
-            thumbs.append('g').datum(filtdata[i]).append("svg:image")
+            thumbs.append('g').datum(filtdata[i]).attr('class', 'thumbframeg').append("svg:image")
             .attr("xlink:href",  'frames/frame'+filtdata[i].vidnum.toString()+'.png')
             .attr("class",  'thumbframe')
             .attr("x", thumbX)

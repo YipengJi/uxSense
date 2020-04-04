@@ -55,6 +55,7 @@ function redrawBrush() {
 
     
 function panstarted() {
+  d3.select(this).attr('isdragging', true);
   mouseStartX = 1*d3.event.x
   mouseStartExtMin = parseFloat(selRect.attr('x'))
   mouseStartExtMax = mouseStartExtMin + parseFloat(selRect.attr('width')) 
@@ -69,5 +70,6 @@ function panned() {
 }
 
 function panended() {
+  d3.select(this).attr('isdragging', false);
     //do something if needed, but I think we are good
 }
