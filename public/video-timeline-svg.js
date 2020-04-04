@@ -12,7 +12,7 @@ width = window.innerWidth - (margin.left + margin.right)
 //At some point, we may not have exactly 701 frames... but for now we have frames 0-700 and we are going to hard code instead of relying on server data
 var maxThumb = 700
 //var sliderImgCount = 10 * width/maxThumb;
-var sliderImgCount = 100;
+var sliderImgCount = 120;
 
 var imgPaths = []; 
 
@@ -33,7 +33,7 @@ var thumbsvg = d3.select("#vidtimelineholder")
       
       var fisheye = d3.fisheye.circular()
       .radius(width/5)
-      .distortion(5*width/sliderImgCount);
+      .distortion(7*width/sliderImgCount);
 
       //xFisheye = d3.fisheye.scale(d3.scaleIdentity).focus(0)
       
@@ -45,7 +45,7 @@ var thumbsvg = d3.select("#vidtimelineholder")
           d.fisheye = fisheye(d); 
         })
         .attr("x", function(d) {
-          var distortX = Math.min(Math.max(d.fisheye.x, 0), (width-2*(margin.right+margin.left)))
+          var distortX = Math.min(Math.max(d.fisheye.x, 0), (width-(margin.right+margin.left)))
           //var adjX = Math.max(d3.mouse(this).x, distortX)
           var xChk = fisheye(imgPaths[(imgPaths.length-1)]).x
           //if(xChk-(margin.left+margin.right) < width-2*(margin.right+margin.left)){
@@ -61,6 +61,13 @@ var thumbsvg = d3.select("#vidtimelineholder")
  
         thumbs
           .attr("x", function(d) { return(d.x)})
+    })
+    .on('click', function(){
+      //console.log(d3.mouse(this))
+      //var fps = maxThumb/uxvideo.duration;
+      //uxvideo.currentTime = d.vidnum/fps;
+
+      uxvideo.currentTime = uxvideo.duration*(d3.mouse(this)[0]-margin.left)/width;
 
     })
 //    .attr("width", width + margin.left + margin.right)
@@ -70,10 +77,10 @@ var thumbsvg = d3.select("#vidtimelineholder")
         "translate(" + margin.left + "," + margin.top + ")")
 
 var thumbs = thumbsvg.append('g')
-    .data(imgPaths)
     .attr('id', 'thumbframes')
-    .attr('origdata', imgPaths)
+    .attr('origdata', JSON.stringify(imgPaths))
     .attr('maxEnd', maxThumb)
+
 
 //little bit of bad programming here
 var bunchMult = sliderImgCount/width;
@@ -96,16 +103,19 @@ var frameSkip = Math.ceil(maxThumb/sliderImgCount);
         .attr("x", thumbX)
         .attr("y",  0)
         .attr("height", height)
-        .attr("width", thumbWid);    
+        .attr("width", thumbWid)
       }
     }
     
+    thumbs    
+    .data(imgPaths)
+
 //      }
 //  })
 
 
 //Use Cartesian distortion on mouseover; borrow from https://bost.ocks.org/mike/fisheye/
-
+/*
 //(function() {
     d3.fisheye = {
       scale: function(scaleType) {
@@ -191,3 +201,4 @@ var frameSkip = Math.ceil(maxThumb/sliderImgCount);
       return fisheye //d3.rebind(fisheye, scale, "domain", "range");
     }
 //  })();  
+*/

@@ -55,6 +55,7 @@ function rescaleTimelines(){
     rescaleActions();
     rescaleSpeechrate();
     rescalePitch();
+    rescaleFrames();
 }
 
 function rescaleEmotions(){
@@ -367,3 +368,134 @@ function rescalePitch(){
 
 
 }
+
+
+function rescaleFrames(){
+    var thumbs = d3.select("#thumbframes")
+    var maxEnd = parseFloat(thumbs.attr('maxEnd'))
+    var fps = maxEnd/uxvideo.duration
+
+    var data = JSON.parse(thumbs.attr("origdata"));
+
+    var selrect = d3.select('#focussvg').select('rect.selection');
+
+    var selwid = parseFloat(selrect.attr('width'))
+    var selX = parseFloat(selrect.attr('x'))
+
+    if(isNaN(selwid)){
+        selwid = width;
+        selX = 1;
+    }
+
+
+    var minTime = uxvideo.duration * selX/width
+    var maxTime = uxvideo.duration * ( selX + selwid )/width
+
+    var widMult = width/selwid
+
+    var newMinFrame = Math.floor(minTime * fps)
+    var newMaxFrame = Math.ceil(maxTime * fps)
+
+    var filtdata = _.filter(data, function(o){return parseFloat(o.vidnum) >= newMinFrame & parseFloat(o.vidnum) <= newMaxFrame })
+
+    
+    var x = d3.scaleLinear()
+    .domain([newMinFrame, newMaxFrame])
+    .range([0, width]);
+
+    function rectWidth(lowerVal, upperVal){
+        gap = upperVal-lowerVal;
+        rangeMult = widMult * (width/maxEnd)
+        return (gap * rangeMult)
+    }
+
+    //var sliderImgCount = Math.ceil(120*selwid/width);
+    var sliderImgCount = 120;
+
+    var bunchMult = sliderImgCount/width;
+    var frameSkip = Math.ceil(newMaxFrame/sliderImgCount);
+    
+
+    d3.select("#vidtimelineholder")
+    .select("svg")
+    .on("mouseover", function(){
+      var fisheye = d3.fisheye.circular()
+      .radius(width/5)
+      .distortion(7*width/sliderImgCount);
+
+      fisheye.focus(d3.mouse(this));
+
+        var thumbs = d3.selectAll('.thumbframe')
+        thumbs.each(function(d) { 
+          d.fisheye = fisheye(d); 
+        })
+        .attr("x", function(d) {
+          var distortX = Math.min(Math.max(d.fisheye.x, 0), (width-(margin.right+margin.left)))
+          var xChk = fisheye(imgPaths[(imgPaths.length-1)]).x
+          if(xChk < 1000){
+            return d.x
+          } else {
+            return distortX;   
+          }
+        })
+
+    })
+    .on("mouseleave", function(){
+        var thumbs = d3.selectAll('.thumbframe')
+ 
+        thumbs
+          .attr("x", function(d) { return(d.x)})
+
+    })
+    .on('click', mouseclick)
+
+    //inelegant
+    d3.selectAll(".thumbframe").remove()
+
+    for(i = 0; i<filtdata.length; i+=frameSkip){
+        var thumbX = widMult * ( (i/frameSkip)*(width/sliderImgCount) - i*bunchMult )
+        var thumbWid = width/(bunchMult*sliderImgCount)
+
+        filtdata[i].x = thumbX
+        filtdata[i].y = 1
+
+        if(thumbX + thumbWid <= width){
+            thumbs.append('g').datum(filtdata[i]).append("svg:image")
+            .attr("xlink:href",  'frames/frame'+filtdata[i].vidnum.toString()+'.png')
+            .attr("class",  'thumbframe')
+            .attr("x", thumbX)
+            .attr("y",  0)
+            .attr("height", height)
+            .attr("width", thumbWid)
+        }
+    }
+
+    thumbs    
+    .data(filtdata)
+
+    // This allows to find the closest X index of the mouse:
+    var bisect = d3.bisector(function (d) { return d.vidnum; }).left;
+
+    function mouseclick(){
+        //get a new maxEnd--paths handle focus differently, so we need to do this.
+        var x0 = x.invert(d3.mouse(this)[0]);
+        var i = bisect(filtdata, x0, 1);
+        selectedData = filtdata[i]
+
+        uxvideo.currentTime = uxvideo.duration * selectedData.vidnum/maxEnd
+
+    }
+
+
+    /*
+    thumbs.selectAll('.thumbframe')
+    .transition().duration(1)
+    .attr('width', function(d){
+        return(rectWidth(d.vidnum, d.vidnum+width/(bunchMult*sliderImgCount)))
+    })
+    .attr('x', function(d){
+        return(x(d.start))
+    })
+    */
+}
+
