@@ -36,12 +36,12 @@
     <link href="https://vjs.zencdn.net/5.6.0/video-js.css" rel="stylesheet">
     <script src="https://vjs.zencdn.net/5.6.0/video.js"></script>
     <script src="videojs-transcript.js"></script>
-
 </head>
 
 <body>
-    <!-- Check if firefox; otherwise assume chrome -->
-    <script>window.isFirefox = typeof InstallTrigger !== 'undefined';
+    <!-- Check if firefox; otherwise assume chrome. Also rescale to 1 -->
+    <script>
+        window.isFirefox = typeof InstallTrigger !== 'undefined';
     </script>
     <!--div class="menu">
         <div class="menu-box">
