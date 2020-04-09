@@ -82,7 +82,10 @@ function showFilters(checkedfilters, rectclass, containerID, g){
                 d3.select(this).attr('opacity', 0.3)
             }
         })
-    }    
+    }
+    
+    interactiontracking(checkedfilters, containerID, rectclass, 'click', [{hasquerytype:"filterOnLabel"}])
+    
 }    
 
 

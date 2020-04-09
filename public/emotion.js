@@ -153,20 +153,8 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
             d3.select('#emotooltip')
             .html("emotion: " + d.emotion + "<br/>rel. likelihood: " + (Math.round(10000*(d.prob))/100) + "%")
 
-            //TODO: MODULARIZE OUR TRACKING so that we don' thave to add a full $.ajax call spec for each event 
             //Track event
-            $.ajax({ 
-                url: '/log',
-                type: 'POST',
-                cache: false, 
-                data: { data: d, event: {object: 'rect_emotion_'+d.start, trigger: 'mouseover', timestamp:(new Date().getTime())}}, 
-                success: function(){
-                   //alert('Success!')
-                }
-                , error: function(jqXHR, textStatus, err){
-                    console.log('text status '+textStatus+', err '+err)
-                }
-            })
+            interactiontracking(d, 'emotionrects', 'rect_emotion_'+d.start, 'mouseover')
      
         })
         .on('mouseout', function(){
@@ -175,23 +163,13 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
             .style('opacity', 0)
 
             //Track event
-            $.ajax({ 
-                url: '/log',
-                type: 'POST',
-                cache: false, 
-                data: { data: d, event: {object: 'rect_emotion_'+d.start, trigger: 'mouseout', timestamp:(new Date().getTime())}}, 
-                success: function(){
-                   //alert('Success!')
-                }
-                , error: function(jqXHR, textStatus, err){
-                    console.log('text status '+textStatus+', err '+err)
-                }
-            })
+            interactiontracking(d, 'emotionrects', 'rect_emotion_'+d.start, 'mouseout')
 
         })
         .on('click', function(){
             var fps = maxEnd/uxvideo.duration;
             uxvideo.currentTime = d.start/fps;
+            interactiontracking(d, 'emotionrects', 'rect_emotion_'+d.start, 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
 
         })
 

@@ -37,9 +37,16 @@ var brush = d3.brushX()
         var s = d3.event.selection || xScaleBottom.range();
         xScaleTop.domain(s.map(xScaleBottom.invert, xScaleBottom));
         //d3.selectAll('.x.axis').call(xAxisTop);
-        video.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
+        uxvideo.currentTime = video.duration * (focussvg.select('rect.selection').attr('x') / width)
+        
+        var selrect = focussvg.select('rect.selection');
+
         //focus.select(".line").attr("d", lineTop);
-        if(focussvg.select('rect.selection').attr('width') > 0 | focussvg.select('rect.selection').attr('width') == null){rescaleTimelines();}
+        if(focussvg.select('rect.selection').attr('width') > 0 | selrect.attr('width') == null){
+            interactiontracking(xScaleTop.domain(), 'premierefocus', 'rect.selection', 'brush end')
+
+            rescaleTimelines();
+        }
     })
 
 //Leave space for cursor
