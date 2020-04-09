@@ -107,20 +107,8 @@ d3.csv('arbitrary_action_relabel.csv', function(renamedata){
             d3.select('#acttooltip')
             .html("action: " + d.action + "<br/>probability: " + (Math.round(10000*(d.prob))/100) + "%")
 
-            //TODO: MODULARIZE OUR TRACKING so that we don' thave to add a full $.ajax call spec for each event 
             //Track event
-            $.ajax({ 
-                url: '/log',
-                type: 'POST',
-                cache: false, 
-                data: { data: d, event: {object: 'rect_action1_'+d.start, trigger: 'mouseover', timestamp:(new Date().getTime())}}, 
-                success: function(){
-                   //alert('Success!')
-                }
-                , error: function(jqXHR, textStatus, err){
-                    console.log('text status '+textStatus+', err '+err)
-                }
-            })
+            interactiontracking(d, 'action1rects', 'rect_action1_'+d.start, 'mouseover'    )
      
         })
         .on('mouseout', function(){
@@ -129,24 +117,16 @@ d3.csv('arbitrary_action_relabel.csv', function(renamedata){
             .style('opacity', 0)
 
             //Track event
-            $.ajax({ 
-                url: '/log',
-                type: 'POST',
-                cache: false, 
-                data: { data: d, event: {object: 'rect_action1_'+d.start, trigger: 'mouseout', timestamp:(new Date().getTime())}}, 
-                success: function(){
-                   //alert('Success!')
-                }
-                , error: function(jqXHR, textStatus, err){
-                    console.log('text status '+textStatus+', err '+err)
-                }
-            })
+            interactiontracking(d, 'action1rects', 'rect_action1_'+d.start, 'mouseout')
 
         })
         .on('click', function(){
             var fps = maxEnd/uxvideo.duration;
+            var uxvidPrevTime = uxvideo.currentTime
             uxvideo.currentTime = d.start/fps;
 
+            //track event
+            interactiontracking(d, 'action1rects', 'rect_action1_'+d.start, 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
         })
 
     })

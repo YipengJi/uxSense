@@ -51,6 +51,9 @@ $(document).ready(function () {
         .attr('value', 'Cancel')
         .on('click', function(){
             annotDiv.style('display', 'none')
+
+            interactiontracking('cancel annotate', 'annotationTooltip', 'annotate-cancel', 'click')
+
         }) //we will add and change this when called
 
     //Now, for each timeline, add icons
@@ -93,7 +96,9 @@ $(document).ready(function () {
     annPointBtn.on('mouseover', annMouseOver)
     annPointBtn.on('mouseout', annMouseOut)
     annPointBtn.on('click', function(){
-        annMouseClick('Point')
+        //annMouseClick('Point')
+        annMouseClick(this.parentNode.parentNode.parentNode.getAttribute("id"),'Point')
+
     })
 
 
@@ -120,7 +125,7 @@ $(document).ready(function () {
     annIntrvlBtn.on('mouseover', annMouseOver)
     annIntrvlBtn.on('mouseout', annMouseOut)
     annIntrvlBtn.on('click', function(){
-        annMouseClick('Interval')
+        annMouseClick(this.parentNode.parentNode.parentNode.getAttribute("id"),'Interval')
     })
 
 
@@ -151,6 +156,9 @@ $(document).ready(function () {
         .attr('width', 100)
         .attr('height', 35)
         .attr('x', -60)
+
+        interactiontracking('call annotation tooltip button label show', this.parentNode.parentNode.parentNode.getAttribute("id"), 'add-annotation-button', 'mouseover')
+
     }
 
     function annMouseOut(){
@@ -180,9 +188,12 @@ $(document).ready(function () {
         .attr('x', -1)
         .attr('width', 20)
         .attr('height', 20)
+
+        interactiontracking('call annotation tooltip button label hide', this.parentNode.parentNode.parentNode.getAttribute("id"), 'add-annotation-button', 'mouseout')
+
     }
 
-    function annMouseClick(annotType){
+    function annMouseClick(timelineID, annotType){
         d3.select('#AnnotationTooltip')
         .style("transform", "translate(" + (d3.event.pageX - 300) + "px," + (d3.event.pageY + 30 -  1.5 * window.devicePixelRatio * window.screen.height) + "px)")   
         .style('display', 'flex')
@@ -190,9 +201,9 @@ $(document).ready(function () {
         annotLegend.text(annotType + " Annotation")
 
         if(annotType == 'Interval'){
-            annotSubmitButton.on('click', addIntervalAnnotation)
+            annotSubmitButton.on('click', function(){addIntervalAnnotation(timelineID)})
         } else {
-            annotSubmitButton.on('click', addPointAnnotation)
+            annotSubmitButton.on('click', function(){addPointAnnotation(timelineID)})
         }
 
         
