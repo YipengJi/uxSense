@@ -168,6 +168,7 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
         })
         .on('click', function(){
             var fps = maxEnd/uxvideo.duration;
+            var uxvidPrevTime = uxvideo.currentTime;
             uxvideo.currentTime = d.start/fps;
             interactiontracking(d, 'emotionrects', 'rect_emotion_'+d.start, 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
 

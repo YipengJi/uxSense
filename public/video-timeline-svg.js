@@ -57,15 +57,24 @@ var thumbsvg = d3.select("#vidtimelineholder")
             return distortX;   
           }
         })
+
+        //Track event
+        interactiontracking(JSON.stringify(d3.mouse(this)), 'vidtimelineholder', 'vidtimelineholder', 'mouseover')
+
     })
     .on("mouseleave", function(){
         var thumbs = d3.selectAll('.thumbframe')
  
         thumbs
           .attr("x", function(d) { return(d.x)})
+
+        interactiontracking(JSON.stringify(d3.mouse(this)), 'vidtimelineholder', 'vidtimelineholder', 'mouseleave')
     })
     .on('click', function(){
+      var uxvidPrevTime = uxvideo.currentTime;
+
       uxvideo.currentTime = uxvideo.duration*(d3.mouse(this)[0]-margin.left)/width;
+      interactiontracking(JSON.stringify(d3.mouse(this)), 'vidtimelineholder', 'vidtimelineholder', 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
 
     })
 //    .attr("width", width + margin.left + margin.right)

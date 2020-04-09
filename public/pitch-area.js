@@ -129,7 +129,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
         // recover coordinate we need
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
-        selectedData = data[i]
+        var selectedData = data[i]
         if(typeof selectedData == 'undefined'){
             console.warn('Hmm, something is wrong with observation '+i.toString()+' of the pitch data')
         } else {
@@ -146,6 +146,9 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
             .html("Time:" + minutes.toString() + ":" + secStr + "  -  " + "Pitch:" + selectedData.y)
             .attr("x", x(selectedData.x) + 15)
                 .attr("y", y(selectedData.y))    
+
+            interactiontracking(selectedData, 'pitch', 'pitchlinepath', 'mousemove')
+            
         }
     }
     function mouseout() {
@@ -158,9 +161,12 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
         //get a new maxEnd--paths handle focus differently, so we need to do this.
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
-        selectedData = data[i]
+        var selectedData = data[i]
 
+        var uxvidPrevTime = uxvideo.currentTime;
         uxvideo.currentTime = uxvideo.duration * selectedData.x/maxEnd
+
+        interactiontracking(d, 'pitch', 'pitchlinepath', 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
 
     }
 
