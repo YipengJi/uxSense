@@ -35,17 +35,23 @@ focussvg.append('path')
 
 function dragstarted() {
   d3.select(this).raise().classed("active", true);
+  interactiontracking(JSON.stringify(d3.event), "premierefocus", "markertriangle", 'drag start')
+
 }
 
 function dragged() {
   video.currentTime = video.duration * d3.event.x/width
   d3.select(this)
   .attr('transform', 'rotate(180) translate('+(-d3.event.x)+',0)')
+
+  interactiontracking(JSON.stringify(d3.event), "premierefocus", "markertriangle", 'dragged')
+
 }
 
 function dragended() {
   video.currentTime = video.duration * d3.event.x/width
   d3.select(this).classed("active", false);
+  interactiontracking(JSON.stringify(d3.event), "premierefocus", "markertriangle", 'drag end')
 }
 
 function moveMarker() {

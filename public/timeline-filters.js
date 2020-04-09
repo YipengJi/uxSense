@@ -54,6 +54,10 @@ function drawPathSlider(containerID, pathID){
     .on("brush end", function () {
         var s = d3.event.selection || yScaleBottom.range();
         yScaleTop.domain(s.map(yScaleBottom.invert, yScaleBottom));
+        
+
+        interactiontracking(yScaleTop.domain(), containerID, pathID, 'brush end')
+
         //d3.selectAll('.x.axis').call(xAxisTop);
         //uxvideo.currentTime = uxvideo.duration * (focussvg.select('rect.selection').attr('x') / width)
         //focus.select(".line").attr("d", lineTop);
@@ -125,6 +129,8 @@ function drawBarSlider(containerID){
     .on("brush end", function () {
         var s = d3.event.selection || yScaleBottom.range();
         yScaleTop.domain(s.map(yScaleBottom.invert, yScaleBottom));
+
+        interactiontracking(yScaleTop.domain(), containerID, containerID, 'brush end')
 
         g.selectAll('.'+rectclass).each(function(d){
             if(1*d.prob >= yScaleTop.domain()[1] & 1*d.prob <= yScaleTop.domain()[0]){

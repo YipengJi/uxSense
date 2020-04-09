@@ -55,12 +55,12 @@ function redrawBrush() {
 
     
 function panstarted() {
-  interactiontracking(JSON.stringify(d3.event), this.parentNode.getAttribute("id"), this.parentNode.getAttribute("id"), 'drag start')
   d3.select(this).attr('isdragging', true);
   mouseStartX = 1*d3.event.x
   mouseStartExtMin = parseFloat(selRect.attr('x'))
   mouseStartExtMax = mouseStartExtMin + parseFloat(selRect.attr('width')) 
   
+  interactiontracking(JSON.stringify(d3.event), this.parentNode.getAttribute("id"), this.parentNode.getAttribute("id"), 'drag start')
 }
 
 function panned() {
