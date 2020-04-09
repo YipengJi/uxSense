@@ -55,10 +55,13 @@ function redrawBrush() {
 
     
 function panstarted() {
+  console.log(this.parentNode)
+  interactiontracking(JSON.stringify(d3.event), this.parentNode.getAttribute("id"), this.parentNode.getAttribute("id"), 'drag start')
   d3.select(this).attr('isdragging', true);
   mouseStartX = 1*d3.event.x
   mouseStartExtMin = parseFloat(selRect.attr('x'))
   mouseStartExtMax = mouseStartExtMin + parseFloat(selRect.attr('width')) 
+  
 }
 
 function panned() {
@@ -66,10 +69,12 @@ function panned() {
 
     if(focusselectbox.attr('style') == ""){
       redrawBrush()  
+      interactiontracking(JSON.stringify(d3.event), this.getAttribute("id"), this.getAttribute("id"), 'drag')
     }
 }
 
 function panended() {
   d3.select(this).attr('isdragging', false);
+  interactiontracking(JSON.stringify(d3.event), this.getAttribute("id"), this.getAttribute("id"), 'drag end')
     //do something if needed, but I think we are good
 }
