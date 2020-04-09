@@ -55,7 +55,6 @@ function redrawBrush() {
 
     
 function panstarted() {
-  console.log(this.parentNode)
   interactiontracking(JSON.stringify(d3.event), this.parentNode.getAttribute("id"), this.parentNode.getAttribute("id"), 'drag start')
   d3.select(this).attr('isdragging', true);
   mouseStartX = 1*d3.event.x
