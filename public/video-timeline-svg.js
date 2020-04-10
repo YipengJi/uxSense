@@ -1,13 +1,5 @@
 var uxvideo = document.getElementById('video_html5_api');
 
-// set the dimensions and margins of the graph
-var margin = { top: 10, right: 50, bottom: 10, left: 50 },
-    height = 100 - margin.top - margin.bottom;
-
-//windowsize fix
-width = window.innerWidth - (margin.left + margin.right)
-
-
 
 //At some point, we may not have exactly 701 frames... but for now we have frames 0-700 and we are going to hard code instead of relying on server data
 var maxThumb = 700

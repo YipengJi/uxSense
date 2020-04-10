@@ -1,20 +1,14 @@
-var video = document.getElementById('video_html5_api');
-
-var margin = { top: 0, right: 50, bottom: 0, left: 50 },
-    // width = 460 - margin.left - margin.right,
-    // height = 400 - margin.top - margin.bottom;
-    height = 100 - margin.top - margin.bottom;
-
-   //windowsize fix
-   width = window.innerWidth - (margin.left + margin.right)
-
-
+var uxvideo = document.getElementById('video_html5_api');
  
 // append the svg object to the body of the page
 var svg = d3.select("#speech-rate")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", "100%")
+    .attr("height", (height + margin.top + margin.bottom))
+    .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+    .attr("preserveAspectRatio", "none")
+    .style('display', 'inline-block')
+    .style('position', 'relative')
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
@@ -113,8 +107,8 @@ d3.csv('modeloutput/TableauUser_Speech_Rate.csv', function (data) {
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
         selectedData = data[i]
-        var minutes = Math.floor((video.duration * selectedData.Start/maxEnd)/60)
-        var seconds = Math.round(60 * (((video.duration * selectedData.Start/maxEnd)/60) - minutes))
+        var minutes = Math.floor((uxvideo.duration * selectedData.Start/maxEnd)/60)
+        var seconds = Math.round(60 * (((uxvideo.duration * selectedData.Start/maxEnd)/60) - minutes))
         var secStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString()
         focus
             .attr("cx", x(selectedData.Start))
@@ -138,7 +132,7 @@ d3.csv('modeloutput/TableauUser_Speech_Rate.csv', function (data) {
         var i = bisect(data, x0, 1);
         selectedData = data[i]
 
-        video.currentTime = video.duration * selectedData.Start/maxEnd
+        uxvideo.currentTime = uxvideo.duration * selectedData.Start/maxEnd
 
     }
 

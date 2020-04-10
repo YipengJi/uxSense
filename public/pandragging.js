@@ -6,15 +6,6 @@ var height = 100;
 var focusHeight = 10;
 var hmargin = 10;
 
-var margin = { top: 10, right: 50, bottom: 10, left: 50 }
-
-//windowsize fix
-width = window.innerWidth - (margin.left + margin.right)
-
-
-
-// set the dimensions and margins of the graph
-var margin = { top: 10, right: 50, bottom: 30, left: 50 }
 
 var focussvg = d3.select('#focussvg').select('g')
 var focusBrush = focussvg.select('g.x.brush')

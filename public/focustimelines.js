@@ -1,13 +1,8 @@
 //This is where we handle both the focus timeline and the timeline marker that hits all the table svgs
 var uxvideo = document.getElementById('video_html5_api');
 
-var margin = { top: 10, right: 50, bottom: 10, left: 50 }
-var height = 100 - margin.top - margin.bottom;
 var focusHeight = 10;
 var hmargin = 10;
-
-//windowsize fix
-width = window.innerWidth - (margin.left + margin.right)
 
 
 

@@ -314,6 +314,11 @@ ul {
     height:5vh;
 }
 
+.timelineheadertable > tbody > tr{
+    max-height:5vh;
+    height:5vh;
+}
+
 /* d3 css */
 .line {
     fill: none;
@@ -412,8 +417,8 @@ label {
 
 #parent>li {
     display: inline-block;
-    width: 200px;
-    height: 100%;
+    width: 15vw;
+    height: 100vh;
 }
 
 /* #parent>li:nth-child(even) {
@@ -542,19 +547,3 @@ svg {
     background-color: #555;
     color: #e7e7e7;
 }
-
-/* drag to sort */
-
- .tile {
-    position: relative;  /* only in order to make z-index used */
-    clear: both;
-  }
-   
-  .scrubber {
-    cursor: ns-resize;
-    float: right;
-    background-color: white;
-    width: 50px;
-    height: 20px;
-  }
-  

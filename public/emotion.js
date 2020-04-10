@@ -1,14 +1,6 @@
 var emotChunkWid = 240;
 var uxvideo = document.getElementById("video_html5_api");
 
-// set the dimensions and margins of the graph
-var margin = { top: 10, right: 50, bottom: 10, left: 50 },
-    height = 100 - margin.top - margin.bottom;
-    
-//windowsize fix
-width = window.innerWidth - (margin.left + margin.right)
-
-
 
 // append the svg object to the body of the page
 var emosvg = d3.select("#Emotion")
