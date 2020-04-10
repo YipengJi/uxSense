@@ -8,18 +8,32 @@ $(document).ready(function () {
 
     var annotDiv = d3.select('body').append('div')
     .attr('id', 'AnnotationTooltip')
-    .attr('class', 'annotations')
-    .style('max-width', '30%')
+    .attr('class', 'annotations ui-widget-content')
+    .style('max-width', '20vw')
+    .style('max-height', '20vh')
+    .style('width', 'auto')
+    .style('height', 'auto')
     .style('display', 'none'); //we will change this when called
-
+    
+    //make it draggable
+    $( function() {
+        $( "#AnnotationTooltip" ).draggable();
+      } );
+      
     var annotBox = annotDiv.append('div')
-        .attr('class', 'annotations-box');
+        .attr('class', 'annotations-box')
+        .style('width', 'auto')
+        .style('height', 'auto')
 
     var annotForm = annotBox.append('form')
     .attr('accept-charset', 'UTF-8')
-    .attr('autocomplete', 'off');
+    .attr('autocomplete', 'off')
+    .attr('display', 'flex')
+    .style('max-width', '20vw')
 
-    var annotFieldSet = annotForm.append('fieldset');
+    var annotFieldSet = annotForm.append('fieldset')
+    .style('max-width', '20vw')
+    .style('min-width', '20vw')
 
     var annotLegend = annotFieldSet.append('legend')
         .text('Annotation');
@@ -30,7 +44,7 @@ $(document).ready(function () {
 
     annotFieldSet.append('textarea')
         .attr('id', 'annotation-text')
-        .style('height', '100px');
+        .style('max-width', '18vw')
 
     annotFieldSet.append('br');
 
@@ -195,7 +209,7 @@ $(document).ready(function () {
 
     function annMouseClick(timelineID, annotType){
         d3.select('#AnnotationTooltip')
-        .style("transform", "translate(" + (d3.event.pageX - 300) + "px," + (d3.event.pageY + 30 -  1.5 * window.devicePixelRatio * window.screen.height) + "px)")   
+        .style("transform", "translate(70vw," + (100*(d3.event.pageY - (50 + window.innerHeight))/window.innerHeight) + "vh)")   
         .style('display', 'flex')
 
         annotLegend.text(annotType + " Annotation")

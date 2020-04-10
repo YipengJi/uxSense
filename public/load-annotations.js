@@ -2,6 +2,26 @@
   * Need to continuously check if annotations table has been updated.
   */
 
+  function annotationQueryRefresh(){
+    $.ajax({ 
+        url: '/annotationQuery'
+        , type: 'GET'
+        , cache: true
+        , data: { }
+        , callback: function(response){
+            console.log(response)
+        } 
+        , success: function(data){
+            annotationTabPop();
+        }
+        , error: function(jqXHR, textStatus, err){
+            console.log('text status '+textStatus+', err '+err)
+        }
+    })
+
+  }
+
+
   function annotationTabPop(){
     d3.json('userAnnotations/data.json', function(rawdata){
         var tdata = _.sortBy(rawdata, [function(o) { return parseFloat(o.timestamp); }])
@@ -35,4 +55,4 @@
     })  
 }
 
-annotationTabPop();
+annotationQueryRefresh();

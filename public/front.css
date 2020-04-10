@@ -139,7 +139,7 @@ body {
 .annotations-box {
     top: 0px;
     grid-area: annotations-box;
-    width: 25vw;
+    max-width: 20vw;
 }
 
 .tags {

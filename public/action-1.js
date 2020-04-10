@@ -22,7 +22,12 @@ d3.csv('arbitrary_action_relabel.csv', function(renamedata){
     
     data.forEach(function(d){
         d.old_action = d.action;
-        d.action = _.filter(renamedata, function(o){return o.action == d.old_action})[0].arbitrary_action
+        try{
+            d.action = _.filter(renamedata, function(o){return o.action == d.old_action})[0].arbitrary_action        
+        } catch(err){
+            console.log(err);
+
+        }
     })
 
     var colorScale = d3.scaleOrdinal(d3.schemeCategory20c)
