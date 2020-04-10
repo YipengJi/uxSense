@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>uxSense</title>
-    <!--dragging>
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script-->
+    <!--dragging-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
@@ -33,16 +31,10 @@
     <link rel="stylesheet" type="text/css" href="nouislider.css" />
     <link rel="stylesheet" href="multirange.css">
 
-    <!-- <link rel="stylesheet" href="https://demos.jquerymobile.com/1.4.2/css/themes/default/jquery.mobile-1.4.2.min.css"> -->
-    <!-- <script src="https://demos.jquerymobile.com/1.4.2/js/jquery.js"></script> -->
-    
-    <!-- <script src="https://demos.jquerymobile.com/1.4.2/js/jquery.mobile-1.4.2.min.js"></script> -->
-
     <!-- transcript -->
     <link href="https://vjs.zencdn.net/5.6.0/video-js.css" rel="stylesheet">
     <script src="https://vjs.zencdn.net/5.6.0/video.js"></script>
     <script src="videojs-transcript.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -58,7 +50,7 @@
           });
           $( "ul, li" ).disableSelection();
         } );
-        </script>
+        </script>        
 </head>
 
 <body>
@@ -74,7 +66,7 @@
         <div class="left">
             <div class="video-grid">
                 <div class="video-container">
-                    <video id="video" class="video-js vjs-default-skin" controls>
+                        <video id="video" class="video-js vjs-default-skin" controls>
                         <source src="TableauUser.mp4" type="video/mp4">
                         <source src="TableauUser.ogg" type="video/ogg">
                         <track kind="captions" src="captions/TableauUser_captions.vtt" srclang="en" label="English" default>
@@ -82,18 +74,20 @@
                     <div id="transcript"></div>
                 </div>
                 <script>
-                    var video = videojs('video').ready(function () {
-
+                    var video = videojs('video',{controlBar: {fullscreenToggle: false}}).ready(function () {
+        
                         // fire up the plugin
                         var options = {};
                         var transcript = this.transcript(options);
                         // var transcript = this.transcript();
-
+        
                         // attach the widget to the page
                         var transcriptContainer = document.querySelector('#transcript');
                         transcriptContainer.appendChild(transcript.el());
                     });
+    
                 </script>
+
             </div>
         </div>
         <div class="right">
@@ -112,104 +106,16 @@
                         </table>
                     </div>
                 </div>
-                <script src="load-annotations.js"></script>
             </div>
         </div>
     </div>
     <div id="premierefocus" style="text-align: center;">
-        <script src="focustimelines.js"></script>
-        <script src="timeline-marker.js"></script>
     </div>                    
 
     <div class="timelines">
         <div class="timelines-box">
 
             <ul id="sortable" class="collapsible expandable">
-                <li class=active>
-                    <div class="collapsible-header">
-                        <i class="material-icons">video_library</i>
-                        
-                        <table class="timelineheadertable">
-                            <tbody>
-                                <tr>
-                                    <th><span style="margin-left:45vw; ">Thumbnails</span></th>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <i class="material-icons rotate right">expand_more</i></div>
-                    <div class="collapsible-body">
-                        <div id="vidtimelineholder" class="timelineholder">
-                        </div>
-                    <script type="text/javascript" src="video-timeline-svg.js"></script>
-                </div>
-                </li>
-                <li class=active>
-                    <div class="collapsible-header">
-                        <i class="material-icons">insert_chart</i>
-                        <table class="timelineheadertable">
-                            <tbody>
-                                <tr>
-                                    <th style="width:50vw"><span style="margin-left:40vw; ">Speech Rate</span></th>
-                                    <th style="width:50vw; margin-left:40vw">
-                                        <div class="filters">
-                                            <label>
-                                                <input type="checkbox" />
-                                                <span>Low</span>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" />
-                                                <span>Medium</span>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" />
-                                                <span>High</span>
-                                            </label>
-                                        </div>
-                                    </th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <i class="material-icons rotate right">expand_more</i>
-                        </div>
-                    <div class="collapsible-body" >
-                        <div id="speech-rate" class="timelineholder"></div>
-                        <script type="text/javascript" src="speechrate-interval.js"></script>
-                    </div>
-                </li>
-                <li class=active>
-                    <div class="collapsible-header">
-                        <i class="material-icons">timeline</i>
-                            <table class="timelineheadertable">
-                                <tbody>
-                                    <tr>
-                                    <th style="width:50vw"><span style="margin-left:40vw; ">Pitch</span></th>
-                                    <th style="width:50vw; margin-left:40vw">
-                                        <div class="filters">
-                                            <label>
-                                                <input type="checkbox" />
-                                                <span>Low</span>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" />
-                                                <span>Medium</span>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" />
-                                                <span>High</span>
-                                            </label>
-                                        </div>
-                                    </th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <i class="material-icons rotate right">expand_more</i>
-                        </div>
-                    <div class="collapsible-body">
-                        <div id="pitch" class="timelineholder"></div>
-                        <script type="text/javascript" src="pitch-area.js"></script>
-                    </div>
-                </li>
                 <li class=active>
                     <div class="collapsible-header">
                         <i class="material-icons">whatshot</i>
@@ -240,7 +146,6 @@
                         </div>
                     <div class="collapsible-body">
                         <div id="Action1" class="timelineholder"></div>
-                        <script type="text/javascript" src="action-1.js"></script>
                     </div>
                 </li>
                 <li class=active>
@@ -273,8 +178,89 @@
                         </div>
                     <div class="collapsible-body">
                         <div id="Emotion"  class="timelineholder"></div>
-                        <script type="text/javascript" src="emotion.js"></script>
                     </div>
+                </li>
+                <li class=active>
+                    <div class="collapsible-header">
+                        <i class="material-icons">insert_chart</i>
+                        <table class="timelineheadertable">
+                            <tbody>
+                                <tr>
+                                    <th style="width:50vw"><span style="margin-left:40vw; ">Speech Rate</span></th>
+                                    <th style="width:50vw; margin-left:40vw">
+                                        <div class="filters">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Low</span>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Medium</span>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>High</span>
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <i class="material-icons rotate right">expand_more</i>
+                        </div>
+                    <div class="collapsible-body" >
+                        <div id="speech-rate" class="timelineholder"></div>
+                    </div>
+                </li>
+                <li class=active>
+                    <div class="collapsible-header">
+                        <i class="material-icons">timeline</i>
+                            <table class="timelineheadertable">
+                                <tbody>
+                                    <tr>
+                                    <th style="width:50vw"><span style="margin-left:40vw; ">Pitch</span></th>
+                                    <th style="width:50vw; margin-left:40vw">
+                                        <div class="filters">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Low</span>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Medium</span>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>High</span>
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <i class="material-icons rotate right">expand_more</i>
+                        </div>
+                    <div class="collapsible-body">
+                        <div id="pitch" class="timelineholder"></div>
+                    </div>
+                </li>
+                <li class=active>
+                    <div class="collapsible-header">
+                        <i class="material-icons">video_library</i>
+                        
+                        <table class="timelineheadertable">
+                            <tbody>
+                                <tr>
+                                    <th><span style="margin-left:45vw; ">Thumbnails</span></th>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <i class="material-icons rotate right">expand_more</i></div>
+                    <div class="collapsible-body">
+                        <div id="vidtimelineholder" class="timelineholder">
+                        </div>
+                </div>
                 </li>
                 <li class=active>
                     <div class="collapsible-header">
@@ -292,7 +278,6 @@
                         </div>
                     <div class="collapsible-body">
                         <div id="AnnotationTimeline"  class="timelineholder"></div>
-                        <script type="text/javascript" src="annotationtimeline.js"></script>
                     </div>
                 </li>
             </ul>
@@ -310,6 +295,18 @@
                     });
                 });
             </script>
+    
+            
+            <script src="load-annotations.js"></script>
+
+            <script src="focustimelines.js"></script>
+            <script src="timeline-marker.js"></script>
+            <script type="text/javascript" src="video-timeline-svg.js"></script>
+            <script type="text/javascript" src="speechrate-interval.js"></script>
+            <script type="text/javascript" src="pitch-area.js"></script>
+            <script type="text/javascript" src="action-1.js"></script>
+            <script type="text/javascript" src="emotion.js"></script>
+            <script type="text/javascript" src="annotationtimeline.js"></script>
 
             <script type="text/javascript" src="filterOnLabel.js"></script>
             <script type="text/javascript" src="timeline-filters.js"></script>
