@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>uxSense</title>
-    <!--react>
+    <!--dragging>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script-->
-    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
@@ -42,6 +42,23 @@
     <link href="https://vjs.zencdn.net/5.6.0/video-js.css" rel="stylesheet">
     <script src="https://vjs.zencdn.net/5.6.0/video.js"></script>
     <script src="videojs-transcript.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+          $( "#sortable" ).sortable({
+            revert: true
+          });
+          $( "#draggable" ).draggable({
+            connectToSortable: "#sortable",
+            helper: "clone",
+            revert: "invalid"
+          });
+          $( "ul, li" ).disableSelection();
+        } );
+        </script>
 </head>
 
 <body>
@@ -231,7 +248,7 @@
     <div class="timelines">
         <div class="timelines-box">
 
-            <ul class="collapsible expandable">
+            <ul id="sortable" class="collapsible expandable">
                 <li class=active>
                     <div class="collapsible-header">
                         <i class="material-icons">video_library</i>
@@ -469,9 +486,6 @@
                     </div>
                 </li>
             </ul>
-            <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
             
             <script>
                 $(document).ready(function () {
