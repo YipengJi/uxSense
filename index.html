@@ -68,30 +68,11 @@
     </script>
     <!-- Add interaction event tracking-->
     <script src="interactiontracking.js"></script>
-    <!--div class="menu">
-        <div class="menu-box">
-            <div style="background-color: #0099cc">
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo center" style="color:white">
-                        <bold>uxSense</bold>
-                    </a>
-                </div>
-            </div>
-        </div>s
-    </div-->
     <div class="grid-container">
         <div class="left">
             <div class="video-grid">
-                <!-- <div class="video-box">
-                    <video id="video_html5_api" width="600" height="380" style="text-align: center;" controls preload>
-                        <source src="TableauUser.mp4" type="video/mp4">
-                        <source src="TableauUser.ogg" type="video/ogg"> Your browser does not support HTML5 video.
-                    </video>
-                </div> -->
                 <div class="video-container">
                     <video id="video" class="video-js vjs-default-skin" controls>
-                        <!-- <source src="http://www.openbeelden.nl/files/92/104101.ed_hd.mp4" type="video/mp4">
-                        <source src="http://www.openbeelden.nl/files/92/104105.ed_hd.webm" type="video/webm"> -->
                         <source src="TableauUser.mp4" type="video/mp4">
                         <source src="TableauUser.ogg" type="video/ogg">
                         <track kind="captions" src="captions/TableauUser_captions.vtt" srclang="en" label="English" default>
@@ -113,68 +94,14 @@
                 </script>
             </div>
         </div>
-        <!-- <div class="middle">
-            <div class="transcript-grid">
-                <div class="transcript-box">
-                    <form accept-charset="UTF-8" autocomplete="off">
-                        <fieldset>
-                            <legend> Transcript </legend>
-                            <label for="name"></label>
-                            <textarea id="transcript-area" style="height:300px;"></textarea>
-                            <br/>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div> -->
         <div class="right">
-            <!--div class="search">
-                <div class="search-bar">
-                    <nav>
-                        <div class="nav-wrapper">
-                        <form>
-                        <div class="input-field">
-                        <input id="search" type="search" required placeholder="Search and Filter Transcript">
-                            <label class="label-icon" for="search">
-                                <i class="material-icons" style="color:gray">search</i>
-                            </label>
-                            <i class="material-icons" style="color:gray">close</i>
-                        </div>
-                    </form>
-                </div>
-                </nav>                    
-                </div>
-            </div-->
-            <!-- The annotations box looks good and should be what we use when the user opts to add annotation to timeline-->
-            <!-- Temporary suppression is only to see what layout looks like if we have only text table and search bar-->
-            <!--div class="annotations">
-                <div class="annotations-box">
-                    <form accept-charset="UTF-8" autocomplete="off">
-                        <fieldset>
-                            <legend> Annotation </legend>
-                            <label for="name">Notes</label>
-                            <textarea id="annotation-text" style="height:100px;"></textarea>
-                            <br/>
-                        </fieldset>
-                    </form>
-                    <input id="annotate-submit" class="btn" type="button" value="Submit" onclick="addAnnotation()"></button>
-                </div>
-                <script src="annotate.js"></script>
-            </div-->
             <div class="tags">
                 <div class="tags-table">
                     <div class="responsive-table table-status-sheet">
                         <table id="annotation-table" class="highlight bordered">
-                            <!-- <colgroup>
-                                <col span="1" style="width: 20%;">
-                                <col span="1" style="width: 30%;">
-                                <col span="1" style="width: 50%;">
-                            </colgroup> -->
                             <thead>
                                 <tr>
                                     <th class="center" style="width: 20%;">Timestamp</th>
-                                    <!-- <th class="center" style="width: 30%;">Tags</th>
-                                    <th class="center" style="width: 50%;">Annotations</th> -->
                                     <th class="center" style="width: 80%;">Annotation</th>
                                 </tr>
                             </thead>
@@ -185,60 +112,7 @@
                 </div>
                 <script src="load-annotations.js"></script>
             </div>
-            <!--div class="filter">
-                <div class="filter-box">
-                    <form action="#">
-                        <p>
-                            <ul id="parent">
-                                <li>
-                                    <label>
-                                        <input type="checkbox" />
-                                        <span>Speech Rate</span>
-                                    </label>
-                                <li>
-                                    <div class="container">
-                                        <div id="speechrate_slider"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input type="checkbox" />
-                                        <span>Pitch</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <div id="pitch_slider"></div>
-                                </li>
-                            </ul>
-
-                        </p>
-                        <p>
-                            <label>
-                                <input type="checkbox" />
-                                <span>Action1</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input type="checkbox" />
-                                <span>Action2</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input type="checkbox" />
-                                <span>Posture</span>
-                            </label>
-                        </p>
-                    </form>
-                    <script src="nouislider.js">
-                    </script>
-                    <script src="noui-slider.js">
-                    </script>
-                </div>
-            </div-->
         </div>
-
     </div>
     <div id="premierefocus" style="text-align: center;">
         <script src="focustimelines.js"></script>
@@ -264,33 +138,13 @@
                         <i class="material-icons rotate right">expand_more</i></div>
                     <div class="collapsible-body">
                         <div id="vidtimelineholder" class="timelineholder">
-                        <!--canvas id="myCanvas" width="600" height="80" style="border:1px solid #d3d3d3;">
-                                <div id="thumbnails"></div>
-                        </canvas-->
                         </div>
-                    <!--script type="text/javascript" src="video-timeline-pregenthumbs.js"></script-->
-                    <!--script type="text/javascript" src="video-timeline.js"></script-->
                     <script type="text/javascript" src="video-timeline-svg.js"></script>
                 </div>
                 </li>
                 <li class=active>
                     <div class="collapsible-header">
                         <i class="material-icons">insert_chart</i>
-                        <!-- <span style="margin-left:300px; ">Speech Rate</span>
-                        <div class="filters" style="width: 300px; float: right; margin-right:150px">
-                            <label>
-                                <input type="checkbox" />
-                                <span>Low</span>
-                            </label> 
-                            <label>
-                                <input type="checkbox" />
-                                <span>Medium</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" />
-                                <span>High</span>
-                            </label>
-                        </div> -->
                         <table class="timelineheadertable">
                             <tbody>
                                 <tr>
@@ -319,27 +173,11 @@
                     <div class="collapsible-body" >
                         <div id="speech-rate" class="timelineholder"></div>
                         <script type="text/javascript" src="speechrate-line.js"></script>
-                        <!-- <script type="text/javascript" src="speechrate-bar.js"></script> -->
                     </div>
                 </li>
                 <li class=active>
                     <div class="collapsible-header">
                         <i class="material-icons">timeline</i>
-                        <!-- <span style="margin-left:300px; ">Pitch</span>
-                            <div class="filters" style="width: 300px; float: right; margin-right:150px">
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Low</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Medium</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>High</span>
-                                </label>
-                            </div> -->
                             <table class="timelineheadertable">
                                 <tbody>
                                     <tr>
@@ -373,21 +211,6 @@
                 <li class=active>
                     <div class="collapsible-header">
                         <i class="material-icons">whatshot</i>
-                        <!-- <span style="margin-left:300px; ">Action</span>
-                            <div class="filters" style="width: 300px;float: right; margin-right:150px">
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>action_9</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>action_244</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>action_267</span>
-                                </label>
-                            </div> -->
                             <table class="timelineheadertable">
                                 <tbody>
                                     <tr>
@@ -421,21 +244,6 @@
                 <li class=active>
                     <div class="collapsible-header">
                         <i class="material-icons">insert_emoticon</i>
-                        <!-- <span style="margin-left:300px; ">Emotion</span>
-                            <div class="filters" style="width: 300px;float: right; margin-right:150px">
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>happy</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>neutral</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>sad</span>
-                                </label>
-                            </div> -->
                             <table class="timelineheadertable">
                                 <tbody>
                                         <tr>
@@ -501,16 +309,6 @@
                 });
             </script>
 
-            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-                document.addEventListener('DOMContentLoaded', function () {
-                    M.AutoInit();
-                    var elem = document.querySelector('.collapsible.expandable');
-                    var instance = M.Collapsible.init(elem, {
-                        accordion: false
-                    });
-                });
-            </script> -->
-            
             <script type="text/javascript" src="filterOnLabel.js"></script>
             <script type="text/javascript" src="timeline-filters.js"></script>
             <script type="text/javascript" src="annotate.js"></script>
