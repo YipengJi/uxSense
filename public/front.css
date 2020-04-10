@@ -301,6 +301,17 @@ ul {
     padding-top:0;
     height: auto;
     justify-content: space-between;
+    overflow:hidden;
+}
+.timelineheadertable {
+    width:100vw;
+    height:5.1vh;
+}
+
+.timelineheadertable > tbody{
+    overflow: hidden;
+    width:100vw;
+    height:5vh;
 }
 
 /* d3 css */
