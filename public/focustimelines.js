@@ -1,18 +1,22 @@
 //This is where we handle both the focus timeline and the timeline marker that hits all the table svgs
 var uxvideo = document.getElementById('video_html5_api');
 
-var focusHeight = 10;
+var focusHeight = 20;
 var hmargin = 10;
 
 
 
 var focussvg = d3.select('#premierefocus').append('svg')
     .attr('id', 'focussvg')
-    .attr('width', width + margin.left + margin.right)
+    .attr('width', "100%")
     .attr('height',focusHeight + hmargin)
+    .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (focusHeight + hmargin))
+    .attr("preserveAspectRatio", "none")
+    .style('display', 'inline-block')
+    .style('position', 'relative')
     .append('g')
     .attr("transform",
-        "translate(" + margin.left + ",0)");
+        "translate(" + .95*margin.left + ",0)");
     //.attr('transform', 'translate(0,' + hmargin + ')');
 
 var bgslide = focussvg.append('rect')

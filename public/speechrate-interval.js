@@ -21,8 +21,10 @@ d3.csv('modeloutput/TableauUser_Speech_Rate.csv', function (data) {
     var x = d3.scaleLinear()
         .domain([0, maxEnd])
         .range([0, width]);
+        
     svg.append("g")
-        .attr("transform", "translate(0," + height + ")");
+        .attr("transform", "translate(0," + height + ")")
+        .attr('class', 'timelinexaxis');
     // .call(d3.axisBottom(x));
 
     // Add Y axis

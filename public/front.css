@@ -2,12 +2,14 @@ html {
     height: 100vh;
     min-height: 100vh;
     max-height: 100vh;
+    overflow: hidden;
 }
 
 body {
     height: 100vh;
     min-height: 100vh;
     max-height: 100vh;
+    overflow: hidden;
 }
 
 /* grid css */
@@ -81,17 +83,18 @@ body {
     /* border: 1px dotted black; */
     text-align: center;
 }
-.premiere-focus{
+
+#premierefocus{
     top: float; 
 /*    height: 5vh;*/ 
-    width: 100vw;
+    width: 95vw;
 }
 
 
 .timelines {
-    min-height: 50vh; 
-    max-height: 50vh; 
-    height: 50vh; 
+    min-height: 45vh; 
+    max-height: 45vh; 
+    height: 45vh; 
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -102,15 +105,41 @@ body {
 
 .timelines-box {
     grid-area: timelines-box;
-    min-height: 50vh; 
-    max-height: 50vh; 
-    height: 50vh; 
+    min-height: 45vh; 
+    max-height: 45vh; 
+    height: 45vh; 
+    width: 95vw; 
+/*    overflow-y:scroll;*/
 }
 
 .timelineholder{
     text-align:center;
     margin:auto; 
     display:block;
+}
+
+.timelineholder svg{
+    height:20vh;
+}
+
+.timelinexaxis{
+    display:none;
+}
+
+.tags {
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-rows: 2fr;
+    grid-template-areas: "tags-table";
+    grid-area: tags;
+    margin: 0px;
+}
+
+.tags-table {
+    margin: 1vmin auto;
+    grid-area: tags-table;
+    height: 45vh;
+    overflow-y: hidden;
 }
 
 .right {
@@ -142,21 +171,6 @@ body {
     max-width: 20vw;
 }
 
-.tags {
-    display: grid;
-    grid-template-columns: 2fr;
-    grid-template-rows: 2fr;
-    grid-template-areas: "tags-table";
-    grid-area: tags;
-    margin: 0px;
-}
-
-.tags-table {
-    margin: 15px auto;
-    grid-area: tags-table;
-    height: 45vh;
-    overflow-y: hidden;
-}
 
 
 #annotation-table {
@@ -164,7 +178,7 @@ body {
     width: 25vw;
 }
 
-#annotation-table > tbody {
+#annotation-table tbody {
     max-height: 42vh;
     overflow-y: scroll;
     overflow-x: auto;
@@ -213,6 +227,7 @@ form {
 table {
     width: 100%;
     height: 100%;
+    font-size:calc(10px + .5vw);
     /* border: 1px dotted black; */
 }
 tbody {
@@ -231,7 +246,7 @@ thead {
 }
 
 tr{
-    height: 20px;
+    height: 2vh;
 }
 tr:hover {
     background-color: #f5f5f5;
@@ -244,11 +259,12 @@ ul {
     /* margin: 0; */
     /* overflow: auto; */
     height:auto;
-    max-height:80%;
+    max-height:40vh;
     overflow:auto;
     /* padding: 0;
     text-indent: 10px; */
 }
+
 
 /* .side-nav a {
     line-height: 15px !important;
@@ -279,6 +295,8 @@ ul {
 .collapsible-body{
     height: 15vh;
     padding: 0.2rem;
+    font-size:calc(10px + .5vw);;
+    overflow:hidden;
 }
 /* li:nth-child(even) {
     background: #ccc;
@@ -298,25 +316,31 @@ ul {
 }
 
 .collapsible-header {
-    padding-top:0;
-    height: auto;
+    padding:0px;
+    height: 5vh;
     justify-content: space-between;
     overflow:hidden;
 }
 .timelineheadertable {
     width:100vw;
-    height:5.1vh;
+    height:5vh;
+    font-size:1.65vmin;
 }
 
-.timelineheadertable > tbody{
-    overflow: hidden;
+.timelineheadertable tbody{
+    overflow: visible;
     width:100vw;
     height:5vh;
 }
-
-.timelineheadertable > tbody > tr{
+.timelineheadertable tbody th{
     max-height:5vh;
     height:5vh;
+    padding:0px;
+}
+
+.timelineheadertable tbody tr{
+    height:100%;
+    padding:0px;
 }
 
 /* d3 css */
@@ -351,7 +375,7 @@ ul {
     border-width:2px;
     border-style:solid;
     border-color:black;
-    font: 12px sans-serif;
+    font: 2vmin sans-serif;
     background: white;
     border: 0px;
     pointer-events: none;
@@ -366,7 +390,8 @@ label {
     /* width: 400px;
     line-height: 26px; */
     /* margin-bottom: 10px; */
-    margin-right: 20px;
+    margin-right: 1vmin;
+    font:1.65vmin sans-serif;
 }
 
 .material-icons {
@@ -415,7 +440,7 @@ label {
     overflow-y: hidden;
 }
 
-#parent>li {
+#parent li {
     display: inline-block;
     width: 15vw;
     height: 100vh;
@@ -429,7 +454,7 @@ label {
 /* d3 stuff */
 
 svg {
-    font: 10px sans-serif;
+    font: 2vmin sans-serif;
 }
 
 .area {
@@ -460,7 +485,7 @@ svg {
     border-width:2px;
     border-style:solid;
     border-color:black;
-    font: 12px sans-serif;
+    font: 2vmin sans-serif;
     background: white;
     border: 0px;
     pointer-events: none;
@@ -488,8 +513,9 @@ svg {
     left: 43vw;
     width: 25vw;
     font-family: Arial, sans-serif;
-    overflow-x: scroll;
+    overflow-x: hidden;
     height: 100%;
+    font-size:calc(10px + .5vw);
     /* border: 1px solid #111; */
 }
 
@@ -505,7 +531,7 @@ svg {
 
 .transcript-body {
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: hidden;
     background-color: #e7e7e7;
     height: 95%;
 }

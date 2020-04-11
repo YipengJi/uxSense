@@ -17,6 +17,7 @@ var actsvg = d3.select("#Action1")
         "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv('modeloutput/actions_all.csv', function(data){
+    
 //d3.csv('modeloutput/actions_best.csv', function(data){
 d3.csv('arbitrary_action_relabel.csv', function(renamedata){
     
@@ -58,6 +59,7 @@ d3.csv('arbitrary_action_relabel.csv', function(renamedata){
 
     actsvg.append('g')
     .attr('id', 'actxaxis')
+    .attr('class', 'timelinexaxis')
     .attr("transform", "translate(0," + 50 + ")")
     .call(d3.axisBottom(x)
         .tickFormat(function(d) {

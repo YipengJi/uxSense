@@ -18,7 +18,17 @@ var emosvg = d3.select("#Emotion")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
+$.getJSON('modeloutput/face_all_emotions_poses_gender.json', function(){
+    console.log( "success" );
+  })
+  .fail(function() {
+    console.log( "error" );
+  })
+  .always(function() {
+    console.log( "complete" );
+  })
+  .done(function(rawdata) {
+    console.log( "second success" );
     var detaildata = [];
     var data = [];
     var framecnt = 0;
@@ -98,6 +108,7 @@ d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
 
     emosvg.append('g')
     .attr('id', 'emoxaxis')
+    .attr('class', 'timelinexaxis')
     .attr("transform", "translate(0," + 50 + ")")
     .call(d3.axisBottom(x)
         .tickFormat(function(d) {

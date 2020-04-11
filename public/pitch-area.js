@@ -28,6 +28,7 @@ d3.csv('modeloutput/TableauUser_Pitch_Preprocessed.csv', function (data) {
 
     svg2.append("g")
         .attr('id', 'pitchxaxis')
+        .attr('class', 'timelinexaxis')
         .attr("transform", "translate(0," + 50 + ")")
         .call(d3.axisBottom(x)
             .tickFormat(function(d) {

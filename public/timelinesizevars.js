@@ -1,3 +1,12 @@
+// set the dimensions and margins of the graph
+var aspectRatio = 9/16
+var margin = { top: 10, right: 50, bottom: 30, left: 50 }, 
+    width = window.innerWidth - (margin.left + margin.right),
+    height = aspectRatio * window.innerWidth/7.5 - margin.top - margin.bottom;
+    //width = 920 - (margin.left + margin.right),
+    //height = 100 - (margin.top + margin.bottom)
+
+/*
 //marker
 var height = 100;
 var margin = { top: 0, right: 50, bottom: 0, left: 50 }
@@ -90,3 +99,4 @@ width = window.innerWidth - (margin.left + margin.right)
 
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 50, bottom: 30, left: 50 }
+*/
