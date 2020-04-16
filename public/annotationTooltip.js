@@ -212,6 +212,9 @@ $(document).ready(function () {
         .style("transform", "translate(70vw," + (100*(d3.event.pageY - (50 + window.innerHeight))/window.innerHeight) + "vh)")   
         .style('display', 'flex')
 
+        //focus on the text entry field
+        document.getElementById("annotation-text").focus();
+
         annotLegend.text(annotType + " Annotation")
 
         if(annotType == 'Interval'){

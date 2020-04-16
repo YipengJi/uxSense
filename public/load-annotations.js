@@ -29,7 +29,11 @@
         .select('tbody')
         .data(tdata)
 
-        tbody.selectAll('.annotrow').remove();
+        try{
+            tbody.selectAll('.annotrow').remove();
+        } catch(err){
+            console.log(err);
+        }
         
         tdata.forEach(function(d){
             var row = tbody.append('tr').datum(d).attr('class', 'annotrow')
@@ -53,6 +57,9 @@
     
         })  
     })  
+    //Sometimes success times out but the db is actually updated. This is a band-aid for that--we make it recursively update every four seconds.
+    setTimeout("annotationTabPop()", 4000)
+
 }
 
 annotationQueryRefresh();
