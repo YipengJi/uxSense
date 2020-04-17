@@ -120,6 +120,7 @@ body {
 
 .timelineholder svg{
     height:20vh;
+    padding-bottom:2vh;
 }
 
 .timelinexaxis{

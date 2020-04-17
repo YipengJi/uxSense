@@ -43,7 +43,7 @@ function createPitchTimeline(){
         // Add Y axis--half size
         var y = d3.scaleLinear()
             .domain([0, 200])
-            .range([height/2, 0]);
+            .range([height, 0]);
 
         svg2.append("g")
             .call(d3.axisLeft(y).ticks(3))

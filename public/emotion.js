@@ -96,7 +96,7 @@ function createEmotionsTimeline(){
         var maxProb = _.max(_.map(data, function(dp){return(1*dp['prob'])}));
         var y = d3.scaleLinear()
             .domain([0, maxProb])
-            .range([height/2, 0]);
+            .range([height, 0]);
 
         function rectWidth(lowerVal, upperVal){
             gap = upperVal-lowerVal;
@@ -105,7 +105,7 @@ function createEmotionsTimeline(){
         }
 
         function rectHeight(prob){
-            rangeMult = (height/(2*maxProb))
+            rangeMult = (height/maxProb)
             return (prob * rangeMult)
         }
 

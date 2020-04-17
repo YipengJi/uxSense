@@ -78,7 +78,7 @@ function createAnnotationsTimeline(){
         var crectwidthmin = 5
 
         if(data.length>0){
-            var annotHeight = (height/data.length - margin.top)/2
+            var annotHeight = (height/data.length)
 
            for(i=0; i<data.length; i++){
                //console.log((maxTime-minTime))
