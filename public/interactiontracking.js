@@ -1,4 +1,6 @@
 function interactiontracking(d, eventUIElement, eventObject, eventTrigger, eventSupplemental = ''){//, d3Event){
+    var uxvideo = document.getElementById('video_html5_api');
+
     //Track event
     $.ajax({ 
         url: '/log',
@@ -13,6 +15,7 @@ function interactiontracking(d, eventUIElement, eventObject, eventTrigger, event
                     object: eventObject, 
                     trigger: eventTrigger, 
                     timestamp:(new Date().getTime()), 
+                    videotime:uxvideo.currentTime, 
                     supplemental:eventSupplemental
                 }
             }

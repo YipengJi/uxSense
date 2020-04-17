@@ -1,5 +1,6 @@
 //This is where we handle both the focus timeline and the timeline marker that hits all the table svgs
 var uxvideo = document.getElementById('video_html5_api');
+refreshuxSDimVars();
 
 var focusHeight = 20;
 var hmargin = 10;
@@ -58,6 +59,8 @@ brushg.append('g')
 .selectAll('rect');
 
 function rescaleTimelines(){
+    refreshuxSDimVars();
+
     rescaleEmotions();
     rescaleActions();
     rescaleSpeechrate();

@@ -86,4 +86,6 @@ function moveMarker() {
   }
 }
 
-moveMarker();
+uxvideo.addEventListener('loadeddata', function(){
+  setTimeout("moveMarker();", 1550)
+})

@@ -1,28 +1,19 @@
 var uxvideo = document.getElementById('video_html5_api');
 
-var margin = { top: 0, right: 50, bottom: 0, left: 50 },
-    // width = 460 - margin.left - margin.right,
-    // height = 400 - margin.top - margin.bottom;
-    filterheight = 50;
-
-    var sliderwidth = 15;
-
-//windowsize fix
-width = window.innerWidth - (margin.left + margin.right)
-
-
+refreshuxSDimVars();
 
 //document.addEventListener("DOMContentLoaded", function (event) {
 $(document).ready(function () {
-    drawPathSlider('speech-rate', 'speechratelinepath');
-    drawPathSlider('pitch', 'pitchlinepath');
-    drawBarSlider('Action1');
-    drawBarSlider('Emotion');
+    setTimeout("drawPathSlider('speech-rate', 'speechratelinepath');", 1500)
+    setTimeout("drawPathSlider('pitch', 'pitchlinepath');", 1500)
+    setTimeout("drawBarSlider('Action1');", 1500)
+    setTimeout("drawBarSlider('Emotion');", 1500)
 
 });
 
 
 function drawPathSlider(containerID, pathID){
+    refreshuxSDimVars();
 
     var svg = d3.select("#" + containerID).select('svg')
 
@@ -91,6 +82,8 @@ function drawPathSlider(containerID, pathID){
 
 
 function drawBarSlider(containerID){
+
+    refreshuxSDimVars();
 
     var svg = d3.select("#" + containerID).select('svg')
 

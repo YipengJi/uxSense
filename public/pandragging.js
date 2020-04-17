@@ -2,10 +2,7 @@
  * Add pan dragging to all timelines. 
  */
 var video = document.getElementById('video_html5_api');
-var height = 100;
-var focusHeight = 10;
-var hmargin = 10;
-
+refreshuxSDimVars();
 
 var focussvg = d3.select('#focussvg').select('g')
 var focusBrush = focussvg.select('g.x.brush')

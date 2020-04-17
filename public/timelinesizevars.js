@@ -6,6 +6,28 @@ var margin = { top: 10, right: 50, bottom: 30, left: 50 },
     //width = 920 - (margin.left + margin.right),
     //height = 100 - (margin.top + margin.bottom)
 
+
+var filterheight = 50;
+var sliderwidth = 15;
+var focusHeight = 10;
+var hmargin = 10;
+var emotChunkWid = 240;
+
+
+function refreshuxSDimVars(){
+    aspectRatio = 9/16
+    margin = { top: 10, right: 50, bottom: 30, left: 50 }; 
+    width = window.innerWidth - (margin.left + margin.right);
+    height = aspectRatio * window.innerWidth/7.5 - margin.top - margin.bottom;
+    //for timeline filters
+    filterheight = 50;
+    sliderwidth = 15;
+    //for pandragging
+    focusHeight = 10;
+    hmargin = 10;
+    emotChunkWid = 240;
+}
+
 /*
 //marker
 var height = 100;
