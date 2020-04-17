@@ -1,6 +1,7 @@
+var uxvideo = document.getElementById("video_html5_api");
 
 // The annotations box looks good and should be what we use when the user opts to add annotation to timeline
-$(document).ready(function () {
+function appendAnnotations() {
 
 
     var annotbtnXPad = 15
@@ -226,7 +227,7 @@ $(document).ready(function () {
         
     }
 
-})
+}
 
 /**
  * .transition().duration(100)
@@ -236,3 +237,8 @@ $(document).ready(function () {
 
 
  */
+
+uxvideo.addEventListener('loadeddata', function(){
+    setTimeout('appendAnnotations()', 1600)
+})
+

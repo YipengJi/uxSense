@@ -12,6 +12,13 @@ for(i = 0; i<=maxThumb; i++){
     imgPaths.push({'vidnum': i, 'vidpath':'frames/frame'+i.toString()+'.png'});
 }
 
+var focalThumbnail = 0;
+
+d3.select('body').append('div')
+.attr('id', 'thumbtooltip')
+.style('opacity', 0)
+
+
 // append the svg object to the body of the page
 var thumbsvg = d3.select("#vidtimelineholder")
     .append("svg")
@@ -25,6 +32,9 @@ var thumbsvg = d3.select("#vidtimelineholder")
     .style('position', 'relative')
     .on("mouseover", function(){
       
+// deal with fisheye effect
+
+
       var fisheye = d3.fisheye.circular()
       .radius(width/5)
       .distortion(7*width/sliderImgCount);
@@ -53,6 +63,37 @@ var thumbsvg = d3.select("#vidtimelineholder")
         //Track event
         interactiontracking(JSON.stringify(d3.mouse(this)), 'vidtimelineholder', 'vidtimelineholder', 'mouseover')
 
+        focalThumbnail = Math.round(uxvideo.duration * (d3.event.pageX-margin.left)/(width-(margin.left+margin.right)))
+
+        if(focalThumbnail <= maxThumb & focalThumbnail > 0){
+
+          var timelinesvgElem = document.getElementById('vidtimelineholder')
+          var bodyRect = document.body.getBoundingClientRect(),
+          elemRect = timelinesvgElem.getBoundingClientRect(),
+          offset   = elemRect.top - bodyRect.top;
+            
+          //populate that tooltip
+          d3.select('#thumbtooltip')
+          .style("left", Math.min((d3.event.pageX - 100), .85*width) + "px")
+          //.style("top", (d3.event.pageY - 100) + "px")   
+          .style("top", (offset-height/2) + "px")
+          .style('opacity', 1)
+          .on('click', function(){
+            try{
+              uxvideo.currentTime=focalThumbnail
+            } catch(err){
+              console.log(err)
+            }
+          })
+          
+          try{
+            d3.select('#thumbtooltip')
+          .html('"<img src="frames/frame'+focalThumbnail+'.png" style="min-width:10vw;"></img>')
+          } catch(err){
+            console.log(err)
+          }
+        }
+        
     })
     .on("mouseleave", function(){
         var thumbs = d3.selectAll('.thumbframe')
@@ -61,6 +102,11 @@ var thumbsvg = d3.select("#vidtimelineholder")
           .attr("x", function(d) { return(d.x)})
 
         interactiontracking(JSON.stringify(d3.mouse(this)), 'vidtimelineholder', 'vidtimelineholder', 'mouseleave')
+
+        d3.select('#thumbtooltip')
+        .transition().duration(100)
+        .style('opacity', 0)
+
     })
     .on('click', function(){
       var uxvidPrevTime = uxvideo.currentTime;
@@ -108,6 +154,23 @@ var frameSkip = Math.ceil(maxThumb/sliderImgCount);
     
     thumbs    
     .data(imgPaths)
+
+
+  //and we're going to add rects as background to our filter sliders (and also to block out edges on focus)
+  thumbsvg.append('rect')
+  .attr('fill', 'white')
+  .attr('height', height + margin.top + margin.bottom)
+  .attr('width', margin.left)
+  .attr('x', -margin.left)
+  .attr('y', 0)
+
+  thumbsvg.append('rect')
+  .attr('fill', 'white')
+  .attr('height', height + margin.top + margin.bottom)
+  .attr('width', margin.right)
+  .attr('x', width)
+  .attr('y', 0)
+
 
 //      }
 //  })
