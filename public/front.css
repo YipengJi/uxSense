@@ -119,8 +119,8 @@ body {
 }
 
 .timelineholder svg{
-    height:20vh;
-    padding-bottom:2vh;
+    height:13vh;
+    padding-bottom:1vh;
 }
 
 .timelinexaxis{
@@ -294,7 +294,7 @@ ul {
 
 
 .collapsible-body{
-    height: 15vh;
+    height: 10vh;
     padding: 0.2rem;
     font-size:calc(10px + .5vw);;
     overflow:hidden;

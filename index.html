@@ -40,11 +40,13 @@
     <script>
         $( function() {
           $( "#sortable" ).sortable({
+            handle: ".collapsible-header",
             revert: true
           });
           $( "#draggable" ).draggable({
             connectToSortable: "#sortable",
             helper: "clone",
+            handle: ".collapsible-header",
             revert: "invalid"
           });
           $( "ul, li" ).disableSelection();
