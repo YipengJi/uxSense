@@ -382,6 +382,21 @@ ul {
   }
 
 
+  #annotimetooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 2px;
+    border-width:2px;
+    border-style:solid;
+    border-color:black;
+    font: 2vmin sans-serif;
+    background: white;
+    border: 0px;
+    pointer-events: none;
+  }
+
 label {
     /* display: flex;
     flex-direction: row;

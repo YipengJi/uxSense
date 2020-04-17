@@ -19,16 +19,16 @@ var emosvg = d3.select("#Emotion")
         "translate(" + margin.left + "," + margin.top + ")");
 
 $.getJSON('modeloutput/face_all_emotions_poses_gender.json', function(){
-    console.log( "success" );
+    //console.log( "success" );
   })
   .fail(function() {
-    console.log( "error" );
+    //console.log( "error" );
   })
   .always(function() {
-    console.log( "complete" );
+    //console.log( "complete" );
   })
   .done(function(rawdata) {
-    console.log( "second success" );
+    //console.log( "second success" );
     var detaildata = [];
     var data = [];
     var framecnt = 0;

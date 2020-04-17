@@ -51,7 +51,7 @@ function addPointAnnotation(timelineID){
         url: '/annotate'
         , type: 'POST'
         , cache: false
-        , data: { annotation: annotation.value, timestamp:document.getElementById("video_html5_api").currentTime, posttime:(new Date().getTime()), timeline:timelineID, annotationtype:"point", annotatedinterval:[minTime,maxTime], focusbrushed:isFocused}
+        , data: { annotation: annotation.value, timestamp:document.getElementById("video_html5_api").currentTime, posttime:(new Date().getTime()), timeline:timelineID, annotationtype:"point", annotatedintervalmin:minTime, annotatedintervalmax:maxTime, focusbrushed:isFocused}
         , callback: function(response){
             console.log(response)
         } 
@@ -96,7 +96,7 @@ function addIntervalAnnotation(timelineID){
         url: '/annotate'
         , type: 'POST'
         , cache: false
-        , data: { annotation: annotation.value, timestamp:document.getElementById("video_html5_api").currentTime, posttime:(new Date().getTime()), timeline:timelineID, annotationtype:"interval", annotatedinterval:[minTime,maxTime], focusbrushed:isFocused}
+        , data: { annotation: annotation.value, timestamp:document.getElementById("video_html5_api").currentTime, posttime:(new Date().getTime()), timeline:timelineID, annotationtype:"interval", annotatedintervalmin:minTime, annotatedintervalmax:maxTime, focusbrushed:isFocused}
         , callback: function(response){
             console.log(response)
         } 
