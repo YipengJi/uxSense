@@ -81,8 +81,8 @@ function createAnnotationsTimeline(){
             var annotHeight = (height/data.length - margin.top)/2
 
            for(i=0; i<data.length; i++){
-               console.log((maxTime-minTime))
-               console.log(data[i])
+               //console.log((maxTime-minTime))
+               //console.log(data[i])
                 if(data[i].annotationtype == "interval" & data[i].focusbrushed=="true"){
                     var mainanno = annograph.append('rect')
                     .datum(data[i])
