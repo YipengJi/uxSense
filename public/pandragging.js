@@ -13,11 +13,14 @@ var mouseStartExtMin;
 var mouseStartExtMax;
 
 //Add panning dragging to all nodes
-d3.select('.timelines-box').selectAll('svg')
+function addPanningToSVGs(){
+  d3.select('.timelines-box').selectAll('svg')
   .call(d3.drag()
     .on("start", panstarted)
     .on("drag", panned)
-    .on("end", panended));
+    .on("end", panended))
+    .on("click", goToTimelineTime);
+}
 
 function redrawBrush() {
     // redefine our brush extent; we subtract event from start bc we want to drag the same dir as mouse moves
@@ -55,8 +58,9 @@ function panned() {
     var focusselectbox = focussvg.select('rect.selection');
 
     if(focusselectbox.attr('style') == ""){
+      var uxvidPrevTime =  uxvideo.currentTime;
       redrawBrush()  
-      interactiontracking(JSON.stringify(d3.event), this.getAttribute("id"), this.getAttribute("id"), 'drag')
+      interactiontracking(JSON.stringify(d3.event), this.getAttribute("id"), this.getAttribute("id"), 'drag', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
     }
 }
 
@@ -65,3 +69,31 @@ function panended() {
   interactiontracking(JSON.stringify(d3.event), this.getAttribute("id"), this.getAttribute("id"), 'drag end')
     //do something if needed, but I think we are good
 }
+
+
+function goToTimelineTime(){
+  refreshuxSDimVars();
+
+  mouseStartExtMin = parseFloat(selRect.attr('x'))
+  mouseStartExtMax = mouseStartExtMin + parseFloat(selRect.attr('width')) 
+
+  if(isNaN(mouseStartExtMax)){
+    mouseStartExtMin = 0;
+    mouseStartExtMax = width;
+  }
+
+  var minTime = uxvideo.duration * mouseStartExtMin/width
+  var maxTime = uxvideo.duration * mouseStartExtMax/width  
+
+
+  var uxvidPrevTime =  uxvideo.currentTime;
+  uxvideo.currentTime = maxTime * (d3.event.x - margin.left)/(width-(margin.left+margin.right)) + minTime;
+
+  interactiontracking(JSON.stringify(d3.event), this.getAttribute("id"), this.getAttribute("id"), 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
+
+}
+
+uxvideo.addEventListener('loadeddata', function(){
+  addPanningToSVGs()
+  setTimeout('addPanningToSVGs()', 1600)
+})

@@ -49,11 +49,7 @@ var brush = d3.brushX()
             rescaleTimelines();
 
             //Add panning dragging to all nodes again
-            d3.select('.timelines-box').selectAll('svg')
-            .call(d3.drag()
-                .on("start", panstarted)
-                .on("drag", panned)
-                .on("end", panended));
+            addPanningToSVGs();            
 
         }
     })

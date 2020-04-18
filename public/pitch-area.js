@@ -160,7 +160,7 @@ function createPitchTimeline(){
             var uxvidPrevTime = uxvideo.currentTime;
             uxvideo.currentTime = uxvideo.duration * selectedData.x/maxEnd
 
-            interactiontracking(d, 'pitch', 'pitchlinepath', 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
+            interactiontracking(data[i], 'pitch', 'pitchlinepath', 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
 
         }
 

@@ -18,7 +18,8 @@ function createActionsTimeline(){
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
     
-        d3.csv('modeloutput/actions_all.csv', function(data){
+    
+    d3.csv('modeloutput/actions_all.csv', function(data){
     
     //d3.csv('modeloutput/actions_best.csv', function(data){
     d3.csv('arbitrary_action_relabel.csv', function(renamedata){
@@ -125,7 +126,6 @@ function createActionsTimeline(){
                 var fps = maxEnd/uxvideo.duration;
                 var uxvidPrevTime = uxvideo.currentTime
                 uxvideo.currentTime = d.start/fps;
-
                 //track event
                 interactiontracking(d, 'action1rects', 'rect_action1_'+d.start, 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
             })
