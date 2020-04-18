@@ -5,8 +5,6 @@ var video = document.getElementById('video_html5_api');
 refreshuxSDimVars();
 
 var focussvg = d3.select('#focussvg').select('g')
-var focusBrush = focussvg.select('g.x.brush')
-var selRect = focusBrush.select('rect.selection')
 
 var mouseStartX;
 var mouseStartExtMin;
@@ -23,6 +21,9 @@ function addPanningToSVGs(){
 }
 
 function redrawBrush() {
+    var focusBrush = focussvg.select('g.x.brush')
+    var selRect = focusBrush.select('rect.selection')
+
     // redefine our brush extent; we subtract event from start bc we want to drag the same dir as mouse moves
     var moveDistance = (mouseStartX - d3.event.x) * (parseFloat(selRect.attr('width'))/width);
 
@@ -46,6 +47,9 @@ function redrawBrush() {
 
     
 function panstarted() {
+  var focusBrush = focussvg.select('g.x.brush')
+  var selRect = focusBrush.select('rect.selection')
+  
   d3.select(this).attr('isdragging', true);
   mouseStartX = 1*d3.event.x
   mouseStartExtMin = parseFloat(selRect.attr('x'))
@@ -73,6 +77,8 @@ function panended() {
 
 function goToTimelineTime(){
   refreshuxSDimVars();
+  var focusBrush = focussvg.select('g.x.brush')
+  var selRect = focusBrush.select('rect.selection')
 
   mouseStartExtMin = parseFloat(selRect.attr('x'))
   mouseStartExtMax = mouseStartExtMin + parseFloat(selRect.attr('width')) 
@@ -85,9 +91,14 @@ function goToTimelineTime(){
   var minTime = uxvideo.duration * mouseStartExtMin/width
   var maxTime = uxvideo.duration * mouseStartExtMax/width  
 
+  var invertx = d3.scaleLinear()
+  //.domain([margin.left, width-(margin.left+margin.right)])
+  .domain([margin.left, width-margin.right])
+  .range([minTime, maxTime]);
 
   var uxvidPrevTime =  uxvideo.currentTime;
-  uxvideo.currentTime = maxTime * (d3.event.x - margin.left)/(width-(margin.left+margin.right)) + minTime;
+  //uxvideo.currentTime = maxTime * (d3.event.x - margin.left)/(width-(margin.left+margin.right)) + minTime;
+  uxvideo.currentTime = invertx(d3.event.x);
 
   interactiontracking(JSON.stringify(d3.event), this.getAttribute("id"), this.getAttribute("id"), 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
 
