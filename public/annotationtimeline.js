@@ -76,103 +76,126 @@ function createAnnotationsTimeline(){
         }
 
 
-        var crectwidthmin = 5
+        var crectwidthmin = 7.5
 
         if(data.length>0){
             var annotHeight = (height/data.length)
 
            for(i=0; i<data.length; i++){
-               //console.log((maxTime-minTime))
-               //console.log(data[i])
                 if(data[i].annotationtype == "interval" & data[i].focusbrushed=="true"){
-                    var mainanno = annograph.append('rect')
-                    .datum(data[i])
-                    .attr('fill', annotationsColors[data[i].timeline])
-                    .attr('class', 'annottimelinerect')
-                    .attr('id', 'rect_annot_'+data[i]._id)
-                    .attr('width', crectwidthmin + width*(parseFloat(data[i].annotatedintervalmax)-parseFloat(data[i].annotatedintervalmin))/(maxTime-minTime))
-                    .attr('height', annotHeight)
-                    .attr('x', width*parseFloat(data[i].annotatedintervalmin)/(maxTime-minTime)-crectwidthmin/2 )
-                    .attr('rx', 5)
-                    .attr('ry', 5)
-                    .attr('y', i*annotHeight)
-                    .on('mouseover', function(d){
-                        d3.select('#annotimetooltip')
-                        .transition().duration(100)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")   
-                        .style('opacity', 1)
-            
-                        d3.select('#annotimetooltip')
-                        .html("Interval note: " + d.annotation + "<br/>Timeline: "+annotationsTimelineLabs[d.timeline])
-            
-                        //Track event
-                        interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'mouseover'    )
-                 
-                    })
-                    .on('mouseout', function(d){
-                        d3.select('#annotimetooltip')
-                        .transition().duration(100)
-                        .style('opacity', 0)
-            
-                        //Track event
-                        interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'mouseout'    )
-            
-                    })
-                    .on('click', function(d){
-                        var fps = maxTime/uxvideo.duration;
-                        var uxvidPrevTime = uxvideo.currentTime
-                        uxvideo.currentTime = parseFloat(d.annotatedintervalmin)/fps;
-            
-                        //track event
-                        interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
-                    })
-            
+                    if((parseFloat(data[i].annotatedintervalmin) <= maxTime) & (parseFloat(data[i].annotatedintervalmax) >= minTime)){
+
+                        var startTime = parseFloat(data[i].annotatedintervalmin)
+                        var timeGap = parseFloat(data[i].annotatedintervalmax)-startTime;
+                        var selRangeRatio = uxvideo.duration/(maxTime-minTime);
+                        var wid2dur = width/uxvideo.duration
+                        var returnedX = (startTime*selRangeRatio*wid2dur) - (minTime + crectwidthmin/2)
+
+                        //console.log([timeGap, selRangeRatio])
+                        var trueWidth = crectwidthmin + timeGap*selRangeRatio*wid2dur;
+                        var returnedWidth = trueWidth;
+                        if((returnedX + returnedWidth)>(width-margin.right)){
+                            returnedWidth = width - returnedX  
+                        }
+
+
+                        annograph.append('rect')
+                        .datum(data[i])
+                        .attr('fill', annotationsColors[data[i].timeline])
+                        .attr('class', 'annottimelinerect')
+                        .attr('id', 'rect_annot_'+data[i]._id)
+                        .attr('width', returnedWidth)
+                        .attr('height', annotHeight)
+                        .attr('x', returnedX)
+                        .attr('rx', 2)
+                        .attr('ry', 2)
+                        .attr('y', i*annotHeight)
+                        .on('mouseover', function(d){
+                            d3.select('#annotimetooltip')
+                            .transition().duration(100)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px")   
+                            .style('opacity', 1)
+                
+                            d3.select('#annotimetooltip')
+                            .html("Interval note: " + d.annotation + "<br/>Timeline: "+annotationsTimelineLabs[d.timeline])
+                
+                            //Track event
+                            interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'mouseover'    )
+                    
+                        })
+                        .on('mouseout', function(d){
+                            d3.select('#annotimetooltip')
+                            .transition().duration(100)
+                            .style('opacity', 0)
+                
+                            //Track event
+                            interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'mouseout'    )
+                
+                        })
+                        .on('click', function(d){
+                            var fps = maxTime/uxvideo.duration;
+                            var uxvidPrevTime = uxvideo.currentTime
+                            uxvideo.currentTime = parseFloat(d.annotatedintervalmin)/fps;
+                
+                            //track event
+                            interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
+                        })
+                    }
 
                 } else {
-                    var mainanno = annograph.append('rect')
-                    .datum(data[i])
-                    .attr('fill', annotationsColors[data[i].timeline])
-                    .attr('class', 'annottimelinerects')
-                    .attr('id', 'rect_annot_'+data[i]._id)
-                    .attr('width', crectwidthmin)
-                    .attr('height', annotHeight)
-                    .attr('x', width*parseFloat(data[i].timestamp)/(maxTime-minTime)-crectwidthmin/2 )
-                    .attr('rx', 5)
-                    .attr('ry', 5)
-                    .attr('y', i*annotHeight)
-                    .on('mouseover', function(d){
-                        d3.select('#annotimetooltip')
-                        .transition().duration(100)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")   
-                        .style('opacity', 1)
-            
-                        d3.select('#annotimetooltip')
-                        .html("Point note: " + d.annotation + "<br/>Timeline: "+annotationsTimelineLabs[d.timeline])
-            
-                        //Track event
-                        interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'mouseover'    )
-                 
-                    })
-                    .on('mouseout', function(d){
-                        d3.select('#annotimetooltip')
-                        .transition().duration(100)
-                        .style('opacity', 0)
-            
-                        //Track event
-                        interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'mouseout'    )
-            
-                    })
-                    .on('click', function(d){
-                        var fps = maxTime/uxvideo.duration;
-                        var uxvidPrevTime = uxvideo.currentTime
-                        uxvideo.currentTime = parseFloat(d.timestamp)/fps;
-            
-                        //track event
-                        interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
-                    })
 
+                    if((parseFloat(data[i].timestamp) <= maxTime) & (parseFloat(data[i].timestamp) >= minTime)){
+
+                        annograph.append('rect')
+                        .datum(data[i])
+                        .attr('fill', annotationsColors[data[i].timeline])
+                        .attr('class', 'annottimelinerects')
+                        .attr('id', 'rect_annot_'+data[i]._id)
+                        .attr('width', crectwidthmin)
+                        .attr('height', annotHeight)
+                        .attr('x', function(){
+                            var startTime = parseFloat(data[i].timestamp)
+                            var selRangeRatio = uxvideo.duration/(maxTime-minTime);
+                            var wid2dur = width/uxvideo.duration
+                            //console.log([startTime, selRangeRatio])
+                            return((startTime*selRangeRatio*wid2dur) - (minTime + crectwidthmin/2));
+                        })
+                        .attr('rx', 2)
+                        .attr('ry', 2)
+                        .attr('y', i*annotHeight)
+                        .on('mouseover', function(d){
+                            d3.select('#annotimetooltip')
+                            .transition().duration(100)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px")   
+                            .style('opacity', 1)
+                
+                            d3.select('#annotimetooltip')
+                            .html("Point note: " + d.annotation + "<br/>Timeline: "+annotationsTimelineLabs[d.timeline])
+                
+                            //Track event
+                            interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'mouseover'    )
+                    
+                        })
+                        .on('mouseout', function(d){
+                            d3.select('#annotimetooltip')
+                            .transition().duration(100)
+                            .style('opacity', 0)
+                
+                            //Track event
+                            interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'mouseout'    )
+                
+                        })
+                        .on('click', function(d){
+                            var fps = maxTime/uxvideo.duration;
+                            var uxvidPrevTime = uxvideo.currentTime
+                            uxvideo.currentTime = parseFloat(d.timestamp)/fps;
+                
+                            //track event
+                            interactiontracking(d, 'annottimelinerects', 'rect_annot_'+d._id, 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
+                        })
+                    }
 
                 }               
            }     
