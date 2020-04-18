@@ -23,6 +23,8 @@
 
 
   function annotationTabPop(){
+    try{
+
     d3.json('userAnnotations/data.json', function(rawdata){
         var tdata = _.sortBy(rawdata, [function(o) { return parseFloat(o.timestamp); }])
         var tbody = d3.select('#annotation-table')
@@ -71,9 +73,12 @@
 
     })  
 
+    } catch(err){
+        console.log(err)
+    }
 
     //Sometimes success times out but the db is actually updated. This is a band-aid for that--we make it recursively update every four seconds.
-    setTimeout("annotationTabPop()", 4000)
+    setTimeout("annotationTabPop()", 1500)
 
 }
 
