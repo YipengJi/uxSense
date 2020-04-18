@@ -26,7 +26,9 @@
     try{
 
     d3.json('userAnnotations/data.json', function(rawdata){
-        var tdata = _.sortBy(rawdata, [function(o) { return parseFloat(o.timestamp); }])
+        //TODO: CHANGE THIS LINE BELOW SO THAT WE'RE NOT JUST PULLING ALL DATA; WANT TO MAKE SERVER-SIDE QUERY HERE
+        var filtannotations = _.filter(rawdata, {'videoname':uxSenseVideoPath})
+        var tdata = _.sortBy(filtannotations, [function(o) { return parseFloat(o.timestamp); }])
         var tbody = d3.select('#annotation-table')
         .select('tbody')
         .data(tdata)
@@ -68,7 +70,8 @@
                 createAnnotationsTimeline();    
             }
         } catch(err){
-            console.log(err)
+            //Do nothing.
+            //console.log(err)
         }
 
     })  

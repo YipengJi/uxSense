@@ -38,7 +38,8 @@ function createAnnotationsTimeline(loopagain=false){
     d3.json('userAnnotations/data.json', function(rawdata){
         refreshuxSDimVars();
         if(rawdata.length>0){
-            var data=_.sortBy(rawdata, function(o){
+            var filtannotations = _.filter(rawdata, {'videoname':uxSenseVideoPath})
+            var data=_.sortBy(filtannotations, function(o){
                 if(o.annotationtype == "interval" & o.focusbrushed=="true"){
                     return parseFloat(o.annotatedintervalmin)
                 } else {

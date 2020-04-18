@@ -59,6 +59,10 @@
 </head>
 
 <body>
+    <!-- Set video path; affects all other features-->
+    <script>
+        var uxSenseVideoPath = "history-museum-task-3";
+    </script>
     <!-- Check if firefox; otherwise assume chrome. Also rescale to 1 -->
     <script>
         window.isFirefox = typeof InstallTrigger !== 'undefined';
@@ -72,13 +76,32 @@
             <div class="video-grid">
                 <div class="video-container">
                         <video id="video" class="video-js vjs-default-skin" controls>
-                        <source src="history-museum-task-3.mp4" type="video/mp4">
-                        <source src="history-museum-task-3.ogg" type="video/ogg">
-                        <track kind="captions" src="captions/TableauUser_captions.vtt" srclang="en" label="English" default>
+                        <!--source src="TableauUser.mp4" type="video/mp4">
+                        <source src="TableauUser.ogg" type="video/ogg">
+                        <track kind="captions" src="captions/TableauUser_captions.vtt" srclang="en" label="English" default-->
                     </video>
                     <div id="transcript"></div>
                 </div>
                 <script>
+                    var mp4src = document.createElement("source");
+                        mp4src.src = uxSenseVideoPath + ".mp4"
+                        mp4src.type = "video/mp4"
+
+                    var oggsrc = document.createElement("source");
+                        oggsrc.src = uxSenseVideoPath + ".ogg"
+                        oggsrc.type = "video/ogg"
+
+                    var captrack = document.createElement("track");
+                        captrack.src = "captions/" + uxSenseVideoPath + "_captions.vtt"
+                        captrack.srclang = "en"
+                        captrack.label = "English"
+                        captrack.default = ''
+
+
+                    document.getElementById("video").appendChild(mp4src) 
+                    document.getElementById("video").appendChild(oggsrc) 
+                    document.getElementById("video").appendChild(captrack) 
+
                     var video = videojs('video',{controlBar: {fullscreenToggle: false}}).ready(function () {
         
                         // fire up the plugin
