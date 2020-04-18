@@ -206,6 +206,21 @@ function rescaleSpeechrate(){
     var newMinFrame = minTime * fps
     var newMaxFrame = maxTime * fps
     var filtdata = _.filter(data, function(o){return parseFloat(o.Start) >= newMinFrame & parseFloat(o.Start) <= newMaxFrame })
+
+    var fakestart = {};
+        fakestart.End = minTime.toString()
+        fakestart.Rate = "0.0"
+        fakestart.Start = minTime.toString()
+        
+    var fakeend = {};
+        fakeend.End = maxTime.toString()
+        fakeend.Rate = "0.0"
+        fakeend.Start = maxTime.toString()
+
+    filtdata = [fakestart].concat(filtdata)
+
+    filtdata.push(fakeend)
+
     line.datum(filtdata)
 
     var x = d3.scaleLinear()

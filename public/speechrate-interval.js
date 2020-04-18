@@ -56,7 +56,6 @@ function createSpeechrateTimeline(){
             .on('mouseout', mouseout)
             .on('click', mouseclick);
 
-        // Add the line
         svg
             .append("path")
             .datum(data)
