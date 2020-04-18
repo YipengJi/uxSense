@@ -76,7 +76,7 @@ var thumbsvg = d3.select("#vidtimelineholder")
           d3.select('#thumbtooltip')
           .style("left", Math.min((d3.event.pageX - 100), .85*width) + "px")
           //.style("top", (d3.event.pageY - 100) + "px")   
-          .style("top", (offset-height/2) + "px")
+          .style("top", offset + "px")
           .style('opacity', 1)
           .on('click', function(){
             try{

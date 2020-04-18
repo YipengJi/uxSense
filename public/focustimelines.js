@@ -47,6 +47,14 @@ var brush = d3.brushX()
             interactiontracking(xScaleTop.domain(), 'premierefocus', 'rect.selection', 'brush end', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
 
             rescaleTimelines();
+
+            //Add panning dragging to all nodes again
+            d3.select('.timelines-box').selectAll('svg')
+            .call(d3.drag()
+                .on("start", panstarted)
+                .on("drag", panned)
+                .on("end", panended));
+
         }
     })
 
@@ -449,12 +457,60 @@ function rescaleFrames(){
           }
         })
 
+        //Track event
+        interactiontracking(JSON.stringify(d3.mouse(this)), 'vidtimelineholder', 'vidtimelineholder', 'mouseover')
+
+        var x0 = x.invert(d3.mouse(this)[0]);
+        var i = bisect(filtdata, x0, 1);
+        var focalThumbnail;
+        if(i < filtdata.length){
+            focalThumbnail = filtdata[i].vidnum
+
+        if(focalThumbnail <= maxTime & focalThumbnail > 0){
+
+            var timelinesvgElem = document.getElementById('vidtimelineholder')
+            var bodyRect = document.body.getBoundingClientRect(),
+            elemRect = timelinesvgElem.getBoundingClientRect(),
+            offset   = elemRect.top - bodyRect.top;
+                
+          //populate that tooltip
+          d3.select('#thumbtooltip')
+          .style("left", Math.min((d3.event.pageX - 100), .85*width) + "px")
+          //.style("top", (d3.event.pageY - 100) + "px")   
+          .style("top", offset + "px")
+          .style('opacity', 1)
+          .on('click', function(){
+            try{
+              uxvideo.currentTime=focalThumbnail
+            } catch(err){
+              console.log(err)
+            }
+          })
+          
+          try{
+            d3.select('#thumbtooltip')
+          .html('"<img src="frames/frame'+focalThumbnail+'.png" style="min-width:10vw;"></img>')
+          } catch(err){
+            console.log(err)
+          }
+        }
+        
+    }
+
+
     })
     .on("mouseleave", function(){
         var thumbs = d3.selectAll('.thumbframe')
  
         thumbs
           .attr("x", function(d) { return(d.x)})
+
+        interactiontracking(JSON.stringify(d3.mouse(this)), 'vidtimelineholder', 'vidtimelineholder', 'mouseleave')
+
+        d3.select('#thumbtooltip')
+        .transition().duration(100)
+        .style('opacity', 0)
+  
 
     })
     .on('click', mouseclick)
@@ -492,7 +548,10 @@ function rescaleFrames(){
         var i = bisect(filtdata, x0, 1);
         selectedData = filtdata[i]
 
+        var uxvidPrevTime =  uxvideo.currentTime;
         uxvideo.currentTime = uxvideo.duration * selectedData.vidnum/maxEnd
+
+        interactiontracking(JSON.stringify(d3.mouse(this)), 'vidtimelineholder', 'vidtimelineholder', 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
 
     }
 

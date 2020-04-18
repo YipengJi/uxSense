@@ -65,6 +65,7 @@ function moveMarker() {
 
   var markerX = width * (uxvideo.currentTime/uxvideo.duration)
 
+  if(cursorlineX > -Infinity)
   //add marker g.rects for all timelines
   d3.select('.timelines-box').selectAll('svg')
   .append('g')
@@ -82,7 +83,9 @@ function moveMarker() {
     setTimeout("moveMarker()", 50)
   } else {
     marker.transition().duration(50).attr('transform', 'rotate(180) translate('+(-markerX)+',0)')
-    .on("end",function(){moveMarker()})
+    .on("end",function(){
+      moveMarker()
+    })
   }
 }
 
