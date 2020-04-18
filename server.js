@@ -130,7 +130,8 @@ app.listen(3000, function () {
   });
 
 app.post('/log', function (req, res){
-
+    var logData = req.body;
+    logData.userip = req.ip;
     // Use connect method to connect to the Server
     client.connect(function(err, client) {
       assert.equal(null, err);
@@ -139,7 +140,7 @@ app.post('/log', function (req, res){
       const db = client.db(dbName);
 
       // Insert an entry
-      db.collection('interactionlog').insertOne(req.body, function(err, r) {
+      db.collection('interactionlog').insertOne(logData, function(err, r) {
         assert.equal(null, err);
         assert.equal(1, r.insertedCount);
       });
