@@ -568,5 +568,5 @@ function rescaleAnnotations(){
     //We could just redraw the damned thing, but that's a really ugly fix
     //...except we're already doing it, kind of, whenever we update the annotations.
     //So we'll need to make sure this works anyway! 
-    //createAnnotationsTimeline()
+    createAnnotationsTimeline(false)
 }

@@ -8,7 +8,7 @@ var annosvg = d3.select("#AnnotationTimeline")
 .append("svg")
 .attr("width", "100%")
 
-function createAnnotationsTimeline(){
+function createAnnotationsTimeline(loopagain=false){
     refreshuxSDimVars();
     // we want to aggregate our count to some level of timespan for plotting, and then we want the user to be able to drill down into it
     annosvg
@@ -89,7 +89,11 @@ function createAnnotationsTimeline(){
                         var timeGap = parseFloat(data[i].annotatedintervalmax)-startTime;
                         var selRangeRatio = uxvideo.duration/(maxTime-minTime);
                         var wid2dur = width/uxvideo.duration
-                        var returnedX = (startTime*selRangeRatio*wid2dur) - (minTime + crectwidthmin/2)
+                        var returnedX = ((startTime-minTime)*selRangeRatio*wid2dur) - crectwidthmin/2
+
+                        if(returnedX<0){
+                            returnedX=0
+                        }
 
                         //console.log([timeGap, selRangeRatio])
                         var trueWidth = crectwidthmin + timeGap*selRangeRatio*wid2dur;
@@ -147,6 +151,15 @@ function createAnnotationsTimeline(){
 
                     if((parseFloat(data[i].timestamp) <= maxTime) & (parseFloat(data[i].timestamp) >= minTime)){
 
+                        var startTime = parseFloat(data[i].timestamp)
+                        var selRangeRatio = uxvideo.duration/(maxTime-minTime);
+                        var wid2dur = width/uxvideo.duration
+                        var returnedX = ((startTime-minTime)*selRangeRatio*wid2dur) - crectwidthmin/2
+
+                        if(returnedX<0){
+                            returnedX=0
+                        }
+
                         annograph.append('rect')
                         .datum(data[i])
                         .attr('fill', annotationsColors[data[i].timeline])
@@ -154,13 +167,7 @@ function createAnnotationsTimeline(){
                         .attr('id', 'rect_annot_'+data[i]._id)
                         .attr('width', crectwidthmin)
                         .attr('height', annotHeight)
-                        .attr('x', function(){
-                            var startTime = parseFloat(data[i].timestamp)
-                            var selRangeRatio = uxvideo.duration/(maxTime-minTime);
-                            var wid2dur = width/uxvideo.duration
-                            //console.log([startTime, selRangeRatio])
-                            return((startTime*selRangeRatio*wid2dur) - (minTime + crectwidthmin/2));
-                        })
+                        .attr('x', returnedX)
                         .attr('rx', 2)
                         .attr('ry', 2)
                         .attr('y', i*annotHeight)
@@ -202,9 +209,11 @@ function createAnnotationsTimeline(){
         }
     })    
 
-    setTimeout('createAnnotationsTimeline()', 3000)
+    if(loopagain){
+        setTimeout('createAnnotationsTimeline(true)', 3000)
+    }
 }
 
 uxvideo.addEventListener('loadeddata', function(){
-    createAnnotationsTimeline()
+    createAnnotationsTimeline(true)
 })
