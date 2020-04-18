@@ -16,7 +16,8 @@ function interactiontracking(d, eventUIElement, eventObject, eventTrigger, event
                     trigger: eventTrigger, 
                     timestamp:(new Date().getTime()), 
                     videotime:uxvideo.currentTime, 
-                    supplemental:eventSupplemental
+                    supplemental:eventSupplemental,
+                    videoname:uxSenseVideoPath
                 }
             }
         }, 
