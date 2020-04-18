@@ -37,8 +37,6 @@ function filterOnLabel(containerID){
     })
     //var containerSpans = containerChecks.selectAll('span')//.selectAll('input');
     
-    console.log(checkedfilters)
-
 
 
     /*
@@ -83,7 +81,7 @@ function filterOnLabel(containerID){
 
 function showFilters(checkedfilters, rectclass, containerID, g){
     var dataIndex = {Action1:'action', Emotion:'emotion'}
-    console.log(checkedfilters)
+
     g.selectAll('.'+rectclass).each(function(d){
         if(_.filter(checkedfilters, {value:d[dataIndex[containerID]]}).length > 0){
             d3.select(this).attr('opacity', 1)
