@@ -4,13 +4,14 @@ d3.select('body').append('div')
 .attr('id', 'annotimetooltip')
 .style('opacity', 0)
 
+var annosvg = d3.select("#AnnotationTimeline")
+.append("svg")
+.attr("width", "100%")
 
 function createAnnotationsTimeline(){
     refreshuxSDimVars();
     // we want to aggregate our count to some level of timespan for plotting, and then we want the user to be able to drill down into it
-    var annosvg = d3.select("#AnnotationTimeline")
-        .append("svg")
-        .attr("width", "100%")
+    annosvg
         .attr("height", (height + margin.top + margin.bottom))
         .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
         .attr("preserveAspectRatio", "none")
@@ -24,7 +25,7 @@ function createAnnotationsTimeline(){
 
     //wipe the slate first
     try{
-        annosvg.selectAll('g').remove();
+        annosvg.selectAll('g:not(.add-annotation-button)').remove();
     } catch(err){
         console.log(err)
     }
@@ -177,6 +178,8 @@ function createAnnotationsTimeline(){
            }     
         }
     })    
+
+    setTimeout('createAnnotationsTimeline()', 3000)
 }
 
 uxvideo.addEventListener('loadeddata', function(){

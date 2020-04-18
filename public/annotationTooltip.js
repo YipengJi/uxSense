@@ -90,7 +90,7 @@ function appendAnnotations() {
     .attr('fill', 'slategrey')
     */
 
-    var annPointBtn = addannbtn.append('g')
+    var annPointBtn = addannbtn.append('g').attr('class', 'add-annotation-button')
     
     annPointBtn
     .append('rect')
@@ -117,7 +117,7 @@ function appendAnnotations() {
     })
 
 
-    var annIntrvlBtn = addannbtn.append('g')
+    var annIntrvlBtn = addannbtn.append('g').attr('class', 'add-annotation-button')
     
     annIntrvlBtn
     .append('rect')

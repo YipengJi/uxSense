@@ -65,7 +65,7 @@ var thumbsvg = d3.select("#vidtimelineholder")
 
         focalThumbnail = Math.round(uxvideo.duration * (d3.event.pageX-margin.left)/(width-(margin.left+margin.right)))
 
-        if(focalThumbnail <= maxThumb & focalThumbnail > 0){
+        if(focalThumbnail <= maxThumb & focalThumbnail > 0 & d3.event.x < (width-margin.right)){
 
           var timelinesvgElem = document.getElementById('vidtimelineholder')
           var bodyRect = document.body.getBoundingClientRect(),

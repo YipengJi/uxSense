@@ -96,12 +96,14 @@ function goToTimelineTime(){
   .domain([margin.left, width-margin.right])
   .range([minTime, maxTime]);
 
-  var uxvidPrevTime =  uxvideo.currentTime;
-  //uxvideo.currentTime = maxTime * (d3.event.x - margin.left)/(width-(margin.left+margin.right)) + minTime;
-  uxvideo.currentTime = invertx(d3.event.x);
-
-  interactiontracking(JSON.stringify(d3.event), this.getAttribute("id"), this.getAttribute("id"), 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
-
+  if(d3.event.x < (width-margin.right)){
+    
+    var uxvidPrevTime =  uxvideo.currentTime;
+    //uxvideo.currentTime = maxTime * (d3.event.x - margin.left)/(width-(margin.left+margin.right)) + minTime;
+    uxvideo.currentTime = invertx(d3.event.x);
+  
+    interactiontracking(JSON.stringify(d3.event), this.getAttribute("id"), this.getAttribute("id"), 'click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
+  }
 }
 
 uxvideo.addEventListener('loadeddata', function(){

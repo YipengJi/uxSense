@@ -462,7 +462,7 @@ function rescaleFrames(){
         if(i < filtdata.length){
             focalThumbnail = filtdata[i].vidnum
 
-        if(focalThumbnail <= maxTime & focalThumbnail > 0){
+        if(focalThumbnail <= maxTime & focalThumbnail > 0 & d3.event.x < (width-margin.right)){
 
             var timelinesvgElem = document.getElementById('vidtimelineholder')
             var bodyRect = document.body.getBoundingClientRect(),
