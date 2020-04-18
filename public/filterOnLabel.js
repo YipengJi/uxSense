@@ -25,6 +25,23 @@ function filterOnLabel(containerID){
         attrName = 'action'
     }
 
+
+    var containerChecks = d3.select(container).selectAll('.filters')//.selectAll('input');
+    var containerInputs = containerChecks.selectAll('input');
+    containerInputs.each(function(){
+        var thisLabel = {value:d3.select(this.parentElement).select('span').text()}
+        allfilters.push(thisLabel)
+        if(this.checked){
+            checkedfilters.push(thisLabel)
+        }
+    })
+    //var containerSpans = containerChecks.selectAll('span')//.selectAll('input');
+    
+    console.log(checkedfilters)
+
+
+
+    /*
     for (var i = 0; i < container.childNodes.length; i++) {
         if (container.childNodes[i].className == "collapsible-header") {
             collapseheader = container.childNodes[i];
@@ -55,6 +72,7 @@ function filterOnLabel(containerID){
             break;
         }        
     }
+    */
 
     if(checkedfilters.length>0){
         showFilters(checkedfilters, rectclass, containerID, g)
@@ -64,25 +82,15 @@ function filterOnLabel(containerID){
 }
 
 function showFilters(checkedfilters, rectclass, containerID, g){
-    //console.log(checkedfilters)
-    if(containerID == 'Emotion'){
-        g.selectAll('.'+rectclass).each(function(d){
-            if(_.filter(checkedfilters, {'emotion':d.emotion}).length > 0){
-                d3.select(this).attr('opacity', 1)
-            } else {
-                d3.select(this).attr('opacity', 0.3)
-            }
-        })
-    }    
-    if(containerID == 'Action1'){
-        g.selectAll('.'+rectclass).each(function(d){
-            if(_.filter(checkedfilters, {'action':d.action}).length > 0){
-                d3.select(this).attr('opacity', 1)
-            } else {
-                d3.select(this).attr('opacity', 0.3)
-            }
-        })
-    }
+    var dataIndex = {Action1:'action', Emotion:'emotion'}
+    console.log(checkedfilters)
+    g.selectAll('.'+rectclass).each(function(d){
+        if(_.filter(checkedfilters, {value:d[dataIndex[containerID]]}).length > 0){
+            d3.select(this).attr('opacity', 1)
+        } else {
+            d3.select(this).attr('opacity', 0.3)
+        }
+    })    
     
     interactiontracking(checkedfilters, containerID, rectclass, 'click', [{hasquerytype:"filterOnLabel"}])
     
@@ -94,8 +102,9 @@ function showFilters(checkedfilters, rectclass, containerID, g){
 
 d3.selectAll('.collapsible-header').selectAll('.filters').selectAll('span').on('click', function(){
     var thisElem = d3.select(this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);
-    
+    console.log(thisElem)
     var thiscontainerID = thisElem.selectAll('.timelineholder').attr('id');
+    console.log(thiscontainerID)
 
     //console.log(thisElem);
     //console.log(thiscontainerID);
