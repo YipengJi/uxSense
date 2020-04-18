@@ -41,8 +41,12 @@
         
         tdata.forEach(function(d){
             var row = tbody.append('tr').datum(d).attr('class', 'annotrow')
-        
+            
             var timeNum = parseFloat(d.timestamp)
+
+            if(d.annotationtype == "interval" & d.focusbrushed == "true"){
+                timeNum = parseFloat(d.annotatedintervalmin)
+            }
     
             var minute = Math.floor(timeNum/60)
             var second = Math.round(timeNum - 60*minute)
@@ -51,6 +55,19 @@
 
             var timestr = minstr + ":" + secstr
     
+
+            if(d.annotationtype == "interval" & d.focusbrushed == "true"){
+                timeNum2 = parseFloat(d.annotatedintervalmax)
+                var minute2 = Math.floor(timeNum2/60)
+                var second2 = Math.round(timeNum2 - 60*minute2)
+                var minstr2 = minute2 < 10 ? "0" + minute2.toString() : minute2.toString();
+                var secstr2 = second2 < 10 ? "0" + second2.toString() : second2.toString();
+    
+                var timestr2 = minstr2 + ":" + secstr2
+                var timestr1 = timestr;
+                timestr = timestr1 + "-" + "\n" + timestr2
+                }
+
             row.append('td')
             .attr('style', 'width:20%')
             .text(timestr)
