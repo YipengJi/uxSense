@@ -365,7 +365,10 @@ var widget = function (plugin) {
       if ((plugin.settings.clickArea === 'line') || // clickArea: 'line' activates on all elements
         (plugin.settings.clickArea === 'timestamp' && clickedClasses.contains(plugin.prefix + '-timestamp')) ||
         (plugin.settings.clickArea === 'text' && clickedClasses.contains(plugin.prefix + '-text'))) {
-        plugin.player.currentTime(clickedTime);
+          var uxvideo = document.getElementById('video_html5_api')
+          var uxvidPrevTime = uxvideo.currentTime;
+          plugin.player.currentTime(clickedTime);
+          interactiontracking(JSON.stringify(event.target.innerHTML), 'transcript', JSON.stringify(plugin.settings.clickArea), 'transcript click', [{oldtime: uxvidPrevTime}, {newtime: uxvideo.currentTime}])
       }
     }
   };
