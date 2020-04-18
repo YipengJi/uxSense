@@ -67,7 +67,7 @@ function createSpeechrateTimeline(){
             .attr("stroke", "#ff3300")
             .attr("stroke-width", 1.5)
             .attr("d", d3.line()
-                .curve(d3.curveStepBefore)
+                .curve(d3.curveStepAfter)
                 .x(function (d) { return x(d.Start) })
                 .y(function (d) { return y(d.Rate) })
             )

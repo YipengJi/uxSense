@@ -218,7 +218,7 @@ function rescaleSpeechrate(){
 
     line.transition().duration(1).attr("d", function(d){    
         return(d3.line()
-        .curve(d3.curveStepBefore)
+        .curve(d3.curveStepAfter)
         .x(function (d) { return x(d.Start) })
         .y(function (d) { return y(d.Rate) })
         )(d)
