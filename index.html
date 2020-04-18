@@ -92,11 +92,13 @@
                         oggsrc.type = "video/ogg"
 
                     var captrack = document.createElement("track");
+                        captrack.kind = "captions";
                         captrack.src = "captions/" + uxSenseVideoPath + "_captions.vtt"
                         captrack.srclang = "en"
                         captrack.label = "English"
-                        captrack.default = ''
+                        //captrack.default = ''
 
+                        $(captrack).attr('default','');
 
                     document.getElementById("video").appendChild(mp4src) 
                     document.getElementById("video").appendChild(oggsrc) 
