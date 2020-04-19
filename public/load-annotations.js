@@ -12,7 +12,7 @@
             console.log(response)
         } 
         , success: function(data){
-            annotationTabPop();
+            annotationTabPop(false);
         }
         , error: function(jqXHR, textStatus, err){
             console.log('text status '+textStatus+', err '+err)
@@ -22,10 +22,10 @@
   }
 
 
-  function annotationTabPop(){
+  function annotationTabPop(redo=true){
     try{
 
-    d3.json('userAnnotations/data.json', function(rawdata){
+    $.getJSON('userAnnotations/data.json', function(rawdata){
         //TODO: CHANGE THIS LINE BELOW SO THAT WE'RE NOT JUST PULLING ALL DATA; WANT TO MAKE SERVER-SIDE QUERY HERE
         var filtannotations = _.filter(rawdata, {'videoname':uxSenseVideoPath})
         var tdata = _.sortBy(filtannotations, [function(o) { return parseFloat(o.timestamp); }])
@@ -96,9 +96,11 @@
     } catch(err){
         console.log(err)
     }
-
+    if(redo){
     //Sometimes success times out but the db is actually updated. This is a band-aid for that--we make it recursively update every four seconds.
-    setTimeout("annotationTabPop()", 1500)
+        setTimeout("annotationTabPop()", 2500)
+
+    }
 
 }
 
