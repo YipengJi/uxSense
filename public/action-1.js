@@ -17,8 +17,12 @@ function createActionsTimeline(){
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
-    
-    
+
+    $.ajaxSetup({
+        timeout: 5000 //Time in milliseconds
+    });
+
+            
     d3.csv('modeloutput/actions_best.csv', function(data){
     
     //d3.csv('modeloutput/actions_best.csv', function(data){

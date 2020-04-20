@@ -21,6 +21,11 @@ function createEmotionsTimeline(){
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
+
+    $.ajaxSetup({
+        timeout: 5000 //Time in milliseconds
+    });
+
             /*
     $.getJSON('modeloutput/face_all_emotions_poses_gender.json', function(){
         //console.log( "success" );
