@@ -21,6 +21,7 @@ function createEmotionsTimeline(){
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
+            /*
     $.getJSON('modeloutput/face_all_emotions_poses_gender.json', function(){
         //console.log( "success" );
     })
@@ -31,7 +32,9 @@ function createEmotionsTimeline(){
         //console.log( "complete" );
     })
     .done(function(rawdata) {
+*/
         //console.log( "second success" );
+    d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
         refreshuxSDimVars();
         var detaildata = [];
         var data = [];
