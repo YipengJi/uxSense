@@ -123,7 +123,7 @@ app.get('/annotationQuery', function (req, res){
  });
 
 
-app.listen(3000, 'webstrates.umd.edu', function () {
+app.listen(3000, function () {
   console.log(this.address().address);
   console.log('Listening on port 3000!')
 });
