@@ -188,9 +188,10 @@ app.post('/log', function (req, res){
       console.log("Connected correctly to server");
 
       const db = client.db(dbName);
-
+      var insertonedata = req.body;
+      insertonedata.userip = req.ip;
       // Insert a single document
-      db.collection('annotations').insertOne(req.body, function(err, r) {
+      db.collection('annotations').insertOne(insertonedata, function(err, r) {
         assert.equal(null, err);
         assert.equal(1, r.insertedCount);
       // Overwrite public file
