@@ -42,7 +42,9 @@ function addPointAnnotation(timelineID){
         , error: function(jqXHR, textStatus, err){
             console.log('text status '+textStatus+', err '+err)
         }
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {    
+        console.log(errorThrown);
+    });
 }
 
 function addIntervalAnnotation(timelineID){
@@ -89,6 +91,8 @@ function addIntervalAnnotation(timelineID){
         , error: function(jqXHR, textStatus, err){
             console.log('text status '+textStatus+', err '+err)
         }
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {    
+        console.log(errorThrown);
+    });
 }
 

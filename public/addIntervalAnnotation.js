@@ -33,6 +33,8 @@ function garbageaddIntervalAnnotation(){
         , error: function(jqXHR, textStatus, err){
             console.log('text status '+textStatus+', err '+err)
         }
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {    
+        console.log(errorThrown);
+    });
 }
 

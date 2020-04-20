@@ -93,7 +93,9 @@
             //console.log(err)
         }
 
-    })  
+    }).fail(function (jqXHR, textStatus, errorThrown) {    
+        console.log(errorThrown);
+    });
 
     } catch(err){
         console.log(err)
