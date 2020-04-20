@@ -27,7 +27,7 @@
     $.ajaxSetup({
         timeout: 2400 //Time in milliseconds
     });
-    $.getJSON('userAnnotations/data.json', function(rawdata){
+    d3.json('userAnnotations/data.json', function(rawdata){
         //TODO: CHANGE THIS LINE BELOW SO THAT WE'RE NOT JUST PULLING ALL DATA; WANT TO MAKE SERVER-SIDE QUERY HERE
         var filtannotations = _.filter(rawdata, {'videoname':uxSenseVideoPath})
         var tdata = _.sortBy(filtannotations, [function(o) { return parseFloat(o.timestamp); }])
@@ -93,18 +93,14 @@
             //console.log(err)
         }
 
-    }).fail(function (jqXHR, textStatus, errorThrown) {    
-        console.log(jqXHR);
-        console.log(textStatus);
-        console.log(errorThrown);
-    });
+    })
 
     } catch(err){
         console.log(err)
     }
     if(redo){
     //Sometimes success times out but the db is actually updated. This is a band-aid for that--we make it recursively update every four seconds.
-        setTimeout("annotationTabPop()", 2500)
+        setTimeout("annotationTabPop()", 3000)
 
     }
 
