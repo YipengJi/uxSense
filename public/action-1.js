@@ -19,11 +19,13 @@ function createActionsTimeline(){
             "translate(" + margin.left + "," + margin.top + ")");
     
     
-    d3.csv('modeloutput/actions_all.csv', function(data){
+    d3.csv('modeloutput/actions_best.csv', function(data){
     
     //d3.csv('modeloutput/actions_best.csv', function(data){
     d3.csv('arbitrary_action_relabel.csv', function(renamedata){
         refreshuxSDimVars();
+        var colorScale = d3.scaleOrdinal(d3.schemeCategory20c)
+        .domain(_.uniq(_.map(renamedata, 'arbitrary_action')));
         
         data.forEach(function(d){
             d.old_action = d.action;
@@ -34,9 +36,6 @@ function createActionsTimeline(){
 
             }
         })
-
-        var colorScale = d3.scaleOrdinal(d3.schemeCategory20c)
-        .domain(_.uniq(_.map(data, 'action')));
 
         var maxEnd = _.max(_.map(data, function(dp){return(1*dp['end'])}));
         var fps = maxEnd/uxvideo.duration
@@ -85,11 +84,13 @@ function createActionsTimeline(){
         var allStarts = _.map(data, 'start')
         var startFrames = _.uniq(allStarts)
 
-        startFrames.forEach(function(startframe){
-            var thisData = _.filter(data, {'start':startframe})
-            var bestprob = _.max(_.map(thisData,  function(dp){return(1*dp['prob'])}));
 
-            var d = _.filter(thisData, function(dp){return(1*dp['prob']==bestprob)})[0]
+        startFrames.forEach(function(startframe){
+            //var thisData = _.filter(data, {'start':startframe})
+            //var bestprob = _.max(_.map(thisData,  function(dp){return(1*dp['prob'])}));
+            //var d = _.filter(thisData, function(dp){return(1*dp['prob']==bestprob)})[0]
+            var d = _.filter(data, {'start':startframe})[0]
+
             actg.append('rect')
             .datum(d)
             .attr('width', rectWidth(parseFloat(d.start), parseFloat(d.end)))

@@ -24,7 +24,9 @@
 
   function annotationTabPop(redo=true){
     try{
-
+    $.ajaxSetup({
+        timeout: 2400 //Time in milliseconds
+    });
     $.getJSON('userAnnotations/data.json', function(rawdata){
         //TODO: CHANGE THIS LINE BELOW SO THAT WE'RE NOT JUST PULLING ALL DATA; WANT TO MAKE SERVER-SIDE QUERY HERE
         var filtannotations = _.filter(rawdata, {'videoname':uxSenseVideoPath})

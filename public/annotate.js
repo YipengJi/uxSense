@@ -22,7 +22,9 @@ function addPointAnnotation(timelineID){
     var minTime = uxvideo.duration * selX/width
     var maxTime = uxvideo.duration * ( selX + selwid )/width
 
-
+    $.ajaxSetup({
+        timeout: 3000 //Time in milliseconds
+    });
     //send annotation to server
     $.ajax({ 
         url: '/annotate'
@@ -67,7 +69,9 @@ function addIntervalAnnotation(timelineID){
     var minTime = uxvideo.duration * selX/width
     var maxTime = uxvideo.duration * ( selX + selwid )/width
 
-
+    $.ajaxSetup({
+        timeout: 3000 //Time in milliseconds
+    });
     //send annotation to server
     $.ajax({ 
         url: '/annotate'

@@ -83,6 +83,10 @@
                     <div id="transcript"></div>
                 </div>
                 <script>
+                    $.ajaxSetup({
+                        timeout: 15000 //allow up to fifteen seconds for the video to load, assuming video.js depends on jquery
+                    });
+
                     var mp4src = document.createElement("source");
                         mp4src.src = uxSenseVideoPath + ".mp4"
                         mp4src.type = "video/mp4"
