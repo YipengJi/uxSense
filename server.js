@@ -125,7 +125,7 @@ app.get('/annotationQuery', function (req, res){
 
 
 
-app.listen(3000, 'http://webstrates.umd.edu' function () {
+app.listen(3000, 'http://webstrates.umd.edu', function () {
     console.log('Listening on port 3000!')
   });
 
