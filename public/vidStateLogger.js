@@ -16,6 +16,8 @@ function vidstatelog(){
             console.log('text status '+textStatus+', err '+err)
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {    
+        console.log(jqXHR);
+        console.log(textStatus);
         console.log(errorThrown);
     });
     setTimeout("vidstatelog()", 5000)
