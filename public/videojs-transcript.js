@@ -505,6 +505,6 @@ var transcript = function (options) {
     setTrack: my.widget.setTrack
   };
 };
-videojs.plugin('transcript', transcript);
+videojs.registerPlugin('transcript', transcript);
 
 }(window, videojs));
