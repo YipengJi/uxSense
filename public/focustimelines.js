@@ -323,7 +323,7 @@ function rescalePitch(){
 
     var y = d3.scaleLinear()
         .domain([0, 200])
-        .range([height/2, 0]);
+        .range([height, 0]);
         
     d3.select('#pitch').select('#pitchxaxis')
         .call(d3.axisBottom(x)
