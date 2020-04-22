@@ -107,6 +107,9 @@ function createAnnotationsTimeline(loopagain=false){
                             returnedWidth = width - returnedX  
                         }
 
+                        if(startTime < minTime){
+                            returnedWidth = crectwidthmin + (timeGap-(minTime-startTime))*selRangeRatio*wid2dur
+                        }
 
                         annograph.append('rect')
                         .datum(data[i])
