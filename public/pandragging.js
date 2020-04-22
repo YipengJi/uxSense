@@ -96,8 +96,7 @@ function goToTimelineTime(){
   .domain([margin.left, width-margin.right])
   .range([minTime, maxTime]);
 
-  if(d3.event.x < (width-margin.right)){
-    
+  if(d3.event.x < (width-margin.right) & d3.event.target.class != "annbtnfill"){
     var uxvidPrevTime =  uxvideo.currentTime;
     //uxvideo.currentTime = maxTime * (d3.event.x - margin.left)/(width-(margin.left+margin.right)) + minTime;
     uxvideo.currentTime = invertx(d3.event.x);
