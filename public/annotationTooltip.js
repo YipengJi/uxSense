@@ -2,10 +2,7 @@ var uxvideo = document.getElementById("video_html5_api");
 
 // The annotations box looks good and should be what we use when the user opts to add annotation to timeline
 function appendAnnotations() {
-
-
-    var annotbtnXPad = 15
-    var annotbtnYPad = 20
+    refreshuxSDimVars()
 
     var annotDiv = d3.select('body').append('div')
     .attr('id', 'AnnotationTooltip')

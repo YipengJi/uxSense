@@ -64,17 +64,19 @@ brushg.append('g')
 
 function rescaleTimelines(){
     refreshuxSDimVars();
-
-    rescaleEmotions();
-    rescaleActions();
-    rescaleSpeechrate();
-    rescalePitch();
-    rescaleFrames();
-    rescaleAnnotations();
+        rescaleEmotions();
+        rescaleActions();
+        rescaleSpeechrate();
+        rescalePitch();
+        rescaleFrames();
+        rescaleAnnotations();    
 }
 
 function rescaleEmotions(){
     var emotions = d3.select("#emotionrects")
+    if(!emotions){
+        return("")
+    }
     var maxEnd = parseFloat(emotions.attr('maxEnd'))
     var fps = maxEnd/uxvideo.duration
 
@@ -127,6 +129,9 @@ function rescaleEmotions(){
 
 function rescaleActions(){
     var actions = d3.select("#action1rects")
+    if(!actions){
+        return("")
+    }
     var maxEnd = parseFloat(actions.attr('maxEnd'))
     var fps = maxEnd/uxvideo.duration
 
@@ -183,6 +188,9 @@ function rescaleActions(){
 function rescaleSpeechrate(){
     
     var line = d3.select("#speechratelinepath")
+    if(!line){
+        return("")
+    }
     var maxEnd = parseFloat(line.attr("maxEnd"));
 
     var data = JSON.parse(line.attr("origdata"));
@@ -292,6 +300,9 @@ function rescaleSpeechrate(){
 function rescalePitch(){
     
     var line = d3.select("#pitchlinepath")
+    if(!line){
+        return("")
+    }
     var maxEnd = parseFloat(line.attr("maxEnd"));
 
     var data = JSON.parse(line.attr("origdata"));
@@ -403,6 +414,9 @@ function rescalePitch(){
 
 function rescaleFrames(){
     var thumbs = d3.select("#thumbframes")
+    if(!thumbs){
+        return("")
+    }
     var maxEnd = parseFloat(thumbs.attr('maxEnd'))
     var fps = maxEnd/uxvideo.duration
 

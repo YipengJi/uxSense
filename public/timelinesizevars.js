@@ -12,6 +12,9 @@ var sliderwidth = 15;
 var focusHeight = 10;
 var hmargin = 10;
 var emotChunkWid = 240;
+var annotbtnXPad = 15
+var annotbtnYPad = 20
+
 
 
 function refreshuxSDimVars(){
@@ -26,6 +29,11 @@ function refreshuxSDimVars(){
     focusHeight = 10;
     hmargin = 10;
     emotChunkWid = 240;
+    //for annot timeline
+    annotbtnXPad = 15
+    annotbtnYPad = 20
+
+
 }
 
 /*

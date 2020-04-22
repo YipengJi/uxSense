@@ -91,24 +91,32 @@ function createAnnotationsTimeline(loopagain=false){
                     if((parseFloat(data[i].annotatedintervalmin) <= maxTime) & (parseFloat(data[i].annotatedintervalmax) >= minTime)){
 
                         var startTime = parseFloat(data[i].annotatedintervalmin)
-                        var timeGap = parseFloat(data[i].annotatedintervalmax)-startTime;
+                        var endTime = parseFloat(data[i].annotatedintervalmax)
+                        var timeGap = endTime-startTime;
                         var selRangeRatio = uxvideo.duration/(maxTime-minTime);
                         var wid2dur = width/uxvideo.duration
-                        var returnedX = ((startTime-minTime)*selRangeRatio*wid2dur) - crectwidthmin/2
+                        var trueX = ((startTime-minTime)*selRangeRatio*wid2dur) - crectwidthmin/2
+                        var returnedX = trueX
 
                         if(returnedX<0){
                             returnedX=0
                         }
 
-                        //console.log([timeGap, selRangeRatio])
                         var trueWidth = crectwidthmin + timeGap*selRangeRatio*wid2dur;
                         var returnedWidth = trueWidth;
-                        if((returnedX + returnedWidth)>(width-margin.right)){
+
+                        if((returnedX + returnedWidth)>width){
                             returnedWidth = width - returnedX  
+                            if(returnedX > trueX){
+                                returnedWidth = width
+                            }
                         }
 
                         if(startTime < minTime){
                             returnedWidth = crectwidthmin + (timeGap-(minTime-startTime))*selRangeRatio*wid2dur
+                            if((returnedX + returnedWidth)>width){
+                                returnedWidth = width
+                            }
                         }
 
                         annograph.append('rect')
@@ -214,7 +222,9 @@ function createAnnotationsTimeline(loopagain=false){
 
                 }               
            } 
-           
+          
+           //just handle this directly
+        /*
         //and we're going to add rects as background to our filter sliders (and also to block out edges on focus)
         annosvg.append('g').append('rect')
         .attr('fill', 'white')
@@ -229,7 +239,7 @@ function createAnnotationsTimeline(loopagain=false){
         .attr('width', margin.right)
         .attr('x', width)
         .attr('y', 0)
-
+        */
 
         }
     })    
