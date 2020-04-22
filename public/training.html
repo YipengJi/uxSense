@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>uxSense</title>
@@ -31,8 +31,12 @@
     <link rel="stylesheet" href="multirange.css">
 
     <!-- transcript -->
-    <link href="https://vjs.zencdn.net/5.6.0/video-js.css" rel="stylesheet">
-    <script src="https://vjs.zencdn.net/5.6.0/video.js"></script>
+    <!--link href="https://vjs.zencdn.net/5.6.0/video-js.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://vjs.zencdn.net/5.6.0/video.js"></script-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.0.0/video-js.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.0.0/video.min.js"></script>
+    <script src="https://unpkg.com/@videojs/http-streaming@1.13.2/dist/videojs-http-streaming.js"></script>
+  
     <script src="videojs-transcript.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -83,6 +87,10 @@
                     <div id="transcript"></div>
                 </div>
                 <script>
+                    $.ajaxSetup({
+                        timeout: 15000 //allow up to fifteen seconds for the video to load, assuming video.js depends on jquery
+                    });
+
                     var mp4src = document.createElement("source");
                         mp4src.src = uxSenseVideoPath + ".mp4"
                         mp4src.type = "video/mp4"
@@ -90,6 +98,12 @@
                     var oggsrc = document.createElement("source");
                         oggsrc.src = uxSenseVideoPath + ".ogg"
                         oggsrc.type = "video/ogg"
+
+                    /*
+                    var hlssrc = document.createElement("source");
+                        hlssrc.src = "m3u8s/" + uxSenseVideoPath + ".m3u8"
+                        hlssrc.type = "application/x-mpegURL"
+                    */
 
                     var captrack = document.createElement("track");
                         captrack.kind = "captions";
@@ -100,6 +114,7 @@
 
                         $(captrack).attr('default','');
 
+                    //document.getElementById("video").appendChild(hlssrc) 
                     document.getElementById("video").appendChild(mp4src) 
                     document.getElementById("video").appendChild(oggsrc) 
                     document.getElementById("video").appendChild(captrack) 
@@ -331,6 +346,7 @@
             <script>
                 //load the annotation
                 annotationQueryRefresh();
+                annotationTabPop();
             </script>
             <script src="focustimelines.js"></script>
             <script src="timeline-marker.js"></script>
