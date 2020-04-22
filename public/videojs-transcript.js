@@ -353,7 +353,7 @@ var widget = function (plugin) {
       selector.appendChild(option);
     });
     selector.addEventListener('change', function (e) {
-      setTrack(document.querySelector('#' + plugin.prefix + '-' + plugin.player.id() + ' option:checked').value);
+      setTrack(document.getElementById(plugin.prefix + '-' + plugin.player.id() + ' option:checked').value);
       trigger('trackchanged');
     });
     return selector;
