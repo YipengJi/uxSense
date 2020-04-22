@@ -37,6 +37,10 @@ function createAnnotationsTimeline(loopagain=false){
 
     d3.json('userAnnotations/data.json', function(rawdata){
         refreshuxSDimVars();
+        if(!rawdata){
+            console.log("annotations not loaded")
+            return(null)
+        }
         if(rawdata.length>0){
             var filtannotations = _.filter(rawdata, {'videoname':uxSenseVideoPath})
             var data=_.sortBy(filtannotations, function(o){
