@@ -21,7 +21,7 @@ function drawPathSlider(containerID, pathID){
 
     try{
         var data = JSON.parse(path.attr('origdata'));
-    } catch{
+    } catch(err){
         setTimeout('drawPathSlider("' + containerID + '","' + pathID + '")', 100);
         return 'Done';
     }
@@ -103,7 +103,7 @@ function drawBarSlider(containerID){
 
     try{
         var data = JSON.parse(g.attr('origdata'));
-    } catch{
+    } catch(err){
         setTimeout('drawBarSlider("' + containerID + '")', 300);
         return 'Done';
     }
