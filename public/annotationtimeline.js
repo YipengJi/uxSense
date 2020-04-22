@@ -23,24 +23,24 @@ function createAnnotationsTimeline(loopagain=false){
     var annotationsColors = {"Action1":'#ffa31a', "Emotion":'#e3f43a', "pitch":'steelblue', "vidtimelineholder": '#009900', "speech-rate":'#ff3300', "AnnotationTimeline":'purple'}
     var annotationsTimelineLabs = {"Action1":'Actions', "Emotion":'Emotions', "pitch":'Pitch', "vidtimelineholder": 'Thumbnails', "speech-rate":'Speech Rate', "AnnotationTimeline":'Annotations'}
 
-    //wipe the slate first
-    try{
-        annosvg.selectAll('g:not(.add-annotation-button)').remove();
-    } catch(err){
-        console.log(err)
-    }
-
-    annograph = annosvg.append("g")
-        .attr('id', 'annotationsgraphicmain')
-        .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
-
     d3.json('userAnnotations/data.json', function(rawdata){
         refreshuxSDimVars();
         if(!rawdata){
             console.log("annotations not loaded")
             return(null)
         }
+        //wipe the slate first
+        try{
+            annosvg.selectAll('g:not(.add-annotation-button)').remove();
+        } catch(err){
+            console.log(err)
+        }
+
+        annograph = annosvg.append("g")
+            .attr('id', 'annotationsgraphicmain')
+            .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
         if(rawdata.length>0){
             var filtannotations = _.filter(rawdata, {'videoname':uxSenseVideoPath})
             var data=_.sortBy(filtannotations, function(o){
