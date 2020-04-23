@@ -5,3 +5,5 @@ mongo/*
 public/userAnnotations/data.json
 
 public/private/*
+
+public/privateeval.html
