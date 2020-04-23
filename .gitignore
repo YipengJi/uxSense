@@ -1,5 +1,6 @@
 .1-p6-coffeemachine.mp4
 *.mp4
+public/*.mp4
 node_modules/*
 mongo/*
 public/userAnnotations/data.json
