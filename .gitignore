@@ -3,3 +3,5 @@
 node_modules/*
 mongo/*
 public/userAnnotations/data.json
+
+public/private/*
