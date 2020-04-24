@@ -72,6 +72,7 @@ function addIntervalAnnotation(timelineID){
 
     var minTime = uxvideo.duration * selX/width
     var maxTime = uxvideo.duration * ( selX + selwid )/width
+    d3.select('#AnnotationTooltip').style('display', 'none')
 
     $.ajaxSetup({
         timeout: 3000 //Time in milliseconds
@@ -88,7 +89,6 @@ function addIntervalAnnotation(timelineID){
         , success: function(data){
             document.getElementById("annotation-text").value = null
             annotationQueryRefresh();
-            d3.select('#AnnotationTooltip').style('display', 'none')
         }
         , error: function(jqXHR, textStatus, err){
             console.log('text status '+textStatus+', err '+err)

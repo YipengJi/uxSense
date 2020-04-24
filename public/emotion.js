@@ -39,8 +39,9 @@ function createEmotionsTimeline(){
     .done(function(rawdata) {
 */
         //console.log( "second success" );
-    d3.json('modeloutput/face_all_emotions_poses_gender.json', function(rawdata){
+    d3.json('modeloutput/'+uxSenseVideoPath+'/face_all_emotions_poses_gender.json', function(rawdata){
         refreshuxSDimVars();
+        //console.log(rawdata)
         var detaildata = [];
         var data = [];
         var framecnt = 0;
@@ -49,22 +50,22 @@ function createEmotionsTimeline(){
             var d = rawdata[i];
             d.forEach(function(df){
                 detaildata.push({"frame": framecnt, "emotion": df[2]})
-                if(typeof detaildata[framecnt].emotion == "undefined"){
+                if(typeof (detaildata[framecnt].emotion) == "undefined"){
                     detaildata[framecnt].emotion = "N/A"
                 }
                 framecnt++;
             })
         }
-    
+        //console.log(data)
         for(i = emotChunkWid; (i+emotChunkWid-1) < detaildata.length; i+=emotChunkWid){
             var thisChunk = _.filter(detaildata, function(d){return ((d.frame < i) & (d.frame >= i-emotChunkWid))})
             
             var groupCnt = _.countBy(thisChunk, function(d){return(d.emotion)})
             var groupCntNoNA = _.omit(groupCnt, 'N/A');
-            
+            //console.log([groupCntNoNA, groupCnt])
             var winner = 'N/A';
 
-            if(groupCnt.length == 1){
+            if(groupCnt.length == 1 ){
                 winner = Object.keys(groupCnt)[0];
                 try{
                 } catch(err){
@@ -72,12 +73,17 @@ function createEmotionsTimeline(){
                     }
             } else {
                 if(Object.keys(groupCnt)[0].length > 0){
-                    winner = _.reduce(groupCntNoNA, function(max, current, key) {
-                        return max && max.value > current ? max : {
-                            value: current,
-                            key: key
-                        };
-                    }).key    
+                    try{
+                        winner = _.reduce(groupCntNoNA, function(max, current, key) {
+                            return max && max.value > current ? max : {
+                                value: current,
+                                key: key
+                            };
+                        }).key
+                    } catch(err){
+                        console.log(err)
+                        winner = Object.keys(groupCnt)[0];
+                    }
                 }
             }
 
@@ -101,7 +107,7 @@ function createEmotionsTimeline(){
             .domain([1, maxEnd])
             .range([0, width]);
 
-        var maxProb = _.max(_.map(data, function(dp){return(1*dp['prob'])}));
+        var maxProb = _.max(_.map(_.reject(data,{'emotion':"N/A"}), function(dp){return(1*dp['prob'])}));
         var y = d3.scaleLinear()
             .domain([0, maxProb])
             .range([height, 0]);
@@ -128,7 +134,11 @@ function createEmotionsTimeline(){
             })
         )
 
-
+        for(i=0; i<data.length; i++){
+            if(data[i].emotion == "N/A"){
+                data[i].prob = 0;
+            }
+        }
         var emog = emosvg.append('g')
             .data(data)
             .attr('id', 'emotionrects')
@@ -148,7 +158,7 @@ function createEmotionsTimeline(){
             var bestprob = _.max(_.map(thisData,  function(dp){return(1*dp['prob'])}));
 
             var d = _.filter(thisData, function(dp){return(1*dp['prob']==bestprob)})[0]
-
+            
             emog.append('rect')
             .datum(d)
             .attr('width', rectWidth(parseFloat(d.start), parseFloat(d.end)))
@@ -211,6 +221,7 @@ function createEmotionsTimeline(){
         emosvg.append("g")
         .call(d3.axisLeft(y).ticks(5))
 
+        rescaleEmotions();
 
     })
 

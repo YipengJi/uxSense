@@ -56,7 +56,7 @@ function createSpeechrateTimeline(){
             .on('mouseout', mouseout)
             .on('click', mouseclick);
 
-        svg
+        var line = svg
             .append("path")
             .datum(data)
             .attr("id", "speechratelinepath")
@@ -68,7 +68,7 @@ function createSpeechrateTimeline(){
             .attr("d", d3.line()
                 .curve(d3.curveStepAfter)
                 .x(function (d) { return x(d.Start) })
-                .y(function (d) { return y(d.Rate) })
+                .y(function (d) { return y(d.Rate) })       
             )
 
         //do these after creating the chart path.
@@ -159,7 +159,7 @@ function createSpeechrateTimeline(){
             .attr('x', width)
             .attr('y', 0)
     
-    
+            rescaleSpeechrate()
     })
 }
 

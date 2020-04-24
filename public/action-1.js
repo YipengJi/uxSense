@@ -23,9 +23,9 @@ function createActionsTimeline(){
     });
 
             
-    d3.csv('modeloutput/actions_best.csv', function(data){
+    d3.csv('modeloutput/'+uxSenseVideoPath+'/actions_best.csv', function(data){
     
-    //d3.csv('modeloutput/actions_best.csv', function(data){
+    //d3.csv('modeloutput/'+uxSenseVideoPath+'/actions_best.csv', function(data){
     d3.csv('arbitrary_action_relabel.csv', function(renamedata){
         refreshuxSDimVars();
         var colorScale = d3.scaleOrdinal(d3.schemeCategory20c)
@@ -154,6 +154,9 @@ function createActionsTimeline(){
         //Add axis labels and ticks after
         actsvg.append("g")
             .call(d3.axisLeft(y).ticks(5))
+
+
+        rescaleActions();
     })
     })
 }
