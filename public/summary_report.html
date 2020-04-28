@@ -16,16 +16,17 @@
 <body>
     <div id="main"></div>
     <script>
-
+    var width = 560
+    var height = 255
     var emotChunkWid = 240;
     var emoColorScale = d3.scaleOrdinal(['#ececec', '#ff0101', '#68c500', '#e33af4', '#e3f43a', '#3a86f4', '#ffc900', '#b2b2b2'])
         .domain(['N/A', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']);
 
-    var colorScale;
+    var actColorScale;
     d3.csv('arbitrary_action_relabel.csv', {credentials: 'same-origin'})
     .then(function(renamedata){
     //console.log(d3.schemeCategory20c)
-    colorScale = d3.scaleOrdinal(d3.schemeCategory10)
+    actColorScale = d3.scaleOrdinal(d3.schemeCategory10)
         .domain(_.uniq(_.map(renamedata, 'arbitrary_action')));
 
     //load video.durations in seconds--this is a last-minute hack job
@@ -39,7 +40,8 @@
             //console.log(videoNames)
             //loop through each video's notes 
             videoNames.forEach(function(vid){
-                var videoAnnotations = _.filter(allUserAnnotations,{'videoname':vid});
+                var videoAnnotations = _.filter(allUserAnnotations,{"videoname":vid});
+                //console.log(videoAnnotations)
                 var videoDuration = _.filter(videoTimeLengths, {"video":vid})//.duration
                 var captionDataFile = "captions/" + vid + "_captions.vtt"
                 var actionDataFile = "modeloutput/" + vid + "/actions_best.csv"
@@ -76,7 +78,7 @@
                             var endTimestamp = new Date("1970-01-01 " + times[1])
                             var endSeconds =  (60**2)*endTimestamp.getHours() + 60*endTimestamp.getMinutes() + endTimestamp.getSeconds() + endTimestamp.getMilliseconds()/1000
 
-                            var captionarrval = {start:startTimestamp, end:endTimestamp, text:captiontext}
+                            var captionarrval = {'start':startSeconds, 'end':endSeconds, 'text':captiontext.replace("Andrea Carmen Batch", "\nResearcher").replace("Participant ", "\nParticipant ")}
 
                             transcript.push(captionarrval);
 
@@ -173,19 +175,200 @@
 
 
 
-                            $.each(videoAnnotations, function(d){
-                                    
+                            videoAnnotations.forEach(function(d){
+
+                                //this stuff is just for labeling                                
+                                var timeNum = parseFloat(d.timestamp)
+
+                                if(d.annotationtype == "interval" & d.focusbrushed == "true"){
+                                    timeNum = parseFloat(d.annotatedintervalmin)
+                                }
+
+                                var minute = Math.floor(timeNum/60)
+                                var second = Math.round(timeNum - 60*minute)
+                                var minstr = minute < 10 ? "0" + minute.toString() : minute.toString();
+                                var secstr = second < 10 ? "0" + second.toString() : second.toString();
+
+                                var timestr = minstr + ":" + secstr
+
+
+                                if(d.annotationtype == "interval" & d.focusbrushed == "true"){
+                                    timeNum2 = parseFloat(d.annotatedintervalmax)
+                                    var minute2 = Math.floor(timeNum2/60)
+                                    var second2 = Math.round(timeNum2 - 60*minute2)
+                                    var minstr2 = minute2 < 10 ? "0" + minute2.toString() : minute2.toString();
+                                    var secstr2 = second2 < 10 ? "0" + second2.toString() : second2.toString();
+
+                                    var timestr2 = minstr2 + ":" + secstr2
+                                    var timestr1 = timestr;
+                                    timestr = timestr1 + "-" + "\n" + timestr2
+                                }
+
+
+                                //now we start changing our view
+                                var div = d3.select("#main")
+                                .append("div")
+                                .attr("id", d._id)
+
+                                div.append("div")
+                                .attr("class", "ann-text")
+                                .text("[" + vid.replace("private/P","Participant ") + ", " + d.timeline.replace("1", "").replace("Timeline", "") + " Timeline]: " + timestr)
+
+                                div.append("div")
+                                .attr("class", "ann-text")
+                                .text(d.annotation)
+                                //console.log(d)
+
+
                                 var startTime = parseFloat(d.timestamp)
                                 var endTime = parseFloat(d.timestamp)
 
                                 //we want to grab all rows of data with max vals greater than the min
                                 if(d.annotationtype == "interval" & d.focusbrushed == "true"){
-                                    var startTime = parseFloat(d.annotatedintervalmin)
-                                    var endTime = parseFloat(d.annotatedintervalmax)
+                                    startTime = parseFloat(d.annotatedintervalmin)
+                                    endTime = parseFloat(d.annotatedintervalmax)
                                 }
+                                console.log([startTime, endTime])
+
+                                var includeQuotes = _.filter(
+                                    transcript, 
+                                    function(o){
+                                        var condition = o.start <= endTime & o.end >= startTime
+                                        //if(condition){
+                                        //    console.log([o.start, o.end])
+                                        //}
+                                        return(condition)
+                                    }
+                                )
+                                /* actually not the way to do this; maybe later. its late rn
+                                for(i=0; i<includeQuotes.length; i++){
+                                    if(includeQuotes[i].replace("Researcher:","").length < includeQuotes[i]){
+                                        if(includeQuotes[i-1].replace("Researcher:", "").length < includeQuotes[i-1].length){
+                                            includeQuotes[i-1] = includeQuotes[i-1] + "... " + includeQuotes[i]
+                                            includeQuotes[i] = null 
+                                        }
+                                    }
+                                }
+                                */
+                                for(i=0; i<includeQuotes.length; i++){
+                                    if(includeQuotes[i].text.replace("\nResearcher:","").length < includeQuotes[i].text.length){
+                                        includeQuotes[i].text = "";
+                                    }
+                                }
+                                console.log(includeQuotes)
+                                div.append("span")
+                                .style("white-space", "pre-line")
+                                .attr("class", "transcript-text")
+                                .text(_.map(includeQuotes,"text").join("... ").replace("... ... ", "... ").replace("... ... ", "... ").replace("... ... ", "... "))
+
+                                div.append("br")
+                                var svg = div.append("svg")
+                                .append("g")
+
 
                                 if(d.timeline == "Emotion"){
+                                    var data = _.reject(_.filter(emotiondata, function(o){
+                                        return( (parseFloat(o.start)/emotionfps) <= endTime & (parseFloat(o.end)/emotionfps) >= startTime)
+                                    }), {'emotion':"N/A"})
+
+                                    //just take a look for now
+                                    div.append("span")
+                                    .text(JSON.stringify(data))
+
+                                    var maxEnd = _.max(_.map(emotiondata, function(dp){
+                                        return(1*dp['end'])
+                                    }));
                                     
+                                    var rectStart = _.min(_.map(emotiondata, function(dp){
+                                        return(1*dp['start'])
+                                    }));
+
+                                    /*
+                                    var x = d3.scaleLinear()
+                                        .domain([rectStart, maxEnd])
+                                        .range([0, width]);
+                                    */
+                                    var x = d3.scaleBand()
+                                        //.domain([rectStart, maxEnd])
+                                        .rangeRound([0, width]);
+
+                                    var maxProb = _.max(_.map(_.reject(data,{'emotion':"N/A"}), function(dp){return(1*dp['prob'])}));
+
+                                    var y = d3.scaleLinear()
+                                        .domain([0, maxProb])
+                                        .range([height, 0]);
+
+
+                                    function rectWidth(lowerVal, upperVal){
+                                            gap = upperVal-lowerVal;
+                                            rangeMult = (width/maxEnd)
+                                            return (gap * rangeMult)
+                                    }
+
+                                    var allStarts = _.map(data, 'start')
+                                    var startFrames = _.uniq(allStarts)
+
+
+
+                                    svg.append("g")
+                                    .attr("transform", "translate(0," + height + ")")
+                                    .call(d3.axisBottom(x))
+                                    .text("Video Time");
+
+                                    svg.append("g")
+                                    .call(d3.axisLeft(y))
+                                    .append("text")
+                                    .attr("fill", "#000")
+                                    .attr("transform", "rotate(-90)")
+                                    .attr("y", 6)
+                                    .attr("dy", "0.71em")
+                                    .attr("text-anchor", "end")
+                                    .text("Probability");
+
+                                    svg.selectAll(".bar")
+                                    .data(data)
+                                    .enter().append("rect")
+                                    .attr("class", "bar")
+                                    .attr('fill', function(c){return(emoColorScale(c.emotion))})
+                                    .attr("x", function (c) {
+                                        return x(c.start);
+                                    })
+                                    .attr("y", function (c) {
+                                        return y(1*c.prob);
+                                    })
+                                    .attr("width", x.bandwidth())
+//                                    .attr('width', function(c){rectWidth(parseFloat(c.start), parseFloat(c.end))})
+                                    .attr("height", function (c) {
+                                        return (height - y(1*c.prob));
+                                    })
+
+
+
+
+                                    /*
+
+                                    startFrames.forEach(function(startframe){
+
+                                        
+                                        var thisData = _.filter(data, {'start':startframe})
+                                        var bestprob = _.max(_.map(thisData,  function(dp){return(1*dp['prob'])}));
+
+                                        var c = _.filter(thisData, function(dp){return(1*dp['prob']==bestprob)})[0]
+
+
+                                        svg.append('rect')
+                                        .datum(c)
+                                        .attr('width', rectWidth(parseFloat(c.start), parseFloat(c.end)))
+                                        .attr('id', 'rect_emotion_'+c.start)
+                                        .attr('class', 'emotionrect')
+                                        .attr('x', x(c.start))
+                                        .attr('height', height * (1*c.prob))
+                                        .attr('y', y(parseFloat(c.prob)))
+                                        .attr('fill', colorScale(c.emotion))
+ 
+
+                                    })
+                                    */
                                 }
 
                                 if(d.timeline == "Action1"){
