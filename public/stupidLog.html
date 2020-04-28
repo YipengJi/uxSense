@@ -1,0 +1,52 @@
+<html>
+<head></head>
+<body>
+<video id="P1" width="600" height="350" style="text-align: center;" controls>
+    <source src="private/P1.mp4" type="video/mp4">
+    <source src="private/P1.ogg" type="video/ogg"> Your browser does not support HTML5 video.
+</video>
+<video id="P2" width="600" height="350" style="text-align: center;" controls>
+    <source src="private/P2.mp4" type="video/mp4">
+    <source src="private/P2.ogg" type="video/ogg"> Your browser does not support HTML5 video.
+</video>
+<video id="P4" width="600" height="350" style="text-align: center;" controls>
+    <source src="private/P4.mp4" type="video/mp4">
+    <source src="private/P4.ogg" type="video/ogg"> Your browser does not support HTML5 video.
+</video>
+<video id="P5" width="600" height="350" style="text-align: center;" controls>
+    <source src="private/P5.mp4" type="video/mp4">
+    <source src="private/P5.ogg" type="video/ogg"> Your browser does not support HTML5 video.
+</video>
+<video id="P6" width="600" height="350" style="text-align: center;" controls>
+    <source src="private/P6.mp4" type="video/mp4">
+    <source src="private/P6.ogg" type="video/ogg"> Your browser does not support HTML5 video.
+</video>
+
+<script>
+const p1vid = document.getElementById("P1")
+const p2vid = document.getElementById("P2")
+const p4vid = document.getElementById("P4")
+const p5vid = document.getElementById("P5")
+const p6vid = document.getElementById("P6")
+
+p1vid.addEventListener('loadeddata', function(){
+    console.log({video:"P1", duration:p1vid.duration})
+})
+p2vid.addEventListener('loadeddata', function(){
+    console.log({video:"P2", duration:p2vid.duration})
+})
+p4vid.addEventListener('loadeddata', function(){
+    console.log({video:"P4", duration:p4vid.duration})
+})
+p5vid.addEventListener('loadeddata', function(){
+    console.log({video:"P5", duration:p5vid.duration})
+})
+p6vid.addEventListener('loadeddata', function(){
+    console.log({video:"P6", duration:p6vid.duration})
+})
+
+
+
+</script>
+</body>
+</html>

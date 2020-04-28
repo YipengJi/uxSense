@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>    
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="lodash/lodash.min.js"></script>
+
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+
+    var emotChunkWid = 240;
+    var emoColorScale = d3.scaleOrdinal(['#ececec', '#ff0101', '#68c500', '#e33af4', '#e3f43a', '#3a86f4', '#ffc900', '#b2b2b2'])
+        .domain(['N/A', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']);
+
+    var colorScale;
+    d3.csv('arbitrary_action_relabel.csv', {credentials: 'same-origin'})
+    .then(function(renamedata){
+    //console.log(d3.schemeCategory20c)
+    colorScale = d3.scaleOrdinal(d3.schemeCategory10)
+        .domain(_.uniq(_.map(renamedata, 'arbitrary_action')));
+
+    //load video.durations in seconds--this is a last-minute hack job
+    d3.json("userAnnotations/videotimes.json",{credentials: 'same-origin'})
+    .then(function(videoTimeLengths){
+        //load user annotations
+        d3.json("userAnnotations/data.json",{credentials: 'same-origin'})
+        .then(function(allUserAnnotations){
+            //console.log(allUserAnnotations)
+            var videoNames = _.uniq(_.map(allUserAnnotations, 'videoname'))
+            //console.log(videoNames)
+            //loop through each video's notes 
+            videoNames.forEach(function(vid){
+                var videoAnnotations = _.filter(allUserAnnotations,{'videoname':vid});
+                var videoDuration = _.filter(videoTimeLengths, {"video":vid})//.duration
+                var captionDataFile = "captions/" + vid + "_captions.vtt"
+                var actionDataFile = "modeloutput/" + vid + "/actions_best.csv"
+                var emotionDataFile = "modeloutput/" + vid + "/face_all_emotions_poses_gender.json" 
+
+                $.get(captionDataFile, function(captiondata) {
+        
+                    // Read all captions into an array
+                    var captions = captiondata.split('\n\r\n');
+        
+                    //console.log(captions);
+                    var transcript = [];
+                    //Loop through all captions
+                    $.each(captions, function( index, value ) {
+                    
+                        var caption = captions[index].split('\n');
+                        if(caption.length == 3){
+                            //console.log(caption);    
+                            var captiontext = caption[2]
+                            var times = caption[1].split(" --> ")
+
+                            for(i = 0; i<times.length; i++){
+                                times[i] = times[i].replace('\n','').replace('\r', '')
+                            }
+
+                            //just use unix epoch as date for all timestamps; don't anticipate evaluating a video longer than 24 hours.
+                            var startTimestamp = new Date("1970-01-01 " + times[0])
+                            var startSeconds =  (60**2)*startTimestamp.getHours() + 60*startTimestamp.getMinutes() + startTimestamp.getSeconds() + startTimestamp.getMilliseconds()/1000
+                            //console.log("1970-01-01 " + times[0] )
+                            //console.log(startTimestamp )
+                            //console.log(startSeconds )
+
+
+                            var endTimestamp = new Date("1970-01-01 " + times[1])
+                            var endSeconds =  (60**2)*endTimestamp.getHours() + 60*endTimestamp.getMinutes() + endTimestamp.getSeconds() + endTimestamp.getMilliseconds()/1000
+
+                            var captionarrval = {start:startTimestamp, end:endTimestamp, text:captiontext}
+
+                            transcript.push(captionarrval);
+
+                        }
+
+                    });
+                    //console.log(transcript);
+                    d3.csv(actionDataFile,{credentials: 'same-origin'})
+                    .then(function(actiondata){
+                        d3.json(emotionDataFile,{credentials: 'same-origin'})
+                        .then(function(emotiondataraw){
+                            //now we have our video timestamps, our transcripts, our action data, and our emotion data for this specific video loaded; 
+                            //we want to append each annotation with a view of data for the relevant range 
+                            if(typeof(videoDuration[0]) == "undefined"){
+                                console.log(vid)
+                                return 
+                            } 
+
+                            videoDuration = videoDuration[0].duration
+                            console.log(videoDuration)
+                            
+                            //clean up emotion data
+                            var emotiondetaildata = [];
+                            var emotiondata = [];
+                            var framecnt = 0;
+
+                            for(i = 0; i < emotiondataraw.length; i++){
+                                var d = emotiondataraw[i];
+                                d.forEach(function(df){
+                                    emotiondetaildata.push({"frame": framecnt, "emotion": df[2]})
+                                    if(typeof (emotiondetaildata[framecnt].emotion) == "undefined"){
+                                        emotiondetaildata[framecnt].emotion = "N/A"
+                                    }
+                                    framecnt++;
+                                })
+                            }
+                            //console.log(data)
+                            for(i = emotChunkWid; (i+emotChunkWid-1) < emotiondetaildata.length; i+=emotChunkWid){
+                                var thisChunk = _.filter(emotiondetaildata, function(d){return ((d.frame < i) & (d.frame >= i-emotChunkWid))})
+                                
+                                var groupCnt = _.countBy(thisChunk, function(d){return(d.emotion)})
+                                var groupCntNoNA = _.omit(groupCnt, 'N/A');
+                                //console.log([groupCntNoNA, groupCnt])
+                                var winner = 'N/A';
+
+                                if(groupCnt.length == 1 ){
+                                    winner = Object.keys(groupCnt)[0];
+                                    try{
+                                    } catch(err){
+                                            console.log(err)
+                                        }
+                                } else {
+                                    if(Object.keys(groupCnt)[0].length > 0){
+                                        try{
+                                            winner = _.reduce(groupCntNoNA, function(max, current, key) {
+                                                return max && max.value > current ? max : {
+                                                    value: current,
+                                                    key: key
+                                                };
+                                            }).key
+                                        } catch(err){
+                                            //console.log(err)
+                                            winner = Object.keys(groupCnt)[0];
+                                        }
+                                    }
+                                }
+
+                                var obs = {'start':(i-emotChunkWid),'end':i, 'emotion':winner, 'prob':groupCnt[winner]/emotChunkWid}
+                                if(typeof obs.emotion == 'undefined'){
+                                    obs = {'start':(i-emotChunkWid),'end':i, 'emotion':'N/A', 'prob':0}
+                                }
+
+                                emotiondata.push(obs) 
+                            }
+
+                            //console.log(emotiondata)
+                            var emotionMaxEnd = _.max(_.map(emotiondata, function(dp){return(1*dp['end'])}));
+                            var emotionfps = emotionMaxEnd/videoDuration
+
+                            
+                            //process action data        
+                            actiondata.forEach(function(d){
+                                d.old_action = d.action;
+                                try{
+                                    d.action = _.filter(renamedata, function(o){return o.action == d.old_action})[0].arbitrary_action        
+                                } catch(err){
+                                    console.log(err);
+
+                                }
+                            })
+                            //console.log(actiondata)
+                            var actionMaxEnd = _.max(_.map(actiondata, function(dp){return(1*dp['end'])}));
+                            var actionfps = actionMaxEnd/videoDuration
+
+
+
+                            $.each(videoAnnotations, function(d){
+                                    
+                                var startTime = parseFloat(d.timestamp)
+                                var endTime = parseFloat(d.timestamp)
+
+                                //we want to grab all rows of data with max vals greater than the min
+                                if(d.annotationtype == "interval" & d.focusbrushed == "true"){
+                                    var startTime = parseFloat(d.annotatedintervalmin)
+                                    var endTime = parseFloat(d.annotatedintervalmax)
+                                }
+
+                                if(d.timeline == "Emotion"){
+                                    
+                                }
+
+                                if(d.timeline == "Action1"){
+                                    
+                                }
+                            })
+
+                        })
+                        //.error(function(error) { console.log(error); });
+
+                    })
+                    //.error(function(error) { console.log(error); });
+                }); 
+            });
+
+        })
+        //.error(function(error) { console.log(error); });
+    })
+})
+
+    </script>
+</body>
+</html>
