@@ -1,0 +1,11 @@
+body {
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: scroll;
+}
+
+svg {
+    height: 320px;
+    width: 560px;
+}

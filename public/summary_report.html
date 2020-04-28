@@ -10,14 +10,19 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3-color.v1.min.js"></script>    
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-axis.v1.min.js"></script>
     <script src="lodash/lodash.min.js"></script>
+    <link rel="stylesheet" href="summary_report.css">
 
 </head>
 <body>
     <div id="main"></div>
     <script>
     var width = 560
-    var height = 255
+    var height = 100
+
+    var margin = {left:40, top:40, right:40, bottom:40}
+
     var emotChunkWid = 240;
     var emoColorScale = d3.scaleOrdinal(['#ececec', '#ff0101', '#68c500', '#e33af4', '#e3f43a', '#3a86f4', '#ffc900', '#b2b2b2'])
         .domain(['N/A', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']);
@@ -228,7 +233,7 @@
                                     startTime = parseFloat(d.annotatedintervalmin)
                                     endTime = parseFloat(d.annotatedintervalmax)
                                 }
-                                console.log([startTime, endTime])
+                                //console.log([startTime, endTime])
 
                                 var includeQuotes = _.filter(
                                     transcript, 
@@ -255,7 +260,7 @@
                                         includeQuotes[i].text = "";
                                     }
                                 }
-                                console.log(includeQuotes)
+                                //console.log(includeQuotes)
                                 div.append("span")
                                 .style("white-space", "pre-line")
                                 .attr("class", "transcript-text")
@@ -264,6 +269,8 @@
                                 div.append("br")
                                 var svg = div.append("svg")
                                 .append("g")
+                                .attr("transform", "translate("+margin.left+","+margin.top+")")
+                                div.append("br")
 
 
                                 if(d.timeline == "Emotion"){
@@ -275,11 +282,11 @@
                                     div.append("span")
                                     .text(JSON.stringify(data))
 
-                                    var maxEnd = _.max(_.map(emotiondata, function(dp){
+                                    var maxEnd = _.max(_.map(data, function(dp){
                                         return(1*dp['end'])
                                     }));
                                     
-                                    var rectStart = _.min(_.map(emotiondata, function(dp){
+                                    var rectStart = _.min(_.map(data, function(dp){
                                         return(1*dp['start'])
                                     }));
 
@@ -288,9 +295,39 @@
                                         .domain([rectStart, maxEnd])
                                         .range([0, width]);
                                     */
+                                    /*
+                                    var arlen = 1+Math.ceil((maxEnd-rectStart)/emotionfps)
+                                    console.log(arlen)
+                                    
+                                    var bands = [...Array(arlen).keys()]
+                                    
+                                    for(i=0;i<bands.length;i++){
+                                        bands[i]+=(rectStart/emotionfps)
+                                    }
+                                    */
+
+                                    //console.log(bands)
+                                    /*
                                     var x = d3.scaleBand()
-                                        //.domain([rectStart, maxEnd])
-                                        .rangeRound([0, width]);
+                                        .domain([Math.floor(startTime)-1, Math.ceil(endTime) + 1])
+                                        .range([0, width]);
+                                    var x = d3.scaleLinear()
+                                        .domain([Math.floor(startTime)-1, Math.ceil(endTime) + 1])
+                                        .range([0, width]);
+                                    */
+
+                                    var bands = _.map(data, function(o){return((1*o.start)/emotionfps)})
+
+                                    bands.push.apply(bands, _.map(data, function(o){return((1*o.end)/emotionfps)}));
+
+                                    bands = _.uniq(bands).sort()
+
+                                    bands.push(1+bands[(bands.length-1)])
+                                    bands.unshift(bands[0]-1)
+
+                                    var x = d3.scaleBand()
+                                        .range([0, width])
+                                        .padding(0.1);
 
                                     var maxProb = _.max(_.map(_.reject(data,{'emotion':"N/A"}), function(dp){return(1*dp['prob'])}));
 
@@ -308,13 +345,78 @@
                                     var allStarts = _.map(data, 'start')
                                     var startFrames = _.uniq(allStarts)
 
+                                    x.domain(bands)
 
 
-                                    svg.append("g")
+ 
+                                    var tickvals = [];
+
+                                    _.map(x.domain(), function(d,i){
+
+                                        if(!(i % 3)){
+                                            var minute = Math.floor((1*d)/60)
+                                        var second = Math.round((1*d) - 60*minute)
+                                        var minstr = minute < 10 ? "0" + minute.toString() : minute.toString();
+                                        var secstr = second < 10 ? "0" + second.toString() : second.toString();
+
+                                        var timestr = minstr + ":" + secstr
+                                        tickvals.push(timestr) 
+
+                                        } else {
+                                            tickvals.push("")
+                                        }
+
+                                    })
+
+                                    var xAxis = svg.append("g")
                                     .attr("transform", "translate(0," + height + ")")
-                                    .call(d3.axisBottom(x))
-                                    .text("Video Time");
+                                    .call(d3.axisBottom(x)
+                                    .tickValues(tickvals)
+                                    /*
+                                    .tickValues(x.domain().filter(function(d,i){
+                                        return !(i % 3)
+                                    }))
+                                    .tickFormat(d3.timeFormat("%m:%S"))
+                                    */
+                                    /*
+                                    .tickFormat(function(d){
 
+                                        var minute = Math.floor((1*d)/60)
+                                        var second = Math.round((1*d) - 60*minute)
+                                        var minstr = minute < 10 ? "0" + minute.toString() : minute.toString();
+                                        var secstr = second < 10 ? "0" + second.toString() : second.toString();
+
+                                        var timestr = minstr + ":" + secstr
+                                        tickvals.push(timestr) 
+
+                                    })
+                                    */
+                                        /*
+                                        .tickValues(tickvals.filter(function(d, i) { 
+                                        //console.log(d);
+                                        return !(i % 3) 
+                                        })
+                                    )
+                                        */
+                                    )
+                                    .attr("class","xaxis")
+                                    .attr("fill", "#000")
+                                    //.attr("transform", "rotate(90)")
+                                    .attr("x", 6)
+                                    .attr("dx", "0.71em")
+                                    .attr("text-anchor", "end")
+                                    /*
+                                    .text(function(d){
+                                        var minute = Math.floor((1*d.start/emotionfps)/60)
+                                        var second = Math.round((1*d.start/emotionfps) - 60*minute)
+                                        var minstr = minute < 10 ? "0" + minute.toString() : minute.toString();
+                                        var secstr = second < 10 ? "0" + second.toString() : second.toString();
+
+                                        var timestr = minstr + ":" + secstr
+
+                                        return timestr
+                                    });
+                                    */
                                     svg.append("g")
                                     .call(d3.axisLeft(y))
                                     .append("text")
@@ -331,19 +433,52 @@
                                     .attr("class", "bar")
                                     .attr('fill', function(c){return(emoColorScale(c.emotion))})
                                     .attr("x", function (c) {
-                                        return x(c.start);
+                                        return x((1*c.start)/emotionfps);
                                     })
                                     .attr("y", function (c) {
                                         return y(1*c.prob);
                                     })
                                     .attr("width", x.bandwidth())
+//                                    .attr("width", width/(3*data.length))
 //                                    .attr('width', function(c){rectWidth(parseFloat(c.start), parseFloat(c.end))})
                                     .attr("height", function (c) {
                                         return (height - y(1*c.prob));
                                     })
 
+                                    xAxis.selectAll(".tick").transition().duration(40)
+                                    //console.log([d,i])
+                                    .attr("transform", function(d,i){
+                                        return "translate(" + (i*width/data.length) + ",0)"
+                                    })
 
+                                    /*
+                                    try{
+                                    const t = svg.transition()
+                                                  .duration(750);
 
+                                    xAxis.transition(t)
+                                        .text(function(c){
+                                        if(typeof(c)=="undefined"){
+                                            return ""
+                                        } 
+                                        //return Math.ceil((1*d.start)/emotionfps)
+
+                                        var minute = Math.floor((1*d.start/emotionfps)/60)
+                                        var second = Math.round((1*d.start/emotionfps) - 60*minute)
+                                        var minstr = minute < 10 ? "0" + minute.toString() : minute.toString();
+                                        var secstr = second < 10 ? "0" + second.toString() : second.toString();
+
+                                        var timestr = minstr + ":" + secstr
+
+                                        return timestr
+
+                                    })
+                                        
+                                    } catch(err){
+                                        console.log(err)
+                                    }
+
+                                    */
 
                                     /*
 
